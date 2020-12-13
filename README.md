@@ -25,7 +25,7 @@ C++ class that provides an interface for matrix-based computing
   •  Possibility  to  override  most  functions  in  subclasses  to  increase  performances  in  specific  cases.
 
 
-## Convinience types
+## Convenience types
 
 
 
@@ -101,11 +101,11 @@ C++ class that provides an interface for matrix-based computing
 
 ***[v]***  •  `add`  |  Adds  either  a  line  or  a  column  from  a  vector  at  the  end  of  the  matrix.
 
-  •  `add_row`  |  Convience  function  to  add  a  row  at  the  end  of  the  matrix.
+  •  `add_row`  |  Convenience  function  to  add  a  row  at  the  end  of  the  matrix.
 
   •  `add_line` |  Alias  for  `'add_row'`.
 
-  •  `add_column`  |  Convience  function  to  add  a  column  at  the  end  of  the  matrix.
+  •  `add_column`  |  Convenience  function  to  add  a  column  at  the  end  of  the  matrix.
 
   
 
@@ -121,31 +121,31 @@ C++ class that provides an interface for matrix-based computing
 ###  Removing from the matrix:
 ***[v]***   •  `remove`  |  Removes  either  a  line  or  a  column  at  the  position  specified.  **WARNING  !  If  T  is  dynamically  allocated,  memory  IS  NOT  freed.**
 
-  •  `remove_row`  |  Convience  function  to  remove  a  row  at  a  specified  position. ** WARNING  !  If  T  is  dynamically  allocated,  memory  IS  NOT  freed.**
+  •  `remove_row`  |  Convenience  function  to  remove  a  row  at  a  specified  position. ** WARNING  !  If  T  is  dynamically  allocated,  memory  IS  NOT  freed.**
 
   •  `remove_line`  |  Alias  for  `'remove_row'.` ** WARNING  !  If  T  is  dynamically  allocated,  memory  IS  NOT  freed.**
 
-  •  `remove_column`  |  Convience  function  to  remove  a  column  at  a  specified  position.  **WARNING  !  If  T  is  dynamically  allocated,  memory  IS  NOT  freed.**
+  •  `remove_column`  |  Convenience  function  to  remove  a  column  at  a  specified  position.  **WARNING  !  If  T  is  dynamically  allocated,  memory  IS  NOT  freed.**
 
   
 ###  Insertion:
 ***[v]***  •  `insert`  |  Inserts  either  a  line  or  a  column  at  the  position  specified.
 
-  •  `insert_row`  |  Convience  function  to  insert  a  line  at  a  specified  position.
+  •  `insert_row`  |  Convenience  function  to  insert  a  line  at  a  specified  position.
 
   • ` insert_line`  |  Alias  for  `'insert_row'`.
 
-  • ` insert  column`  |  Convience  function  to  insert  a  column  at  a  specified  position.
+  • ` insert  column`  |  Convenience  function  to  insert  a  column  at  a  specified  position.
 
   
 ###  Swaping elements:
 ***[v]***  •  `swap`  |  Swaps  two  lines  or  two  columns  at  the  positions  specified.
 
-  •  `swap_row`  |  Convience  function  to  swap  two  rows  at  a  specified  positions.
+  •  `swap_row`  |  Convenience  function  to  swap  two  rows  at  a  specified  positions.
 
   •  `swap_line`  |  Alias  for  `'swap_row'`.
 
-  •  `swap_column`  |  Convience  function  to  swap  two  columns  at  a  specified  positions.
+  •  `swap_column`  |  Convenience  function  to  swap  two  columns  at  a  specified  positions.
 
   
 ###  Reshaping:
@@ -165,17 +165,17 @@ C++ class that provides an interface for matrix-based computing
 
   
 ###  Iterator-like functions:
-***[v]***   •  `begin_row`  |  Convinience  function  that  returns  0,  to  provide  syntax  as  close  as  the  one  relative  to  `std::algorithm`  as  possible.
+***[v]***   •  `begin_row`  |  Convenience  function  that  returns  0,  to  provide  syntax  as  close  as  the  one  relative  to  `std::algorithm`  as  possible.
 
   • ` begin_line`  |  Alias  for  `'begin_row'`.
 
-***[v]***  •  `begin_column`  |  Convinience  function  that  returns  0,  to  provide  syntax  as  close  as  the  one  relative  to  `std::algorithm`  as  possible.
+***[v]***  •  `begin_column`  |  Convenience  function  that  returns  0,  to  provide  syntax  as  close  as  the  one  relative  to  `std::algorithm`  as  possible.
 
-***[v]***  •  `end_row`  |  Convinience  function  that  returns  the  number  of  lines,  to  provide  syntax  as  close  as  the  one  relative  to  `std::algorithm`  as  possible
+***[v]***  •  `end_row`  |  Convenience  function  that  returns  the  number  of  lines,  to  provide  syntax  as  close  as  the  one  relative  to  `std::algorithm`  as  possible
 
   • `end_line`  |  Alias  for  `'end_row'`.
 
-***[v]***  •  `end_column`  |  Convinience  function  that  returns  the  number  of  columns,  to  provide  syntax  as  close  as  the  one  relative  to  `std::algorithm`  as  possible.
+***[v]***  •  `end_column`  |  Convenience  function  that  returns  the  number  of  columns,  to  provide  syntax  as  close  as  the  one  relative  to  `std::algorithm`  as  possible.
 
   
 
@@ -199,7 +199,7 @@ C++ class that provides an interface for matrix-based computing
 
 ***[v]***  •  `cofactor`  |  Returns  the  cofactor  of  the  specified  line  and  column  or  linear  index.  Throws  an  exception  if  one  of  them  is  outside  the  matrix.
 
-***[v]***   •  `comatrix`  |  Returns  the  cofactor  matrix.  Convinience  function  that  returns  `cofactormatrix()`.
+***[v]***   •  `comatrix`  |  Returns  the  cofactor  matrix.  Convenience  function  that  returns  `cofactormatrix()`.
 
 ***[v]***   •  `cofactormatrix`  |  Returns  the  cofactor  matrix.
 
@@ -213,7 +213,7 @@ C++ class that provides an interface for matrix-based computing
 
 ***[v]***  •  `hadamard`  |  Returns  the  Hadamard  product  of  two  matrices.  Throws  an  exception  if  the  sizes  do  not  match.
 
-  •  `element_wise`  |  Convinience  function  that  returns  the  Hadamard  product  of  two  matrices. Calls `hadamard`.
+  •  `element_wise`  |  Convenience  function  that  returns  the  Hadamard  product  of  two  matrices. Calls `hadamard`.
 
   
 ###  Matrix creation:

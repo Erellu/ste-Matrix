@@ -1262,7 +1262,7 @@ class Matrix{
 };//class Matrix
 
 
-/* CONVINIENCE TYPES */
+/* CONVENIENCE TYPES */
 
 typedef Matrix<float> FMatrix ;
 typedef Matrix<double> DMatrix;

@@ -94,9 +94,9 @@
 [v] • replace           | Replaces the element specified in argument first (and second if non-linear mode is chosen) by the value in last argument. WARNING ! If T is dynamically allocated, memory IS NOT freed.
 
 [v] • add               | Adds either a line or a column from a vector at the end of the matrix.
-    • add_row           | Convience function to add a row at the end of the matrix.
+    • add_row           | Convenience function to add a row at the end of the matrix.
     • add_line          | Alias for 'add_row'.
-    • add_column        | Convience function to add a column at the end of the matrix.
+    • add_column        | Convenience function to add a column at the end of the matrix.
 
     • push_back         | Alias for 'add'.
     • push_back_row     | Alias for 'add_row'.
@@ -104,19 +104,19 @@
     • push_back_column  | Alias for 'add_column'.
 
 [v] • remove            | Removes either a line or a column at the position specified. WARNING ! If T is dynamically allocated, memory IS NOT freed.
-    • remove_row        | Convience function to remove a row at a specified position. WARNING ! If T is dynamically allocated, memory IS NOT freed.
+    • remove_row        | Convenience function to remove a row at a specified position. WARNING ! If T is dynamically allocated, memory IS NOT freed.
     • remove_line       | Alias for 'remove_row'. WARNING ! If T is dynamically allocated, memory IS NOT freed.
-    • remove_column     | Convience function to remove a column at a specified position. WARNING ! If T is dynamically allocated, memory IS NOT freed.
+    • remove_column     | Convenience function to remove a column at a specified position. WARNING ! If T is dynamically allocated, memory IS NOT freed.
 
 [v] • insert            | Inserts either a line or a column at the position specified.
-    • insert_row        | Convience function to insert a line at a specified position.
+    • insert_row        | Convenience function to insert a line at a specified position.
     • insert_line       | Alias for 'insert_row'.
-    • insert column     | Convience function to insert a column at a specified position.
+    • insert column     | Convenience function to insert a column at a specified position.
 
 [v] • swap              | Swaps two lines or two columns at the positions specified.
-    • swap_row          | Convience function to swap two rows at a specified positions.
+    • swap_row          | Convenience function to swap two rows at a specified positions.
     • swap_line         | Alias for 'swap_row'.
-    • swap_column       | Convience function to swap two columns at a specified positions.
+    • swap_column       | Convenience function to swap two columns at a specified positions.
 
     • reshape           | Changes the matrix size to the one specified in argument. Throws an exception if the total number of elements in the new size does not match the current one.
 
@@ -126,12 +126,12 @@
 [v] • print             | Prints the contents of the matrix in stdout.
 [v] • print_size        | Prints the size of the matrix in stdout.
 
-[v] • begin_row         | Convinience function that returns 0, to provide syntax as close as the one relative to std::algorithm as possible.
+[v] • begin_row         | Convenience function that returns 0, to provide syntax as close as the one relative to std::algorithm as possible.
     • begin_line        | Alias for 'begin_row'.
-[v] • begin_column      | Convinience function that returns 0, to provide syntax as close as the one relative to std::algorithm as possible.
-[v] • end_row           | Convinience function that returns the number of lines, to provide syntax as close as the one relative to std::algorithm as possible
+[v] • begin_column      | Convenience function that returns 0, to provide syntax as close as the one relative to std::algorithm as possible.
+[v] • end_row           | Convenience function that returns the number of lines, to provide syntax as close as the one relative to std::algorithm as possible
     • end_line          | Alias for 'end_row'.
-[v] • end column        | Convinience function that returns the number of columns, to provide syntax as close as the one relative to std::algorithm as possible.
+[v] • end column        | Convenience function that returns the number of columns, to provide syntax as close as the one relative to std::algorithm as possible.
 
 
 [v] • sum               | Returns the sum of all elements of the matrix, as T (meaning that overflow may occur).
@@ -143,7 +143,7 @@
 [v] • trace             | Returns the trace of the matrix, computed as T (meaning that rounding error and overflow may occur). Throws an exception (std::invalid_argument) if the matrix is not square.
 [v] • det               | Returns the determinant of the matrix. Throws an exception (std::invalid_argument) is the matrix is not square.
 [v] • cofactor          | Returns the cofactor of the specified line and column or linear index. Throws an exception if one of them is outside the matrix.
-[v] • comatrix          | Returns the cofactor matrix. Convinience function that returns cofactormatrix().
+[v] • comatrix          | Returns the cofactor matrix. Convenience function that returns cofactormatrix().
 [v] • cofactormatrix    | Returns the cofactor matrix.
 [v] • transpose         | Returns the transpose of the matrix.
     • inv               | Returns the inverse of the matrix as computed by operator!.
@@ -152,7 +152,7 @@
 
 
 [v] • hadamard          | Returns the Hadamard product of two matrices. Throws an exception if the sizes do not match.
-    • element_wise      | Convinience function that returns the Hadamard product of two matrices.
+    • element_wise      | Convenience function that returns the Hadamard product of two matrices.
 
 [v] • fill              | Resizes the matrix as specified in argument and fills it with the value chosen.
 [S] • zeroes            | Resizes the matrix as specified in argument and fills it with 0.
@@ -655,13 +655,13 @@ class Matrix{
 
         }
 
-        ///swap_rows                                                                                 | Convience function to swap two rows at a specified positions.
+        ///swap_rows                                                                                 | Convenience function to swap two rows at a specified positions.
         void swap_rows(const uint64_t &element_1 , const uint64_t element_2){swap(element_1, element_2 ,Orientation::LINE);}
 
-        ///swap_lines                                                                                | Convience function to swap two rows at a specified positions.
+        ///swap_lines                                                                                | Convenience function to swap two rows at a specified positions.
         void swap_lines(const uint64_t &element_1 , const uint64_t element_2){swap(element_1, element_2 ,Orientation::LINE);}
 
-        ///swap_columns                                                                              | Convience function to swap two columns at a specified positions.
+        ///swap_columns                                                                              | Convenience function to swap two columns at a specified positions.
         void swap_columns(const uint64_t &element_1 , const uint64_t element_2){swap(element_1, element_2 ,Orientation::COLUMN);}
 
         /***************************************************/
@@ -730,18 +730,18 @@ class Matrix{
 
         /***************************************************/
 
-        ///begin_row                                                                                 | Convinience function that returns the beginning of a row. Provided to obtain syntax as close as std::algorithm functions as possible.
+        ///begin_row                                                                                 | Convenience function that returns the beginning of a row. Provided to obtain syntax as close as std::algorithm functions as possible.
         virtual uint64_t begin_row() const{return 0;}
-        ///begin_line                                                                                | Convinience function that returns the beginning of a row. Provided to obtain syntax as close as std::algorithm functions as possible.
+        ///begin_line                                                                                | Convenience function that returns the beginning of a row. Provided to obtain syntax as close as std::algorithm functions as possible.
         uint64_t begin_line() const{return begin_row();}
-        ///begin_column                                                                              | Convinience function that returns the beginning of a column. Provided to obtain syntax as close as std::algorithm functions as possible.
+        ///begin_column                                                                              | Convenience function that returns the beginning of a column. Provided to obtain syntax as close as std::algorithm functions as possible.
         virtual uint64_t begin_column() const{return 0;}
 
-        ///end_row                                                                                   | Convinience function that returns the end of a row. Provided to obtain syntax as close as std::algorithm functions as possible.
+        ///end_row                                                                                   | Convenience function that returns the end of a row. Provided to obtain syntax as close as std::algorithm functions as possible.
         virtual uint64_t end_row() const{return rows();}
-        ///end_line                                                                                  | Convinience function that returns the end of a row. Provided to obtain syntax as close as std::algorithm functions as possible.
+        ///end_line                                                                                  | Convenience function that returns the end of a row. Provided to obtain syntax as close as std::algorithm functions as possible.
         uint64_t end_line() const{return end_row();}
-        ///end_column                                                                                | Convinience function that returns the end of a column. Provided to obtain syntax as close as std::algorithm functions as possible.
+        ///end_column                                                                                | Convenience function that returns the end of a column. Provided to obtain syntax as close as std::algorithm functions as possible.
         virtual uint64_t end_column() const{return columns();}
 
                 /***************************************************/
@@ -762,7 +762,7 @@ class Matrix{
         ///mean                                                                                       | Returns the mean value of all elements of the matrix, as T (meaning that rounding error and overflow may occur). It is computed as sum()/(size.at(0)*size.at(1))
         virtual T mean() const{return average();}
 
-        ///average                                                                                    | Convinience function that returns mean().
+        ///average                                                                                    | Convenience function that returns mean().
         virtual T average() const{return sum() / (rows()*columns());}
 
         ///max                                                                                        | Returns the value of the maximum element (according to std::max_element) in the matrix.
@@ -856,7 +856,7 @@ class Matrix{
         virtual T cofactor(uint64_t index) const{return cofactor(index / columns() , index % columns());}
 
 
-        ///comatrix                                                                                   | Returns the cofactor matrix. Convinience function that returns cofactormatrix().
+        ///comatrix                                                                                   | Returns the cofactor matrix. Convenience function that returns cofactormatrix().
         virtual Matrix comatrix() const {return cofactormatrix();}
 
 
@@ -951,10 +951,10 @@ class Matrix{
         ///hadamard                                                                                    | Returns the Hadamard product of two matrices. Throws an exception if the sizes do not match.
         static Matrix hadamard(const Matrix &arg1 , const Matrix &arg2){return arg1.hadamard(arg2);}
 
-        ///element_wise                                                                                | Convinience function that returns the Hadamard product of two matrices.
+        ///element_wise                                                                                | Convenience function that returns the Hadamard product of two matrices.
         Matrix element_wise(const Matrix &arg){return hadamard(arg);}
 
-        ///element_wise                                                                                | Convinience function that returns the Hadamard product of two matrices.
+        ///element_wise                                                                                | Convenience function that returns the Hadamard product of two matrices.
         static Matrix element_wise(const Matrix &arg1 , const Matrix &arg2){return hadamard(arg1 , arg2);}
 
                 /***************************************************/

@@ -17,7 +17,7 @@
                      Matrix class
 
     DUHAMEL Erwan (erwanduhamel@outlook.com)
-    SOUDIER Jean  (jean.soudier@insa-strasbourg.com)
+    SOUDIER Jean  (jean.soudier@insa-strasbourg.fr)
 
 
     Provides a template class for matrix-based computing.
@@ -27,19 +27,22 @@
 
     Features :
 
-    • Vector compatible.
-    • Fast conversion to std::vector<T> to facilitate GPU-acceleration-based algorithms.
-    • Conversion de std::vector<std::vector<T>>.
-
     • Can hold any class.
+    • Possibility to use GPU for calculations [WIP]
+
+    • Fast conversion to std::vector<T> to facilitate GPU-acceleration-based algorithms.
+
+
     • Operators * and + available as long as the template parameters provides these operators.
     • Operator - avaible for any type that accepts (-1.) as parameter in its constructor.
 
     • Determinant, inverse, tranpose ,cofactormatrix, trace, mean, average.
     • Classic fill, zeroes, ones, eye, randn and rand.
-    • Possibility to directly print contents and size to stdout.
+    • Dynamic resizing (possibility to add, remove and inverst lines and / or columns)
+    • Fast reshaping.
 
-    • Dynamic resizing (possible to add lines or columns either) and fast reshaping.
+
+    • Possibility to directly print contents and size to stdout.
 
     • Possibility to override most functions in subclasses to increase performances in specific cases.
 
@@ -132,7 +135,7 @@
 
 
 [v] • sum               | Returns the sum of all elements of the matrix, as T (meaning that overflow may occur).
-[v] • mean              | Returns the mean value of all elements of the matrix, as T (meaning that rounding error and overflow may occur). It is computed as sum()/(rows()*columns()).
+[v] • mean              | Returns the mean value of all elements of the matrix, as T (meaning that rounding error and overflow may occur). It is computed as sum()/(rows()*columns().
 [v] • average           | Alias for mean().
 [v] • max               | Returns the maximum element (according to std::max_element) of the matrix.
 [v] • min               | Returns the minimum element (according to std::min_element) of the matrix.

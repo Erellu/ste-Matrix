@@ -46,7 +46,7 @@
 
     • Possibility to override most functions in subclasses to increase performances in specific cases.
 
-    • Convinience types:
+    • Convenience types:
 
           -> Matrix<float>                 <---->    FMatrix
           -> Matrix<double>                <---->    DMatrix
@@ -332,11 +332,11 @@ class Matrix{
         }
 
         ///at                                                                                         | Returns by reference the element at the linear index specified.
-        T& at(const uint64_t &index){
+        T& at(const uint64_t &linear_index){
 
-         if(index >= rows()*columns()){throw std::out_of_range("ste::Matrix::at\nIndex out of range.");}
+         if(linear_index >= _data.size()){throw std::out_of_range("ste::Matrix::at\nIndex out of range.");}
 
-         return at(index / columns() , index % columns());
+         return _data.at(linear_index);
 
         }
 
@@ -352,11 +352,11 @@ class Matrix{
         }
 
         ///at                                                                                         | Returns the value of the element at the linear index specified.
-        T at(const uint64_t &index) const{
+        T at(const uint64_t &linear_index) const{
 
-         if(index >= rows()*columns()){throw std::out_of_range("ste::Matrix::at\nIndex out of range.");}
+         if(linear_index >= rows()*columns()){throw std::out_of_range("ste::Matrix::at\nIndex out of range.");}
 
-         return at(index / columns() , index % columns());
+         return _data.at(linear_index);
 
 
         }
@@ -1262,7 +1262,7 @@ class Matrix{
 };//class Matrix
 
 
-/* CONVENIENCE TYPES */
+/** CONVENIENCE TYPES */
 
 typedef Matrix<float> FMatrix ;
 typedef Matrix<double> DMatrix;

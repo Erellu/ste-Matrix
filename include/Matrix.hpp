@@ -131,8 +131,10 @@
 [v] • begin_column      | Convenience function that returns 0, to provide syntax as close as the one relative to std::algorithm as possible.
 [v] • end_row           | Convenience function that returns the number of lines, to provide syntax as close as the one relative to std::algorithm as possible
     • end_line          | Alias for 'end_row'.
-[v] • end column        | Convenience function that returns the number of columns, to provide syntax as close as the one relative to std::algorithm as possible.
+[v] • end_column        | Convenience function that returns the number of columns, to provide syntax as close as the one relative to std::algorithm as possible.
 
+    • for_each          | Analog to std::for_each. Applies the function in argument to every element in the matrix.                                                     ******** WIP : begin_row / end_row / begin_column / end_column
+    • transform         | Analog to std::transform. Applies the function in argument to every element in the matrix and modifies them according to its return value.    ******** WIP : begin_row / end_row / begin_column / end_column
 
 [v] • sum               | Returns the sum of all elements of the matrix, as T (meaning that overflow may occur).
 [v] • mean              | Returns the mean value of all elements of the matrix, as T (meaning that rounding error and overflow may occur). It is computed as sum()/(rows()*columns().
@@ -746,6 +748,53 @@ class Matrix{
 
                 /***************************************************/
 
+        ///for_each                                                                                 | Analog to std::for_each. Applies the function in argument to every element in the matrix.
+        void for_each(std::function<T(T&)> function){
+            std::for_each(_data.begin() , _data.end() , function);
+        }
+
+        ///for_each                                                                                 | Analog to std::for_each. Applies the function in argument to every element in the matrix.
+        void for_each(std::function<void(T&)> function){
+            std::for_each(_data.begin() , _data.end() , function);
+        }
+
+        ///for_each                                                                                 | Analog to std::for_each. Applies the function in argument to every element in the matrix.
+        void for_each(std::function<void(const T&)> function) const{
+            std::for_each(_data.begin() , _data.end() , function);
+        }
+
+
+        ///for_each                                                                                 | Analog to std::for_each. Applies the function in argument to every element in the matrix.
+        static void for_each(Matrix &matrix , std::function<T(T&)> function){
+            matrix.for_each(function);
+        }
+
+        ///for_each                                                                                 | Analog to std::for_each. Applies the function in argument to every element in the matrix.
+        static void for_each(Matrix &matrix , std::function<void(T&)> function){
+            matrix.for_each(function);
+        }
+
+
+        ///for_each                                                                                 | Analog to std::for_each. Applies the function in argument to every element in the matrix.
+        static void for_each(const Matrix &matrix , std::function<void(const T&)> function){
+            matrix.for_each(function);
+        }
+
+
+
+
+        ///transform                                                                                | Analog to std::transform. Applies the function in argument to every element in the matrix and modifies them according to its return value.
+        void transform(std::function<T(T&)> function){
+            std::transform(_data.begin() , _data.end() , _data.begin() , function);
+        }
+
+        ///transform                                                                                | Analog to std::transform. Applies the function in argument to every element in the matrix and modifies them according to its return value.
+        static void transform(Matrix &matrix , std::function<T(T&)> function){
+            matrix.transform(function);
+        }
+
+                /***************************************************/
+
         ///sum                                                                                        | Returns the sum of all elements of the matrix, as T (meaning that overflow may occur).
         virtual T sum() const{
             T accumulator = T(0);
@@ -1262,7 +1311,7 @@ class Matrix{
 };//class Matrix
 
 
-/** CONVENIENCE TYPES */
+/** Convenience TYPES */
 
 typedef Matrix<float> FMatrix ;
 typedef Matrix<double> DMatrix;

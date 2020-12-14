@@ -332,11 +332,11 @@ class Matrix{
         }
 
         ///at                                                                                         | Returns by reference the element at the linear index specified.
-        T& at(const uint64_t &linear_index){
+        T& at(const uint64_t &index){
 
-         if(linear_index >= rows()*columns()){throw std::out_of_range("ste::Matrix::at\nIndex out of range.");}
+         if(index >= rows()*columns()){throw std::out_of_range("ste::Matrix::at\nIndex out of range.");}
 
-         return at(linear_index);
+         return at(index / columns() , index % columns());
 
         }
 

@@ -1302,7 +1302,7 @@ class Matrix{
 
 
         ///operator==                                                                               | Equality operator. Returns true only if all elements are identical and at the same position.
-        virtual bool operator== (const Matrix &arg) const{return (_data == arg._data);}
+        virtual bool operator== (const Matrix &arg) const{return ((_data == arg._data) && (_rows == arg._rows) && (_columns == arg._columns));}
 
         ///operator!=                                                                               | Returns the opposite of the result given by operator==.
         virtual bool operator!= (const Matrix &arg) const{return !(*this == arg);}

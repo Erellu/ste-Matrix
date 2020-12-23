@@ -1160,6 +1160,8 @@ class Matrix{
         ///operator=                                                                                 | Assignement operator. Changes the data to the one from arg if possible, throws std::invalid_argument otherwise.
         virtual void operator=(const std::vector<std::vector<T>> &arg){
 
+            if(arg.empty()){throw std::invalid_argument("ste::Matrix::operator=\nCannot construct a matrix from empty data.");}
+
             const uint64_t column_length = arg.at(0).size();
 
             for(const std::vector<T> &line:arg){
@@ -1167,8 +1169,9 @@ class Matrix{
             }
 
             _rows = arg.size();
-            _columns = arg.at(0).size();
+            _columns = column_length;
 
+            _data.clear();
             _data.reserve(rows() * columns());
 
             for(auto &line:arg){

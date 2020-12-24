@@ -78,6 +78,8 @@
     • rows              | Returns the number of rows of the matrix.
     • lines             | Alias for 'rows'.
     • elements          | Returns the total number of elements in the matrix.
+    • clear             | Clears all the element in the matrix, and sets its size to (0 ; 0). WARNING : MEMORY IS NOT FREED.
+    • deleteAll         | Calls 'delete' on every element, and sets the matrix size to (0 ; 0). Undefined behavior if T is not a pointer.
 
     • isRow             | Returns true if the matrix is row, false otherwise.
     • isLine            | Alias for 'isRow'.
@@ -157,9 +159,9 @@
     • element_wise      | Convenience function that returns the Hadamard product of two matrices.
 
 [v] • fill              | Resizes the matrix as specified in argument and fills it with the value chosen.
-[S] • zeroes            | Resizes the matrix as specified in argument and fills it with 0.
-[S] • ones              | Resizes the matrix as specified in argument and fills it with the 1.
-[S] • eye               | Creates the identity matrix of the size specified in argument.
+[S] • zeroes            | Returns a matrix of the specified dimensions and filled with T(0).
+[S] • ones              | Returns a matrix of the specified dimensions and filled with T(1).
+[S] • eye               | Returns the identity matrix of the size specified in argument.
 [S] • randn             | Creates a matrix of normally distributed numbers.
 [S] • uniform           | Creates a matrix of uniformally distributed real numbers.
 [S] • uniform_int       | Creates a matrix of uniformally distributed integers.
@@ -167,11 +169,21 @@
 
 
 [v] • operator=         | Assignment operator. Supports assignments from std::vector<std::vector<T>> and from other Matrix.
+
 [v] • operator+         | Computes the addition of a Matrix with another (term by term). Also supports the addition of value in T. In that case, it is the same as adding a Matrix of the same size holding only the same value.
+[v] • operator+=        | Adds arg to all the elements of the Matrix, and returns a reference to it.
+
 [v] • operator*         | Computes the usual matrix product of two matrices or multiplies term by term by the T speficied.
-[v] • operator-         | Computes the substraction of two Matrix. Its implementation requires T to be able to be multiplied by (-1.).
+[v] • operator*=        | Multiplies the matrix by the argument using the usual matrux product definition (or term by term if the argument is a T), and returns a reference to it.
+
+[v] • operator-         | Computes the substraction of two Matrix or substacts the T argument to all elements.
+[v] • operator-=        | Computes the term by term difference of the matrix and the argument, or substracts the T in argument to all elements. Returns a reference to the current item.
+
 [v] • operator!         | Returns the inverse of the matrix.
+
 [v] • operator^         | Returns the matrix two the power specifed after the ^ (ex: a^2 returns a*a);
+[v] • operator^=        | Raises the matrix to the specified power, and returns a reference to it.
+
 [v] • operator==        | Equality operator. Returns true only if all elements are identical and at the same position.
 [v] • operator!=        | Returns the opposite of the result given by operator==.
 
@@ -298,6 +310,32 @@ class Matrix{
 
         ///elements                                                                                   | Returns the total number of elements in the matrix.
         uint64_t elements() const{return _rows * _columns;}
+
+        ///clear                                                                                      | Clears all the element in the matrix, and sets its size to (0 ; 0). WARNING : MEMORY IS NOT FREED.
+        void clear(){
+
+            _data.clear();
+            _rows = 0;
+            _columns = 0;
+
+        }
+
+        ///deleteAll                                                                                  | Calls 'delete' on every element, and sets the matrix size to (0 ; 0). Undefined behavior if T is not a pointer.
+        void deleteAll(){
+
+            if(_data.size() > 0){
+
+                auto st = _data.begin();
+                auto ed = _data.end();
+
+                while (st != ed) {
+                    delete *st;
+                    ++st;
+                }
+
+            }
+             clear();
+        }
 
         /***************************************************/
 
@@ -1021,12 +1059,12 @@ class Matrix{
 
                   /***************************************************/
 
-        ///zeroes                                                                                      | Resizes the matrix to [size ; size] and fills it with 0.
+        ///zeroes                                                                                      | Returns a matrix of dimension [size ; size] and filled with T(0).
         static Matrix zeroes(const uint64_t &size){
             return zeroes(size , size);
         }
 
-        ///zeroes                                                                                      | Resizes the matrix to [length ; width] and fills it with 0.
+        ///zeroes                                                                                      | Returns a matrix of dimension [rows ; columns] and filled with T(0).
         static Matrix zeroes(const uint64_t &rows , const uint64_t &columns){
             Matrix result(rows , columns);
             result.fill(rows , columns , T(0));
@@ -1035,12 +1073,12 @@ class Matrix{
 
 
                     /***************************************************/
-        ///ones                                                                                        | Resizes the matrix to [size ; size] and fills it with 1.
+        ///ones                                                                                        | Returns a matrix of dimension [size ; size] and filled with T(1).
         static Matrix ones(const uint64_t &size){
             return ones(size , size);
         }
 
-        ///ones                                                                                        | Resizes the matrix to [length ; width] and fills it with 1.
+        ///ones                                                                                        | Returns a matrix of dimension [rows ; columns] and filled with T(1).
         static Matrix ones(const uint64_t &rows , const uint64_t &columns){
             Matrix result(rows , columns);
             result.fill(rows , columns , T(1));
@@ -1049,7 +1087,7 @@ class Matrix{
 
                  /***************************************************/
 
-        ///ones                                                                                         | Resizes the matrix to [size ; size] fills it to be the identity matrix.
+        ///eye                                                                                         | Returns the identity matrix of the specified size.
         static Matrix eye(const uint64_t &size){
             Matrix result = zeroes(size);
 
@@ -1180,6 +1218,10 @@ class Matrix{
 
         }
 
+
+                                                            /*-------------------*/
+
+
         ///operator*                                                                                 | Multiplies two matrices using the usual matrix product definition.
         virtual Matrix operator* (const Matrix &arg) const{
 
@@ -1203,7 +1245,7 @@ class Matrix{
                 for(uint64_t index_column = 0 ; index_column < arg.columns() ; index_column++){
                     T value = T(0);
                     for(uint64_t index_sum = 0 ; index_sum < columns(); index_sum++){
-                        value += T(at(index_line,index_sum)) * T(arg.at(index_sum,index_column));
+                        value = value + T(at(index_line,index_sum)) * T(arg.at(index_sum,index_column)); //Avoid use of operator +=, due to some classes not having it implemented.
                     }
                     result.replace(index_line , index_column , value);
                 }
@@ -1218,21 +1260,42 @@ class Matrix{
 
         }
 
+        ///operator*=                                                                                | Multiplies the matrix by the argument using the usual matrix product definition, and returns a reference to it.
+        virtual Matrix& operator*=(const Matrix &arg){
+
+            #ifdef USE_GPU
+            (*this) = Matrix(
+                   CUDA_mult_MAT(toVector1D() , rows() , columns () , arg.toVector1D() , arg.rows() , arg.columns()) ,
+                   rows() ,
+                   arg.columns());
+
+            #else
+
+
+
+
+            const Matrix old_this = (*this);
+            reshape(rows() , arg.columns());
+
+            for(uint64_t row = 0 ; row < old_this.rows() ; row++){
+
+                for(uint64_t column = 0 ; column < arg.columns() ; column++){
+                    T value = T(0);
+                    for(uint64_t sum = 0 ; sum < columns(); sum++){
+                        value = value + T(old_this.at(row,sum)) * T(arg.at(sum,column)); //Avoid use of operator +=, due to some classes not having it implemented.
+                    }
+                    replace(row , column , value);
+                }
+
+            }
+            #endif
+            return (*this);
+        }
+
+
         ///operator*                                                                                 | Multiplies all elements of the matrix by arg.
         virtual Matrix operator* (const T &arg) const{
 
-
-//            #ifdef USE_GPU
-//            /*
-//                CUDA_mult_T(const ste::Matrix<float> &data_1  ,
-//                        const float value ,
-//                        std::vector<float> &result);*/
-
-
-//            std::vector<T> result(rows() * columns());
-//            CUDA_mult_T(this , arg , result);
-//            return Matrix(result , rows() , columns());
-//            #else
             Matrix result(_data , rows() , columns());
 
             if(arg == 1){return result;}
@@ -1241,18 +1304,42 @@ class Matrix{
                            std::bind(std::multiplies<T>() , std::placeholders::_1 , arg));
 
             return result;
-//            #endif
 
         }
+
+        ///operator*=                                                                                | Multiplies all elements of the matrix by arg,x, and returns a reference to it.
+        virtual Matrix& operator*=(const T &arg){
+
+            if(arg == 1){return (*this);}
+
+            std::transform(_data.begin() , _data.end() , _data.begin() ,
+                           std::bind(std::multiplies<T>() , std::placeholders::_1 , arg));
+
+            return (*this);
+
+        }
+
+
+                                                    /*-------------------*/
+
 
         ///operator+                                                                                 | Adds T two matrices.
         virtual Matrix operator+ (const Matrix &arg) const{
 
            Matrix result(_data , rows() , columns());
-           std::transform(result._data.begin( ), result._data.end( ), arg._data.begin( ), result._data.begin( ), std::plus<T>());
+           std::transform(result._data.begin(), result._data.end(), arg._data.begin(), result._data.begin(), std::plus<T>());
            return result;
 
         }
+
+        ///operator+=                                                                                | Adds arg to all the elements of the Matrix, and returns a reference to it.
+        virtual Matrix& operator+=(const Matrix &arg){
+
+            std::transform(_data.begin(), _data.end(), arg._data.begin(), _data.begin(), std::plus<T>());
+
+            return (*this);
+        }
+
 
         ///operator+                                                                                 | Adds arg to all elements. May be overrided for other purposes.
         virtual Matrix operator+ (const T &arg) const{
@@ -1263,10 +1350,50 @@ class Matrix{
 
         }
 
+        ///operator+=                                                                                | Adds arg to all the elements of the Matrix, and returns a reference to it.
+        virtual Matrix& operator+=(const T &arg){
+            std::for_each(_data.begin(), _data.end(), [arg](T& value) { value = value + arg;}); //Avoid use of operator+=, due to some classes not having it implemented.
+            return (*this);
+        }
+
+
+                                                    /*-------------------*/
+
+
         ///operator-                                                                                 | Substracts two matrices.
-        virtual Matrix operator- (const Matrix &arg) const {return Matrix(_data, rows() , columns()) + arg*T(-1.);}
+        virtual Matrix operator- (const Matrix &arg) const {
+
+            Matrix result(_data , rows() , columns());
+            std::transform(result._data.begin(), result._data.end(), arg._data.begin(), result._data.begin(), std::minus<T>());
+            return result;
+
+        }
+
+        ///operator-=                                                                                | Adds arg to all the elements of the Matrix, and returns a reference to it.
+        virtual Matrix& operator-=(const Matrix &arg){
+
+            std::transform(_data.begin(), _data.end(), arg._data.begin(), _data.begin(), std::minus<T>());
+
+            return (*this);
+        }
+
         ///operator-                                                                                 | Substracts arg to all elements of the matrix. May be overrided for other purposes.
-        virtual Matrix operator- (const T &arg) const {return Matrix(_data , rows() , columns()) + arg*T(-1.);}
+        virtual Matrix operator- (const T &arg) const {
+
+            Matrix result(_data , rows() , columns());
+            std::for_each(result._data.begin(), result._data.end(), [arg](T& value) { value = value - arg;}); //Avoid use of operator+-, due to some classes not having it implemented.
+            return result;
+        }
+
+        ///operator-=                                                                                | Substracts arg to all the elements of the Matrix, and returns a reference to it.
+        virtual Matrix& operator-=(const T &arg){
+            std::for_each(_data.begin(), _data.end(), [arg](T& value) { value = value - arg;}); //Avoid use of operator+=, due to some classes not having it implemented.
+            return (*this);
+        }
+
+                                                            /*-------------------*/
+
+
 
         ///operator!                                                                                 | Returns the inverse of the matrix, or an empty one if not inversible.
         Matrix operator! () const{                   //Inverse of matrix
@@ -1281,6 +1408,9 @@ class Matrix{
 
         }
 
+                                                            /*-------------------*/
+
+
         ///operator^                                                                                 | Returns the matrix to the specified power (usual matrix product is used).
         virtual Matrix operator^ (const long long int &arg) const{ //Power operator
 
@@ -1293,22 +1423,43 @@ class Matrix{
 
             Matrix output(_data , rows() , columns());
 
-            if(arg < 0){
-                output = !output;
-                return output^(-arg);
-            }
+            if(arg < 0){output = !output;}
 
-            for(long long int power = 1 ; power < arg ; power++){output = output * (*this);}
+            for(long long int power = 1 ; power < std::abs(arg) ; power++){output = output * (*this);}
 
             return output;
         }
 
+
+        ///operator^                                                                                 | Raises the matrix to the specified power (usual matrix product is used), and returns a reference to it.
+        virtual Matrix& operator^=(const long long int &arg){
+
+            if(arg == 0){
+
+                if(!isSquare()){throw std::invalid_argument("ste::Matrix::operator^\n Cannot use power 0 for non-square matrices.");}
+                (*this) = eye(rows());
+
+                return (*this);
+            }
+
+            if(arg < 0){(*this) = !(*this);}
+
+
+            for(long long int power = 1 ; power <  std::abs(arg) ; power++){(*this) = (*this) * (*this);}
+
+            return (*this);
+
+        }
+
+                                                            /*-------------------*/
 
         ///operator==                                                                               | Equality operator. Returns true only if all elements are identical and at the same position.
         virtual bool operator== (const Matrix &arg) const{return ((_data == arg._data) && (_rows == arg._rows) && (_columns == arg._columns));}
 
         ///operator!=                                                                               | Returns the opposite of the result given by operator==.
         virtual bool operator!= (const Matrix &arg) const{return !(*this == arg);}
+
+
 
 
 };//class Matrix

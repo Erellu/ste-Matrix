@@ -1,12 +1,12 @@
 # ste::Matrix
 
-C++ class that provides an interface for matrix-based computing
+C++ class that provides an interface for matrix-based computing.
 
 # Features
 
- • Can hold any class.
- • Possibility to use GPU for calculations only by having `#define USE_GPU` **\[WIP\]**
- • Fast conversion to `std::vector<T>` to facilitate GPU-acceleration-based algorithms.
+ • Can hold any class. 
+ • Possibility to use GPU for calculations only by having `#define USE_GPU`. **\[WIP\]** 
+ • Fast conversion to `std::vector<T>` to facilitate GPU-acceleration-based algorithms. 
 
  
 
@@ -179,9 +179,11 @@ C++ class that provides an interface for matrix-based computing
  
 ### std::algorithm-like functions:
 
-  • `for_each`     | Analog to std::for_each. Applies the function in argument to every element in the matrix.  **WIP : begin_row / end_row / begin_column / end_column**
+  • `for_each`     | Analog to std::for_each. Applies the function in argument to every element in the matrix. 
+  **WIP : begin_row / end_row / begin_column / end_column**
   
-  • `transform`     | Analog to std::transform. Applies the function in argument to every element in the matrix and modifies them according to its return value.  **WIP : begin_row / end_row / begin_column / end_column**
+  • `transform`     | Analog to std::transform. Applies the function in argument to every element in the matrix and modifies them according to its return value. 
+  **WIP : begin_row / end_row / begin_column / end_column**
 
 
 ### Sum, maximum, minimum, average:
@@ -242,24 +244,24 @@ C++ class that provides an interface for matrix-based computing
 
  
 ### Operators:
-***[v]*** • `operator=`         | Assignment operator. Supports assignments from `std::vector<std::vector<T>>` and from other `Matrix`.
-
-***[v]*** • `operator+`         | Computes the addition of a `Matrix` with another (term by term). Also supports the addition of value in `T`. In that case, it is the same as adding a Matrix of the same size holding only the same value.
-***[v]*** • `operator+=`        | Adds arg to all the elements of the `Matrix`, and returns a reference to it.
-
-***[v]*** • `operator*`         | Computes the usual matrix product of two matrices or multiplies term by term by the `T` speficied.
-***[v]*** • `operator*=`        | Multiplies the matrix by the argument using the usual matrux product definition (or term by term if the argument is a `T`), and returns a reference to it.
-
-***[v]*** • `operator-`         | Computes the substraction of two Matrix or substacts the `T` argument to all elements.
-***[v]*** • `operator-=`        | Computes the term by term difference of the matrix and the argument, or substracts the `T` in argument to all elements. Returns a reference to the current item.
-
-***[v]*** • `operator!`         | Returns the inverse of the matrix.
-
-***[v]*** • `operator^`         | Returns the matrix two the power specifed after the ^ (ex: a^2 returns `a*a`);
-***[v]*** • `operator^=`        | Raises the matrix to the specified power, and returns a reference to it.
-
-***[v]*** • `operator==`        | Equality operator. Returns true only if all elements are identical and at the same position.
-***[v]*** • `operator!=`        | Returns the opposite of the result given by operator==.
+***[v]*** • `operator=`         | Assignment operator. Supports assignments from `std::vector<std::vector<T>>` and from other `Matrix`. 
+ 
+***[v]*** • `operator+`         | Computes the addition of a `Matrix` with another (term by term). Also supports the addition of value in `T`. In that case, it is the same as adding a Matrix of the same size holding only the same value. 
+***[v]*** • `operator+=`        | Adds arg to all the elements of the `Matrix`, and returns a reference to it. 
+ 
+***[v]*** • `operator*`         | Computes the usual matrix product of two matrices or multiplies term by term by the `T` speficied. 
+***[v]*** • `operator*=`        | Multiplies the matrix by the argument using the usual matrux product definition (or term by term if the argument is a `T`), and returns a reference to it. 
+ 
+***[v]*** • `operator-`         | Computes the substraction of two Matrix or substacts the `T` argument to all elements. 
+***[v]*** • `operator-=`        | Computes the term by term difference of the matrix and the argument, or substracts the `T` in argument to all elements. Returns a reference to the current item. 
+ 
+***[v]*** • `operator!`         | Returns the inverse of the matrix. 
+ 
+***[v]*** • `operator^`         | Returns the matrix two the power specifed after the ^ (ex: a^2 returns `a*a`). 
+***[v]*** • `operator^=`        | Raises the matrix to the specified power, and returns a reference to it. 
+ 
+***[v]*** • `operator==`        | Equality operator. Returns true only if all elements are identical and at the same position. 
+***[v]*** • `operator!=`        | Returns the opposite of the result given by operator==. 
 
 
 

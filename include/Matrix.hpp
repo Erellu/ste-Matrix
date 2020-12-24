@@ -440,13 +440,16 @@ class Matrix{
 
 
         ///replace                                                                                   | Replaces the element at (line , column) by value.
-        void replace(const uint64_t &line , const unsigned &column , const T &value){_data.at(line *columns() + column) = value;}
+        Matrix& replace(const uint64_t &line , const unsigned &column , const T &value){
+            _data.at(line *columns() + column) = value;
+            return (*this);
+        }
 
         ///replace                                                                                   | Replaces the element at index (linear index) by value.
-        void replace(const uint64_t &index, const T &value){replace(index / columns() , index % columns() , value);}
+        Matrix& replace(const uint64_t &index, const T &value){return replace(index / columns() , index % columns() , value);}
 
         ///replace                                                                                   | Replaces the line or column specified in argument by value.
-        virtual void replace(const uint64_t &value_index ,const Orientation &orientation , const std::vector<T> &value){
+        virtual Matrix& replace(const uint64_t &value_index ,const Orientation &orientation , const std::vector<T> &value){
 
 
             switch(orientation){
@@ -477,20 +480,22 @@ class Matrix{
 
             }
 
+            return (*this);
+
 
         }
 
         ///replace_row                                                                               | Replaces the line specified in argument by value. WARNING ! If T is dynamically allocated, memory IS NOT freed.
-        void replace_row(const uint64_t &value_index , const std::vector<T> &value){replace(value_index , Orientation::LINE , value);}
+        Matrix& replace_row(const uint64_t &value_index , const std::vector<T> &value){return replace(value_index , Orientation::LINE , value);}
 
         ///replace_line                                                                              | Replaces the line specified in argument by value. WARNING ! If T is dynamically allocated, memory IS NOT freed.
-        void replace_line(const uint64_t &value_index , const std::vector<T> &value){replace(value_index , Orientation::LINE , value);}
+        Matrix& replace_line(const uint64_t &value_index , const std::vector<T> &value){return replace(value_index , Orientation::LINE , value);}
 
         ///replace_column                                                                            | Replaces the column specified in argument by value. WARNING ! If T is dynamically allocated, memory IS NOT freed.
-        void replace_column(const uint64_t &value_index , const std::vector<T> &value){replace(value_index , Orientation::COLUMN , value);}
+        Matrix& replace_column(const uint64_t &value_index , const std::vector<T> &value){return replace(value_index , Orientation::COLUMN , value);}
 
         /// replace                                                                                  | Replaces the elements in the range specified by value. WARNING ! If T is dynamically allocated, memory IS NOT freed.
-        virtual void replace(const uint64_t &line_begin, const uint64_t &line_end ,
+        virtual Matrix& replace(const uint64_t &line_begin, const uint64_t &line_end ,
                              const uint64_t &column_begin, const uint64_t &column_end,
                              const T &value){
 
@@ -507,12 +512,14 @@ class Matrix{
                     }
                 }
 
+                return (*this);
+
         }
 
 
                   /***************************************************/
         ///add                                                                                       | Adds either a column or a line at the end of the matrix containing data according to orientation.
-        virtual void add(const std::vector<T> &data , const Orientation &orientation){
+        virtual Matrix& add(const std::vector<T> &data , const Orientation &orientation){
 
             switch(orientation){
 
@@ -538,36 +545,38 @@ class Matrix{
 
             }
 
+            return (*this);
+
         }
 
         ///add_row                                                                                   | Adds a row containing data at the end of the matrix.
-        void add_row(const std::vector<T> &data){add(data , Orientation::LINE);}
+        Matrix& add_row(const std::vector<T> &data){return add(data , Orientation::LINE);}
 
         ///add_line                                                                                  | Adds a row containing data at the end of the matrix.
-        void add_line(const std::vector<T> &data){add(data , Orientation::LINE);}
+        Matrix& add_line(const std::vector<T> &data){return add(data , Orientation::LINE);}
 
         ///add_column                                                                                | Adds a column containing data at the end of the matrix.
-        void add_column(const std::vector<T> &data){add(data , Orientation::COLUMN);}
+        Matrix& add_column(const std::vector<T> &data){return add(data , Orientation::COLUMN);}
 
 
                   /***************************************************/
 
         ///push_back                                                                                 | Alias for add.
-        void push_back(const std::vector<T> &data , const Orientation &orientation){add(data , orientation);}
+        Matrix& push_back(const std::vector<T> &data , const Orientation &orientation){return add(data , orientation);}
 
         ///push_back_row                                                                             | Alias for add_row.
-        void push_back_row(const std::vector<T> &data){add_line(data);}
+        Matrix& push_back_row(const std::vector<T> &data){return add_line(data);}
 
         ///push_back_line                                                                            | Alias for add_row.
-        void push_back_line(const std::vector<T> &data){add_line(data);}
+        Matrix& push_back_line(const std::vector<T> &data){return add_line(data);}
 
         ///push_back_column                                                                          | Alias for add_colum.
-        void push_back_column(const std::vector<T> &data){add_column(data);}
+        Matrix& push_back_column(const std::vector<T> &data){return add_column(data);}
 
                   /***************************************************/
 
         ///remove                                                                                    | Removes either a column or a line at the specified index containing data according to orientation. WARNING ! If T is dynamically allocated, memory IS NOT freed.
-        virtual void remove(const uint64_t &element_index , const Orientation &orientation){
+        virtual Matrix& remove(const uint64_t &element_index , const Orientation &orientation){
 
             switch(orientation){
 
@@ -598,29 +607,31 @@ class Matrix{
                 default:{throw std::runtime_error("ste::Matrix::remove\nInvalid orientation provided to remove.");}
 
             }
+
+            return (*this);
         }
 
         ///remove_row                                                                                | Removes a row at the specified index. WARNING ! If T is dynamically allocated, memory IS NOT freed.
-        void remove_row(const uint64_t &index){remove(index, Orientation::LINE);}
+        Matrix& remove_row(const uint64_t &index){return remove(index, Orientation::LINE);}
 
         ///remove_line                                                                               | Removes a row at the specified index. WARNING ! If T is dynamically allocated, memory IS NOT freed.
-        void remove_line(const uint64_t &index){remove(index, Orientation::LINE);}
+        Matrix& remove_line(const uint64_t &index){return remove(index, Orientation::LINE);}
 
         ///remove_column                                                                             | Removes a column at the specified index. WARNING ! If T is dynamically allocated, memory IS NOT freed.
-        void remove_column(const uint64_t &index){remove(index, Orientation::COLUMN);}
+        Matrix& remove_column(const uint64_t &index){return remove(index, Orientation::COLUMN);}
 
 
                   /***************************************************/
 
 
         ///insert                                                                                    | Inserts a column or a line containing data at the specified index.
-        virtual void insert(const uint64_t &element_index , const Orientation &orientation , const std::vector<T> &data){
+        virtual Matrix& insert(const uint64_t &element_index , const Orientation &orientation , const std::vector<T> &data){
 
             switch(orientation){
 
                 case(Orientation::LINE):{
                     if(data.size() != columns()){throw std::invalid_argument("ste::Matrix::insert\nCannot insert a line which does not have the same length as the others.");}
-                    if(element_index>rows()){insert(rows() , orientation , data); return;}
+                    if(element_index>rows()){return insert(rows() , orientation , data);}
 
                     _data.insert(_data.begin() + element_index * _columns , data.begin() , data.end());
 
@@ -631,7 +642,7 @@ class Matrix{
                 }
                 case(Orientation::COLUMN):{
                     if(data.size() != rows()){throw std::invalid_argument("ste::Matrix::insert\nCannot insert a column which does not have the same length as the others.");}
-                    if(element_index>columns()){insert(columns() , orientation , data); return;}
+                    if(element_index>columns()){return insert(columns() , orientation , data);}
 
                     ///TODO
                     for(uint64_t row = 0 ; row < rows() ; row++){
@@ -646,22 +657,23 @@ class Matrix{
 
             }
 
+            return (*this);
 
         }
 
         ///insert_row                                                                                | Inserts a row at index containing data.
-        void insert_row(const uint64_t &index , const std::vector<T> &data){insert(index, Orientation::LINE , data);}
+        Matrix& insert_row(const uint64_t &index , const std::vector<T> &data){return insert(index, Orientation::LINE , data);}
 
         ///insert_line                                                                               | Inserts a row at index containing data.
-        void insert_line(const uint64_t &index , const std::vector<T> &data){insert(index, Orientation::LINE , data);}
+        Matrix& insert_line(const uint64_t &index , const std::vector<T> &data){return insert(index, Orientation::LINE , data);}
 
         ///insert_column                                                                             | Inserts a column at index containing data.
-        void insert_column(const uint64_t &index , const std::vector<T> &data){insert(index, Orientation::COLUMN , data);}
+        Matrix& insert_column(const uint64_t &index , const std::vector<T> &data){return insert(index, Orientation::COLUMN , data);}
 
         /***************************************************/
 
         ///swap                                                                                      | Swaps two rows or two columns at the positions specified.
-        virtual void swap(const uint64_t &element_1 , const uint64_t element_2 ,const Orientation &orientation){
+        virtual Matrix& swap(const uint64_t &element_1 , const uint64_t element_2 ,const Orientation &orientation){
 
             switch(orientation){
 
@@ -692,26 +704,29 @@ class Matrix{
 
             }
 
+            return (*this);
 
         }
 
         ///swap_rows                                                                                 | Convenience function to swap two rows at a specified positions.
-        void swap_rows(const uint64_t &element_1 , const uint64_t element_2){swap(element_1, element_2 ,Orientation::LINE);}
+        Matrix& swap_rows(const uint64_t &element_1 , const uint64_t element_2){return swap(element_1, element_2 ,Orientation::LINE);}
 
         ///swap_lines                                                                                | Convenience function to swap two rows at a specified positions.
-        void swap_lines(const uint64_t &element_1 , const uint64_t element_2){swap(element_1, element_2 ,Orientation::LINE);}
+        Matrix& swap_lines(const uint64_t &element_1 , const uint64_t element_2){return swap(element_1, element_2 ,Orientation::LINE);}
 
         ///swap_columns                                                                              | Convenience function to swap two columns at a specified positions.
-        void swap_columns(const uint64_t &element_1 , const uint64_t element_2){swap(element_1, element_2 ,Orientation::COLUMN);}
+        Matrix& swap_columns(const uint64_t &element_1 , const uint64_t element_2){return swap(element_1, element_2 ,Orientation::COLUMN);}
 
         /***************************************************/
 
-        void reshape(const uint64_t &rows , const uint64_t &columns){
+        Matrix& reshape(const uint64_t &rows , const uint64_t &columns){
 
             if((rows * columns) != elements() ){throw std::invalid_argument("ste::Matrix::reshape\nInvalid size. Cannot change the total number of elements in the matrix while reshaping it.");}
 
             _rows = rows;
             _columns = columns;
+
+            return (*this);
 
         }
 
@@ -893,28 +908,14 @@ class Matrix{
             //#else
             T determinant = T(0);
 
-            for(uint64_t row_index = 0 ; row_index < columns() ; row_index++){
+            for(uint64_t element = 0 ; element < rows() ; element++){
 
-                std::vector<std::vector<T>> temp_data;
-
-                for(uint64_t i = 1 ; i < rows() ; i++){
-
-                    std::vector<T> temp_row;
-
-                    for(uint64_t j = 0 ; j < columns()  ; j++){
-
-                        if(j != row_index){temp_row.push_back(at(i , j));}
-
-                    }
-
-                    if(!temp_row.empty()){temp_data.push_back(temp_row);}
-
-                }
-
-                determinant += at(0 , row_index) * std::pow(-1 , row_index) * Matrix(temp_data).det();
-
-
+                determinant = determinant +
+                                            (at(0 , element) *
+                                            std::pow(-1 , element) *
+                                            Matrix((*this)).remove_row(0).remove_column(element).det());
             }
+
 
             return determinant;
             //#endif

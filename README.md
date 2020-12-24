@@ -14,9 +14,9 @@ C++ class that provides an interface for matrix-based computing
 
  
 
- • Determinant, inverse, tranpose ,cofactormatrix, trace, mean, average.
+ • Determinant, inverse, tranpose ,cofactormatrix, trace, mean, average. 
  • Classic `fill`, `zeroes`, `ones`, `eye`, `randn` and `rand`. 
- • Dynamic resizing (possibility to add, remove and inverst lines and / or columns)
+ • Dynamic resizing (possibility to add, remove and inverst lines and / or columns). 
  • Fast reshaping (`O(1)`).
 
  • Possibility to directly print contents and size to `stdout`.
@@ -49,7 +49,7 @@ C++ class that provides an interface for matrix-based computing
 
 
 ### Constructor:
- • `Matrix` | Constructor. Can accept a size (x , y or same for both) , a `std::vector \<std::vector\<T\>\>` or a `std::vector<T>` and a size to construct a Matrix.
+ • `Matrix` | Constructor. Can accept a size (rows , columns or same for both) , a `std::vector<std::vector<T>>` or a `std::vector<T>` and a size to construct a Matrix.
 
  
 ### Accessors:
@@ -63,9 +63,9 @@ C++ class that provides an interface for matrix-based computing
 
  • `elements` | Returns the total number of elements in the matrix.
 
- • `clear` | Clears all the element in the matrix, and sets its size to (0 ; 0). WARNING : MEMORY IS NOT FREED.
+ • `clear` | Clears all the element in the matrix, and sets its size to (0 ; 0). **WARNING : MEMORY IS NOT FREED.**
 
- • `deleteAll` | Calls 'delete' on every element, and sets the matrix size to (0 ; 0). Undefined behavior if T is not a pointer.
+ • `deleteAll` | Calls 'delete' on every element, and sets the matrix size to (0 ; 0). **Undefined behavior if `T` is not a pointer.**
 
 
  
@@ -120,9 +120,9 @@ C++ class that provides an interface for matrix-based computing
 ### Removing from the matrix:
 ***[v]***  • `remove` | Removes either a line or a column at the position specified. **WARNING ! If T is dynamically allocated, memory IS NOT freed.**
 
- • `remove_row` | Convenience function to remove a row at a specified position. ** WARNING ! If T is dynamically allocated, memory IS NOT freed.**
+ • `remove_row` | Convenience function to remove a row at a specified position. **WARNING ! If T is dynamically allocated, memory IS NOT freed.**
 
- • `remove_line` | Alias for `'remove_row'.` ** WARNING ! If T is dynamically allocated, memory IS NOT freed.**
+ • `remove_line` | Alias for `'remove_row'.` **WARNING ! If T is dynamically allocated, memory IS NOT freed.**
 
  • `remove_column` | Convenience function to remove a column at a specified position. **WARNING ! If T is dynamically allocated, memory IS NOT freed.**
 
@@ -179,9 +179,9 @@ C++ class that provides an interface for matrix-based computing
  
 ### std::algorithm-like functions:
 
-  • `for_each`     | Analog to std::for_each. Applies the function in argument to every element in the matrix.  ** WIP : begin_row / end_row / begin_column / end_column**
+  • `for_each`     | Analog to std::for_each. Applies the function in argument to every element in the matrix.  **WIP : begin_row / end_row / begin_column / end_column**
   
-  • `transform`     | Analog to std::transform. Applies the function in argument to every element in the matrix and modifies them according to its return value.  **  WIP : begin_row / end_row / begin_column / end_column **
+  • `transform`     | Analog to std::transform. Applies the function in argument to every element in the matrix and modifies them according to its return value.  **WIP : begin_row / end_row / begin_column / end_column**
 
 
 ### Sum, maximum, minimum, average:

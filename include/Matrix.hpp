@@ -1275,7 +1275,7 @@ class Matrix{
 
 
 
-            const Matrix old_this = (*this);
+            const Matrix old_this(*this);
             reshape(rows() , arg.columns());
 
             for(uint64_t row = 0 ; row < old_this.rows() ; row++){
@@ -1446,7 +1446,7 @@ class Matrix{
             if(arg < 0){(*this) = !(*this);}
 
 
-            for(long long int power = 1 ; power <  std::abs(arg) ; power++){(*this) = (*this) * (*this);}
+            for(long long int power = 1 ; power <  std::abs(arg) ; power++){(*this) *= (*this);}
 
             return (*this);
 

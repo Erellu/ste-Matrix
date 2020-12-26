@@ -56,15 +56,15 @@ C++ class that provides an interface for matrix-based computing.
  
 ### Accessors:
 
-|      |Function    |Description                                                           |Notes                                              |
-|------|------------|----------------------------------------------------------------------|---------------------------------------------------|
-|      | `size`     | Returns the size of the matrix, as `const std::vector<uint64_t>`.    |                                                   |
-|      |`columns`   | Returns the number of columns of the matrix.                         |                                                   |
-|      |`rows`      | Returns the number of rows of the matrix.                            |                                                   |
-|      |`lines`     | Alias for `'rows'`.                                                  |                                                   |
-|      |`elements`  | Returns the total number of elements in the matrix.                  |                                                   |
-|      |`clear`     | Clears all the element in the matrix, and sets its size to (0 ; 0).  | **WARNING : MEMORY IS NOT FREED.**                |
-|      |`deleteAll` | Calls 'delete' on every element, and sets the matrix size to (0 ; 0).| **Undefined behavior if `T` is not a pointer.**   |
+|      |Function    |Description                                                           |Notes                                                |
+|------|------------|----------------------------------------------------------------------|-----------------------------------------------------|
+|      | `size`     | Returns the size of the matrix, as `const std::vector<uint64_t>`.    |                                                     |
+|      |`columns`   | Returns the number of columns of the matrix.                         |                                                     |
+|      |`rows`      | Returns the number of rows of the matrix.                            |                                                     |
+|      |`lines`     | Alias for `'rows'`.                                                  |                                                     |
+|      |`elements`  | Returns the total number of elements in the matrix.                  |                                                     |
+|      |`clear`     | Clears all the element in the matrix, and sets its size to (0 ; 0).  | **WARNING : MEMORY IS NOT FREED.**                  |
+|      |`deleteAll` | Calls `'delete'` on every element, and sets the matrix size to (0 ; 0).| **Undefined behavior if `T` is not a pointer.**   |
 
 
  
@@ -92,12 +92,12 @@ C++ class that provides an interface for matrix-based computing.
  
 ### Replacement:
 
-|      |Function             |Description                                                                                       |Notes                                                              |
-|------|---------------------|--------------------------------------------------------------------------------------------------|-------------------------------------------------------------------|
-|      |`replace`            | Replaces the element, the row or the column specified in argument by the value in last argument. | **WARNING ! If T is dynamically allocated, memory IS NOT freed.** |
-|      |`replace_row`        | Replaces a row by the one specified in argument.                                                 | **WARNING ! If T is dynamically allocated, memory IS NOT freed.** |
-|      |`replace_line`       | Alias for 'replace_row'.                                                                         | **WARNING ! If T is dynamically allocated, memory IS NOT freed.** |
-|      |`replace_column`     | Replaces a column by the one specified in argument.                                              | **WARNING ! If T is dynamically allocated, memory IS NOT freed.** |
+|      |Function             |Description                                                                                       |Notes                                                                |
+|------|---------------------|--------------------------------------------------------------------------------------------------|---------------------------------------------------------------------|
+|      |`replace`            | Replaces the element, the row or the column specified in argument by the value in last argument. | **WARNING ! If `T` is dynamically allocated, memory IS NOT freed.** |
+|      |`replace_row`        | Replaces a row by the one specified in argument.                                                 | **WARNING ! If `T` is dynamically allocated, memory IS NOT freed.** |
+|      |`replace_line`       | Alias for `'replace_row'`.                                                                         | **WARNING ! If `T` is dynamically allocated, memory IS NOT freed.** |
+|      |`replace_column`     | Replaces a column by the one specified in argument.                                              | **WARNING ! If `T` is dynamically allocated, memory IS NOT freed.** |
 
 
 
@@ -234,8 +234,8 @@ C++ class that provides an interface for matrix-based computing.
 |***[v]*** | `operator*`  | Computes the usual matrix product of two matrices or multiplies term by term by the `T` speficied.                                                                                                         |
 |***[v]*** | `operator*=` | Multiplies the matrix by the argument using the usual matrux product definition (or term by term if the argument is a `T`), and returns a reference to it.                                                 |
 |                                                                                                                                                                                                                                      |
-|***[v]*** | `operator `  | Computes the substraction of two Matrix or substacts the `T` argument to all elements.                                                                                                                     |
-|***[v]*** | `operator =` | Computes the term by term difference of the matrix and the argument, or substracts the `T` in argument to all elements. Returns a reference to the current object.                                         |
+|***[v]*** | `operator-`  | Computes the substraction of two Matrix or substacts the `T` argument to all elements.                                                                                                                     |
+|***[v]*** | `operator-=` | Computes the term by term difference of the matrix and the argument, or substracts the `T` in argument to all elements. Returns a reference to the current object.                                         |
 |                                                                                                                                                                                                                                      |
 |***[v]*** | `operator!`  | Returns the inverse of the matrix.                                                                                                                                                                         |
 |                                                                                                                                                                                                                                      |

@@ -219,6 +219,8 @@ Other non-member function:
 #include <iostream>
 #include <iterator>
 
+#include <numeric>
+
 #include <random>
 
 #include <stdint.h>

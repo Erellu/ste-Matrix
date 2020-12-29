@@ -1208,7 +1208,7 @@ class Matrix{
            auto gen = std::bind(initializer , random_device);
 
            std::vector<T> elements;
-           elements.resize(rows *columns);
+           elements.resize(rows * columns);
 
            std::generate(elements.begin() , elements.end() , gen);
 
@@ -1364,6 +1364,12 @@ class Matrix{
         ///operator*=                                                                                | Multiplies the matrix by the argument using the usual matrix product definition, and returns a reference to it.
         virtual Matrix& operator*=(const Matrix &arg){
 
+
+            if(columns() != arg.rows()){throw std::invalid_argument("ste::Matrix::operator*=\nDimension mismatch.\nFirst argument size: [ "
+                                                                    + std::to_string(rows()) + " ; " + std::to_string(columns()) + "]\n"
+                                                                    + "Second argument size: [ " + std::to_string(arg.rows()) + " ; " + std::to_string(arg.columns()) +"].") ;}
+
+
             #ifdef USE_GPU
             (*this) = Matrix(
                    CUDA_mult_MAT(toVector1D() , rows() , columns () , arg.toVector1D() , arg.rows() , arg.columns()) ,
@@ -1371,10 +1377,6 @@ class Matrix{
                    arg.columns());
 
             #else
-
-
-
-
             const Matrix old_this(*this);
             reshape(rows() , arg.columns());
 
@@ -1393,7 +1395,6 @@ class Matrix{
             return (*this);
         }
 
-
         ///operator*                                                                                 | Multiplies all elements of the matrix by arg.
         virtual Matrix operator* (const T &arg) const{
 
@@ -1408,7 +1409,7 @@ class Matrix{
 
         }
 
-        ///operator*=                                                                                | Multiplies all elements of the matrix by arg,x, and returns a reference to it.
+        ///operator*=                                                                                | Multiplies all elements of the matrix by arg, and returns a reference to it.
         virtual Matrix& operator*=(const T &arg){
 
             if(arg == 1){return (*this);}
@@ -1427,6 +1428,11 @@ class Matrix{
         ///operator+                                                                                 | Adds T two matrices.
         virtual Matrix operator+ (const Matrix &arg) const{
 
+            if(arg.rows() != rows() || arg.columns() != columns()){throw std::invalid_argument("ste::Matrix::operator+\nDimension mismatch.\nFirst argument size: [ "
+                                                                                               + std::to_string(rows()) + " ; " + std::to_string(columns()) + "]\n"
+                                                                                               + "Second argument size: [ " + std::to_string(arg.rows()) + " ; " + std::to_string(arg.columns()) +"].");}
+
+
            Matrix result(_data , rows() , columns());
            std::transform(result._data.begin(), result._data.end(), arg._data.begin(), result._data.begin(), std::plus<T>());
            return result;
@@ -1435,6 +1441,10 @@ class Matrix{
 
         ///operator+=                                                                                | Adds arg to all the elements of the Matrix, and returns a reference to it.
         virtual Matrix& operator+=(const Matrix &arg){
+
+            if(arg.rows() != rows() || arg.columns() != columns()){throw std::invalid_argument("ste::Matrix::operator+=\nDimension mismatch.\nFirst argument size: [ "
+                                                                                               + std::to_string(rows()) + " ; " + std::to_string(columns()) + "]\n"
+                                                                                               + "Second argument size: [ " + std::to_string(arg.rows()) + " ; " + std::to_string(arg.columns()) +"].");}
 
             std::transform(_data.begin(), _data.end(), arg._data.begin(), _data.begin(), std::plus<T>());
 
@@ -1464,6 +1474,10 @@ class Matrix{
         ///operator-                                                                                 | Substracts two matrices.
         virtual Matrix operator- (const Matrix &arg) const {
 
+            if(arg.rows() != rows() || arg.columns() != columns()){throw std::invalid_argument("ste::Matrix::operator-\nDimension mismatch.\nFirst argument size: [ "
+                                                                                               + std::to_string(rows()) + " ; " + std::to_string(columns()) + "]\n"
+                                                                                               + "Second argument size: [ " + std::to_string(arg.rows()) + " ; " + std::to_string(arg.columns()) +"].");}
+
             Matrix result(_data , rows() , columns());
             std::transform(result._data.begin(), result._data.end(), arg._data.begin(), result._data.begin(), std::minus<T>());
             return result;
@@ -1473,6 +1487,9 @@ class Matrix{
         ///operator-=                                                                                | Adds arg to all the elements of the Matrix, and returns a reference to it.
         virtual Matrix& operator-=(const Matrix &arg){
 
+            if(arg.rows() != rows() || arg.columns() != columns()){throw std::invalid_argument("ste::Matrix::operator-=\nDimension mismatch.\nFirst argument size: [ "
+                                                                                               + std::to_string(rows()) + " ; " + std::to_string(columns()) + "]\n"
+                                                                                               + "Second argument size: [ " + std::to_string(arg.rows()) + " ; " + std::to_string(arg.columns()) +"].");}
             std::transform(_data.begin(), _data.end(), arg._data.begin(), _data.begin(), std::minus<T>());
 
             return (*this);
@@ -1488,6 +1505,7 @@ class Matrix{
 
         ///operator-=                                                                                | Substracts arg to all the elements of the Matrix, and returns a reference to it.
         virtual Matrix& operator-=(const T &arg){
+
             std::for_each(_data.begin(), _data.end(), [arg](T& value) { value = value - arg;}); //Avoid use of operator+=, due to some classes not having it implemented.
             return (*this);
         }

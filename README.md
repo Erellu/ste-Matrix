@@ -17,8 +17,11 @@ C++ class that provides an interface for matrix-based computing.
  
 
  • Determinant, inverse, tranpose ,cofactormatrix, trace, mean, average. 
+ 
  • Classic `fill`, `zeroes`, `ones`, `eye`, `randn` and `rand`. 
+ 
  • Dynamic resizing (possibility to add, remove and inverst lines and / or columns). 
+ 
  • Fast reshaping (`O(1)`).
 
  • Possibility to directly print contents and size to `stdout`.
@@ -47,6 +50,7 @@ C++ class that provides an interface for matrix-based computing.
 
 # Member functions
 > Virtual functions are marqued _**[v]**_.
+
 > Static functions are marqued **[S]**.
 
 

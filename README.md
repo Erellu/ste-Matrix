@@ -4,8 +4,10 @@ C++ class that provides an interface for matrix-based computing.
 
 # Features
 
- • Can hold any class. 
- • Possibility to use GPU for calculations only by having `#define USE_GPU`. **\[WIP\]** 
+ • Can hold any class.
+ 
+ • **\[WIP\]**  Possibility to use GPU for calculations only by having `#define USE_GPU`. 
+ 
  • Fast conversion to `std::vector<T>` to facilitate GPU-acceleration-based algorithms. 
 
  
@@ -260,5 +262,6 @@ C++ class that provides an interface for matrix-based computing.
 
 # Authors
 
- DUHAMEL Erwan (erwanduhamel@outlook.com)
- SOUDIER Jean (jean.soudier@insa-strasbourg.fr)
+ Developer / Tester : DUHAMEL Erwan (erwanduhamel@outlook.com)
+ 
+ Tester : SOUDIER Jean (jean.soudier@insa-strasbourg.fr)

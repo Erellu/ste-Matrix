@@ -1,0 +1,2174 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ste::Matrix documentation</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><h1 id="stematrix-class">ste::Matrix class</h1>
+<p>C++ template class that provides an interface for matrix-based computing.</p>
+<p><em>This documentation layout is strongly inspired from the <a href="https://doc.qt.io/">Qt documentation</a>.</em><br>
+<em>HTML export by <a href="https://stackedit.io/">StackEdit</a>.</em></p>
+<h2 id="properties--attributes">Properties / Attributes</h2>
+
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Name</th>
+<th>Access</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>std::vector&lt;T&gt;</code></td>
+<td>_data</td>
+<td><em><strong><code>protected</code></strong></em></td>
+</tr>
+<tr>
+<td><code>size_t</code></td>
+<td>_rows</td>
+<td><em><strong><code>protected</code></strong></em></td>
+</tr>
+<tr>
+<td><code>size_t</code></td>
+<td>_columns</td>
+<td><em><strong><code>protected</code></strong></em></td>
+</tr>
+<tr>
+<td><code>ste::EXE</code></td>
+<td>_device</td>
+<td><em><strong><code>protected</code></strong></em></td>
+</tr>
+</tbody>
+</table><h2 id="public-types">Public types</h2>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>enum class</code></td>
+<td><strong><a href="#orientation_doc">Orientation</a></strong><code>{ ROW , LINE , RW , R , COLUMN , COL , CL , C }</code></td>
+</tr>
+</tbody>
+</table><h2 id="public-functions">Public functions</h2>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td><strong><a href="#matrix_constructor_0">Matrix</a></strong><code>(const size_t &amp;rows , const size_t&amp; columns , const T &amp;value = T(0) , const EXE &amp;device = EXE::CPU)</code></td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="#matrix_constructor_1">Matrix</a></strong><code>(const size_t &amp;size = 0 , const T &amp;value = T(0) , const EXE &amp;device = EXE::CPU)</code></td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="#matrix_constructor_2">Matrix</a></strong><code>(const std::vector&lt;T&gt; &amp;data , const size_t &amp;rows , const size_t&amp;columns , const EXE &amp;device = EXE::CPU)</code></td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="#matrix_constructor_3">Matrix</a></strong><code>(const std::vector&lt;std::vector&lt;T&gt;&gt; &amp;data , const EXE &amp;device = EXE::CPU)</code></td>
+</tr>
+<tr>
+<td><code>Matrix&amp;</code></td>
+<td><strong><a href="#add">add</a></strong><code>(const std::vector&lt;T&gt; &amp;data , const Orientation &amp;orientation)</code></td>
+</tr>
+<tr>
+<td><code>Matrix&amp;</code></td>
+<td><strong><a href="#add_row">add_row</a></strong><code>(const std::vector&lt;T&gt; &amp;data)</code></td>
+</tr>
+<tr>
+<td><code>Matrix&amp;</code></td>
+<td><strong><a href="#add_line">add_line</a></strong><code>(const std::vector&lt;T&gt; &amp;data)</code></td>
+</tr>
+<tr>
+<td><code>Matrix&amp;</code></td>
+<td><strong><a href="#add_column">add_column</a></strong><code>(const std::vector&lt;T&gt; &amp;data)</code></td>
+</tr>
+<tr>
+<td><code>T</code></td>
+<td><strong><a href="#average">average</a></strong><code>() const</code></td>
+</tr>
+<tr>
+<td><code>T&amp;</code></td>
+<td><strong><a href="#at_0">at</a></strong><code>(const size_t &amp;row , const size_t &amp;column)</code></td>
+</tr>
+<tr>
+<td><code>T&amp;</code></td>
+<td><strong><a href="#at_1">at</a></strong><code>(const size_t &amp;linear_index)</code></td>
+</tr>
+<tr>
+<td><code>const T&amp;</code></td>
+<td><strong><a href="#at_2">at</a></strong><code>(const size_t &amp;row , const size_t &amp;column) const</code></td>
+</tr>
+<tr>
+<td><code>const T&amp;</code></td>
+<td><strong><a href="#at_3">at</a></strong><code>(const size_t &amp;linear_index) const</code></td>
+</tr>
+<tr>
+<td><code>auto</code></td>
+<td><strong><a href="#begin_0">begin</a></strong><code>() const</code></td>
+</tr>
+<tr>
+<td><code>auto</code></td>
+<td><strong><a href="#begin_1">begin</a></strong><code>()</code></td>
+</tr>
+<tr>
+<td><code>virtual size_t</code></td>
+<td><strong><a href="#begin_row">begin_row</a></strong><code>() const</code></td>
+</tr>
+<tr>
+<td><code>size_t</code></td>
+<td><strong><a href="#begin_line">begin_line</a></strong><code>() const</code></td>
+</tr>
+<tr>
+<td><code>virtual size_t</code></td>
+<td><strong><a href="#begin_column">begin_column</a></strong><code>() const</code></td>
+</tr>
+<tr>
+<td><code>Matrix&amp;</code></td>
+<td><strong><a href="#clear">clear</a></strong><code>()</code></td>
+</tr>
+<tr>
+<td><code>T</code></td>
+<td><strong><a href="#cofactor_0">cofactor</a></strong><code>(const size_t &amp;row , const size_t &amp;column) const</code></td>
+</tr>
+<tr>
+<td><code>T</code></td>
+<td><strong><a href="#cofactor_1">cofactor</a></strong><code>(const size_t &amp;index) const</code></td>
+</tr>
+<tr>
+<td><code>Matrix</code></td>
+<td><strong><a href="#cofactormatrix">cofactormatrix</a></strong><code>() const</code></td>
+</tr>
+<tr>
+<td><code>Matrix</code></td>
+<td><strong><a href="#comatrix">comatrix</a></strong><code>() const</code></td>
+</tr>
+<tr>
+<td><code>std::vector&lt;T&gt;</code></td>
+<td><strong><a href="#columnAt">columnAt</a></strong><code>(const size_t &amp;index) const</code></td>
+</tr>
+<tr>
+<td><code>const size_t&amp;</code></td>
+<td><strong><a href="#columns">columns</a></strong><code>() const</code></td>
+</tr>
+<tr>
+<td><code>Matrix&amp;</code></td>
+<td><strong><a href="#cut_0">cut</a></strong><code>(std::vector&lt;size_t&gt; indexes , const Orientation &amp;orientation)</code></td>
+</tr>
+<tr>
+<td><code>Matrix&amp;</code></td>
+<td><strong><a href="#cut_1">cut</a></strong><code>(const size_t &amp;begin , const size_t &amp;end , const Orientation &amp;orientation)</code></td>
+</tr>
+<tr>
+<td><code>Matrix&amp;</code></td>
+<td><strong><a href="#cut_columns_0">cut_columns</a></strong><code>(const std::vector&lt;size_t&gt; &amp;indexes)</code></td>
+</tr>
+<tr>
+<td><code>Matrix&amp;</code></td>
+<td><strong><a href="#cut_columns_1">cut_columns</a></strong><code>(const size_t &amp;begin , const size_t &amp;end)</code></td>
+</tr>
+<tr>
+<td><code>Matrix&amp;</code></td>
+<td><strong><a href="#cut_lines_0">cut_lines</a></strong><code>(const std::vector&lt;size_t&gt; &amp;indexes)</code></td>
+</tr>
+<tr>
+<td><code>Matrix&amp;</code></td>
+<td><strong><a href="#cut_lines_1">cut_lines</a></strong><code>(const size_t &amp;begin , const size_t &amp;end)</code></td>
+</tr>
+<tr>
+<td><code>Matrix&amp;</code></td>
+<td><strong><a href="#cut_rows_0">cut_rows</a></strong><code>(const std::vector&lt;size_t&gt; &amp;indexes)</code></td>
+</tr>
+<tr>
+<td><code>Matrix&amp;</code></td>
+<td><strong><a href="#cut_rows_1">cut_rows</a></strong><code>(const size_t &amp;begin , const size_t &amp;end)</code></td>
+</tr>
+<tr>
+<td><code>Matrix&amp;</code></td>
+<td><strong><a href="#deleteAll">deleteAll</a></strong><code>()</code></td>
+</tr>
+<tr>
+<td><code>virtual T</code></td>
+<td><strong><a href="#det">det</a></strong><code>() const</code></td>
+</tr>
+<tr>
+<td><code>const EXE&amp;</code></td>
+<td><strong><a href="#device_0">device</a></strong><code>() const</code></td>
+</tr>
+<tr>
+<td><code>EXE&amp;</code></td>
+<td><strong><a href="#device_1">device</a></strong><code>()</code></td>
+</tr>
+<tr>
+<td><code>size_t</code></td>
+<td><strong><a href="#elements">elements</a></strong><code>() const</code></td>
+</tr>
+<tr>
+<td><code>Matrix</code></td>
+<td><strong><a href="#element_wise">element_wise</a></strong><code>(const Matrix &amp;arg) const</code></td>
+</tr>
+<tr>
+<td><code>bool</code></td>
+<td><strong><a href="#empty">empty</a></strong><code>() const</code></td>
+</tr>
+<tr>
+<td><code>auto</code></td>
+<td><strong><a href="#end_0">end</a></strong><code>()</code></td>
+</tr>
+<tr>
+<td><code>auto</code></td>
+<td><strong><a href="#end_1">end</a></strong><code>() const</code></td>
+</tr>
+<tr>
+<td><code>virtual size_t</code></td>
+<td><strong><a href="#end_column">end_column</a></strong><code>() const</code></td>
+</tr>
+<tr>
+<td><code>size_t</code></td>
+<td><strong><a href="#end_line">end_line</a></strong><code>() const</code></td>
+</tr>
+<tr>
+<td><code>virtual size_t</code></td>
+<td><strong><a href="#end_row">end_row</a></strong><code>() const</code></td>
+</tr>
+<tr>
+<td><code>Matrix&amp;</code></td>
+<td><strong><a href="#fill_0">fill</a></strong><code>(const size_t &amp;size , const T &amp;value)</code></td>
+</tr>
+<tr>
+<td><code>Matrix&amp;</code></td>
+<td><strong><a href="#fill_1">fill</a></strong><code>(const size_t &amp;rows , const size_t &amp;columns , const T &amp;value)</code></td>
+</tr>
+<tr>
+<td><code>Matrix&amp;</code></td>
+<td><code>template&lt;class Function&gt;</code><strong><a href="#for_each_0">for_each</a></strong><code>(Function function)</code></td>
+</tr>
+<tr>
+<td><code>const Matrix&amp;</code></td>
+<td><code>template&lt;class Function&gt;</code><strong><a href="#for_each_1">for_each</a></strong><code>(Function function) const</code></td>
+</tr>
+<tr>
+<td><code>Matrix</code></td>
+<td><strong><a href="#hadamard">hadamard</a></strong><code>(const Matrix &amp;arg) const</code></td>
+</tr>
+<tr>
+<td><code>Matrix&amp;</code></td>
+<td><strong><a href="#insert">insert</a></strong><code>(const size_t &amp;element_index , const Orientation &amp;orientation , const std::vector&lt;T&gt; &amp;data)</code></td>
+</tr>
+<tr>
+<td><code>Matrix&amp;</code></td>
+<td><strong><a href="#insert_column">insert_column</a></strong><code>(const size_t &amp;index , const std::vector&lt;T&gt; &amp;data)</code></td>
+</tr>
+<tr>
+<td><code>Matrix&amp;</code></td>
+<td><strong><a href="#insert_line">insert_line</a></strong><code>(const size_t &amp;index , const std::vector&lt;T&gt; &amp;data)</code></td>
+</tr>
+<tr>
+<td><code>Matrix&amp;</code></td>
+<td><strong><a href="#insert_row">insert_row</a></strong><code>(const size_t &amp;index , const std::vector&lt;T&gt; &amp;data)</code></td>
+</tr>
+<tr>
+<td><code>Matrix</code></td>
+<td><strong><a href="#inv">inv</a></strong><code>() const</code></td>
+</tr>
+<tr>
+<td><code>Matrix&amp;</code></td>
+<td><strong><a href="#invert">invert</a></strong><code>()</code></td>
+</tr>
+<tr>
+<td><code>bool</code></td>
+<td><strong><a href="#isColumn">isColumn</a></strong><code>() const</code></td>
+</tr>
+<tr>
+<td><code>bool</code></td>
+<td><strong><a href="#isInvertible">isInvertible</a></strong><code>() const</code></td>
+</tr>
+<tr>
+<td><code>bool</code></td>
+<td><strong><a href="#isLine">isLine</a></strong><code>() const</code></td>
+</tr>
+<tr>
+<td><code>bool</code></td>
+<td><strong><a href="#isRow">isRow</a></strong><code>() const</code></td>
+</tr>
+<tr>
+<td><code>bool</code></td>
+<td><strong><a href="#isSquare">isSquare</a></strong><code>() const</code></td>
+</tr>
+<tr>
+<td><code>std::vector&lt;T&gt;</code></td>
+<td><strong><a href="#lineAt">lineAt</a></strong><code>(const size_t &amp;index) const</code></td>
+</tr>
+<tr>
+<td><code>const size_t&amp;</code></td>
+<td><strong><a href="#lines">lines</a></strong><code>() const</code></td>
+</tr>
+<tr>
+<td><code>T</code></td>
+<td><strong><a href="#max">max</a></strong><code>(std::function&lt;T (const std::vector&lt;T&gt;&amp;)&gt; criterium = [](const std::vector&lt;T&gt; &amp;data){return *std::max_element(data.begin() , data.end());}) const</code></td>
+</tr>
+<tr>
+<td><code>virtual T</code></td>
+<td><strong><a href="#mean">mean</a></strong><code>() const</code></td>
+</tr>
+<tr>
+<td><code>T</code></td>
+<td><strong><a href="#min">min</a></strong><code>(std::function&lt;T (const std::vector&lt;T&gt;&amp;)&gt; criterium = [](const std::vector&lt;T&gt; &amp;data){return *std::min_element(data.begin() , data.end());}) const</code></td>
+</tr>
+<tr>
+<td><code>Matrix&amp;</code></td>
+<td><strong><a href="#operator_equal_0">operator=</a></strong><code>(const Matrix &amp;arg)</code></td>
+</tr>
+<tr>
+<td><code>Matrix&amp;</code></td>
+<td><strong><a href="#operator_equal_1">operator=</a></strong><code>(const std::vector&lt;std::vector&lt;T&gt;&gt; &amp;arg)</code></td>
+</tr>
+<tr>
+<td><code>Matrix&amp;</code></td>
+<td><strong><a href="#operator_equal_2">operator=</a></strong><code>(const std::vector&lt;T&gt; &amp;arg)</code></td>
+</tr>
+<tr>
+<td><code>virtual Matrix</code></td>
+<td><strong><a href="#operator_mult_0">operator*</a></strong><code>(const Matrix &amp;arg) const</code></td>
+</tr>
+<tr>
+<td><code>Matrix</code></td>
+<td><strong><a href="#operator_mult_1">operator*</a></strong><code>(const T &amp;arg) const</code></td>
+</tr>
+<tr>
+<td><code>virtual Matrix&amp;</code></td>
+<td><strong><a href="#operator_mult_equal_0">operator*=</a></strong><code>(const Matrix &amp;arg)</code></td>
+</tr>
+<tr>
+<td><code>Matrix&amp;</code></td>
+<td><strong><a href="#operator_mult_equal_1">operator*=</a></strong><code>(const T &amp;arg)</code></td>
+</tr>
+<tr>
+<td><code>Matrix</code></td>
+<td><strong><a href="#operator_plus_0">operator+</a></strong><code>(const Matrix &amp;arg) const</code></td>
+</tr>
+<tr>
+<td><code>Matrix</code></td>
+<td><strong><a href="#operator_plus_1">operator+</a></strong><code>(const T &amp;arg) const</code></td>
+</tr>
+<tr>
+<td><code>Matrix&amp;</code></td>
+<td><strong><a href="#operator_plus_equal_0">operator+=</a></strong><code>(const Matrix &amp;arg)</code></td>
+</tr>
+<tr>
+<td><code>Matrix&amp;</code></td>
+<td><strong><a href="#operator_plus_equal_1">operator+=</a></strong><code>(const T &amp;arg)</code></td>
+</tr>
+<tr>
+<td><code>Matrix</code></td>
+<td><strong><a href="#operator_minus_0">operator-</a></strong><code>(const Matrix &amp;arg) const</code></td>
+</tr>
+<tr>
+<td><code>Matrix</code></td>
+<td><strong><a href="#operator_minus_1">operator-</a></strong><code>(const T &amp;arg) const</code></td>
+</tr>
+<tr>
+<td><code>Matrix</code></td>
+<td><strong><a href="#operator_minus_2">operator-</a></strong><code>() const</code></td>
+</tr>
+<tr>
+<td><code>Matrix&amp;</code></td>
+<td><strong><a href="#operator_minus_equal_0">operator-=</a></strong><code>(const Matrix &amp;arg)</code></td>
+</tr>
+<tr>
+<td><code>Matrix&amp;</code></td>
+<td><strong><a href="#operator_minus_equal_1">operator-=</a></strong><code>(const T &amp;arg)</code></td>
+</tr>
+<tr>
+<td><code>virtual Matrix</code></td>
+<td><strong><a href="#operator_not">operator!</a></strong><code>()const</code></td>
+</tr>
+<tr>
+<td><code>virtual Matrix</code></td>
+<td><strong><a href="#operator_power">operator^</a></strong><code>(const long long int &amp;arg) const</code></td>
+</tr>
+<tr>
+<td><code>virtual Matrix&amp;</code></td>
+<td><strong><a href="#operator_power_equal">operator^=</a></strong><code>(const long long int &amp;arg)</code></td>
+</tr>
+<tr>
+<td><code>virtual bool</code></td>
+<td><strong><a href="#operator_equality">operator==</a></strong><code>(const Matrix &amp;arg) const</code></td>
+</tr>
+<tr>
+<td><code>virtual bool</code></td>
+<td><strong><a href="#operator_difference">operator!=</a></strong><code>(const Matrix &amp;arg) const</code></td>
+</tr>
+<tr>
+<td><code>virtual std::ostream&amp;</code></td>
+<td><strong><a href="#print">print</a></strong><code>(std::ostream &amp;outstream = std::cout) const</code></td>
+</tr>
+<tr>
+<td><code>virtual std::ostream&amp;</code></td>
+<td><strong><a href="#print_size">print_size</a></strong><code>(std::ostream &amp;outstream = std::cout) const</code></td>
+</tr>
+<tr>
+<td><code>Matrix&amp;</code></td>
+<td><strong><a href="#push_back">push_back</a></strong><code>(const std::vector&lt;T&gt; &amp;data , const Orientation &amp;orientation)</code></td>
+</tr>
+<tr>
+<td><code>Matrix&amp;</code></td>
+<td><strong><a href="#push_back_column">push_back_column</a></strong><code>(const std::vector&lt;T&gt; &amp;data)</code></td>
+</tr>
+<tr>
+<td><code>Matrix&amp;</code></td>
+<td><strong><a href="#push_back_line">push_back_line</a></strong><code>(const std::vector&lt;T&gt; &amp;data)</code></td>
+</tr>
+<tr>
+<td><code>Matrix&amp;</code></td>
+<td><strong><a href="#push_back_row">push_back_row</a></strong><code>(const std::vector&lt;T&gt; &amp;data)</code></td>
+</tr>
+<tr>
+<td><code>Matrix&amp;</code></td>
+<td><strong><a href="#remove">remove</a></strong><code>(const size_t &amp;element_index , const Orientation &amp;orientation)</code></td>
+</tr>
+<tr>
+<td><code>Matrix&amp;</code></td>
+<td><strong><a href="#remove_column">remove_column</a></strong><code>(const size_t &amp;index)</code></td>
+</tr>
+<tr>
+<td><code>Matrix&amp;</code></td>
+<td><strong><a href="#remove_line">remove_line</a></strong><code>(const size_t &amp;index)</code></td>
+</tr>
+<tr>
+<td><code>Matrix&amp;</code></td>
+<td><strong><a href="#remove_row">remove_row</a></strong><code>(const size_t &amp;index)</code></td>
+</tr>
+<tr>
+<td><code>Matrix&amp;</code></td>
+<td><strong><a href="#replace_0">replace</a></strong><code>(const size_t &amp;row , const unsigned &amp;column , const T &amp;value)</code></td>
+</tr>
+<tr>
+<td><code>Matrix&amp;</code></td>
+<td><strong><a href="#replace_1">replace</a></strong><code>(const size_t &amp;index, const T &amp;value)</code></td>
+</tr>
+<tr>
+<td><code>Matrix&amp;</code></td>
+<td><strong><a href="#replace_2">replace</a></strong><code>(const size_t &amp;value_index ,const Orientation &amp;orientation , const std::vector&lt;T&gt; &amp;value)</code></td>
+</tr>
+<tr>
+<td><code>Matrix&amp;</code></td>
+<td><strong><a href="#replace_3">replace</a></strong><code>(const size_t &amp;row_begin, const size_t &amp;row_end ,const size_t &amp;column_begin, const size_t &amp;column_end,const T &amp;value)</code></td>
+</tr>
+<tr>
+<td><code>Matrix&amp;</code></td>
+<td><strong><a href="#replace_column">replace_column</a></strong><code>(const size_t &amp;value_index , const std::vector&lt;T&gt; &amp;value)</code></td>
+</tr>
+<tr>
+<td><code>Matrix&amp;</code></td>
+<td><strong><a href="#replace_line">replace_line</a></strong><code>(const size_t &amp;value_index , const std::vector&lt;T&gt; &amp;value)</code></td>
+</tr>
+<tr>
+<td><code>Matrix&amp;</code></td>
+<td><strong><a href="#replace_row">replace_row</a></strong><code>(const size_t &amp;value_index , const std::vector&lt;T&gt; &amp;value)</code></td>
+</tr>
+<tr>
+<td><code>Matrix&amp;</code></td>
+<td><strong><a href="#reshape">reshape</a></strong><code>(const size_t &amp;rows , const size_t &amp;columns)</code></td>
+</tr>
+<tr>
+<td><code>std::vector&lt;T&gt;</code></td>
+<td><strong><a href="#rowAt">rowAt</a></strong><code>(const size_t &amp;index) const</code></td>
+</tr>
+<tr>
+<td><code>const size_t&amp;</code></td>
+<td><strong><a href="#rows">rows</a></strong><code>() const</code></td>
+</tr>
+<tr>
+<td><code>Matrix&amp;</code></td>
+<td><strong><a href="#self_transpose">self_transpose</a></strong><code>()</code></td>
+</tr>
+<tr>
+<td><code>Matrix&amp;</code></td>
+<td><strong><a href="#setDevice">setDevice</a></strong><code>(const EXE &amp;device)</code></td>
+</tr>
+<tr>
+<td><code>const std::vector&lt;size_t&gt;</code></td>
+<td><strong><a href="#size">size</a></strong><code>() const</code></td>
+</tr>
+<tr>
+<td><code>virtual T</code></td>
+<td><strong><a href="#sum">sum</a></strong><code>() const</code></td>
+</tr>
+<tr>
+<td><code>Matrix&amp;</code></td>
+<td><strong><a href="#swap">swap</a></strong><code>(const size_t &amp;element_1 , const size_t &amp;element_2 ,const Orientation &amp;orientation)</code></td>
+</tr>
+<tr>
+<td><code>Matrix&amp;</code></td>
+<td><strong><a href="#swap_columns">swap_columns</a></strong><code>(const size_t &amp;element_1 , const size_t &amp;element_2)</code></td>
+</tr>
+<tr>
+<td><code>Matrix&amp;</code></td>
+<td><strong><a href="#swap_lines">swap_lines</a></strong><code>(const size_t &amp;element_1 , const size_t &amp;element_2)</code></td>
+</tr>
+<tr>
+<td><code>Matrix&amp;</code></td>
+<td><strong><a href="#swap_rows">swap_rows</a></strong><code>(const size_t &amp;element_1 , const size_t &amp;element_2)</code></td>
+</tr>
+<tr>
+<td><code>const std::vector&lt;T&gt;&amp;</code></td>
+<td><strong><a href="#toVector1D_0">toVector1D</a></strong><code>() const</code></td>
+</tr>
+<tr>
+<td><code>std::vector&lt;T&gt;&amp;</code></td>
+<td><strong><a href="#toVector1D_1">toVector1D</a></strong><code>()</code></td>
+</tr>
+<tr>
+<td><code>virtual std::vector&lt;std::vector&lt;T&gt;&gt;</code></td>
+<td><strong><a href="#toVector2D">toVector2D</a></strong><code>() const</code></td>
+</tr>
+<tr>
+<td><code>T</code></td>
+<td><strong><a href="#trace">trace</a></strong><code>() const</code></td>
+</tr>
+<tr>
+<td><code>Matrix&amp;</code></td>
+<td><code>template&lt;class Function&gt;</code><strong><a href="#transform">transform</a></strong><code>(Function function)</code></td>
+</tr>
+<tr>
+<td><code>Matrix</code></td>
+<td><strong><a href="#transpose">transpose</a></strong><code>() const</code></td>
+</tr>
+<tr>
+<td><code>Matrix&amp;</code></td>
+<td><strong><a href="#transpose_in_place">transpose_in_place</a></strong><code>()</code></td>
+</tr>
+</tbody>
+</table><h2 id="static-public-members">Static public members</h2>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Matrix</code></td>
+<td><strong><a href="#eye">eye</a></strong> <code>(const size_t &amp;size , const EXE &amp;device = EXE::CPU)</code></td>
+</tr>
+<tr>
+<td><code>Matrix</code></td>
+<td><strong><a href="#ones_0">ones</a></strong><code>(const size_t &amp;size , const EXE &amp;device = EXE::CPU)</code></td>
+</tr>
+<tr>
+<td><code>Matrix</code></td>
+<td><strong><a href="#ones_1">ones</a></strong><code>(const size_t &amp;rows , const size_t &amp;columns , const EXE &amp;device = EXE::CPU)</code></td>
+</tr>
+<tr>
+<td><code>Matrix</code></td>
+<td><strong><a href="#uniform_0">uniform</a></strong><code>(const size_t &amp;size , const EXE &amp;device = EXE::CPU)</code></td>
+</tr>
+<tr>
+<td><code>Matrix</code></td>
+<td><strong><a href="#uniform_1">uniform</a></strong><code>(const size_t &amp;rows , const size_t &amp;columns , const EXE &amp;device = EXE::CPU)</code></td>
+</tr>
+<tr>
+<td><code>Matrix</code></td>
+<td><strong><a href="#uniform_int_0">uniform_int</a></strong><code>(const size_t &amp;size , const EXE &amp;device = EXE::CPU)</code></td>
+</tr>
+<tr>
+<td><code>Matrix</code></td>
+<td><strong><a href="#uniform_int_1">uniform_int</a></strong><code>(const size_t &amp;rows , const size_t &amp;columns , const EXE &amp;device = EXE::CPU)</code></td>
+</tr>
+<tr>
+<td><code>Matrix</code></td>
+<td><strong><a href="#rand_0">rand</a></strong><code>(const size_t &amp;size , const EXE &amp;device = EXE::CPU)</code></td>
+</tr>
+<tr>
+<td><code>Matrix</code></td>
+<td><strong><a href="#rand_1">rand</a></strong><code>(const size_t &amp;rows , const size_t &amp;columns , const EXE &amp;device = EXE::CPU)</code></td>
+</tr>
+<tr>
+<td><code>Matrix</code></td>
+<td><strong><a href="#randn_0">randn</a></strong><code>(const size_t &amp;size , const T &amp;mean = T(0) , const T &amp;standard_deviation = T(1.) const EXE &amp;device = EXE::CPU)</code></td>
+</tr>
+<tr>
+<td><code>Matrix</code></td>
+<td><strong><a href="#randn_1">randn</a></strong><code>(const size_t &amp;rows , const size_t &amp;columns , const T &amp;mean = T(0) , const T &amp;standard_deviation = T(1) , const EXE &amp;device = EXE::CPU)</code></td>
+</tr>
+<tr>
+<td><code>Matrix</code></td>
+<td><strong><a href="#zeroes_0">zeroes</a></strong><code>(const size_t &amp;size , const EXE &amp;device = EXE::CPU)</code></td>
+</tr>
+<tr>
+<td><code>Matrix</code></td>
+<td><strong><a href="#zeroes_1">zeroes</a></strong><code>(const size_t &amp;rows , const size_t &amp;columns , const EXE &amp;device = EXE::CPU)</code></td>
+</tr>
+</tbody>
+</table><h2 id="non-member-functions">Non-member functions</h2>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Matrix</code></td>
+<td><code>template&lt;class T&gt;</code><strong><a href="#element_wise_nm">element_wise</a></strong><code>(const Matrix&lt;T&gt; &amp;arg1 , const Matrix&lt;T&gt; &amp;arg2)</code></td>
+</tr>
+<tr>
+<td><code>Matrix&amp;</code></td>
+<td><code>template&lt;class T , class Function&gt;</code><strong><a href="#for_each_nm_0">for_each</a></strong><code>(Matrix&lt;T&gt; &amp;matrix , Function function)</code></td>
+</tr>
+<tr>
+<td><code>const Matrix&amp;</code></td>
+<td><code>template&lt;class T , class Function&gt;</code><strong><a href="#for_each_nm_1">for_each</a></strong><code>(const Matrix&lt;T&gt; &amp;matrix , Function function)</code></td>
+</tr>
+<tr>
+<td><code>Matrix</code></td>
+<td><code>template&lt;class T&gt;</code><strong><a href="#hadamard_nm">hadamard</a></strong><code>(const Matrix&lt;T&gt; &amp;arg1 , const Matrix&lt;T&gt; &amp;arg2)</code></td>
+</tr>
+<tr>
+<td><code>Matrix&amp;</code></td>
+<td><code>template&lt;class T&gt;</code><strong><a href="#invert_nm">invert</a></strong><code>(Matrix&lt;T&gt; &amp;arg)</code></td>
+</tr>
+<tr>
+<td><code>std::ostream&amp;</code></td>
+<td><code>template&lt;class T&gt;</code><strong><a href="#operator_print_mat_nm">operator&lt;&lt;</a></strong><code>(std::ostream &amp;outstream , const Matrix&lt;T&gt; &amp;arg)</code></td>
+</tr>
+<tr>
+<td><code>std::ostream&amp;</code></td>
+<td><strong><a href="#operator_print_EXE_nm">operator&lt;&lt;</a></strong><code>(std::ostream &amp;outstream , const EXE &amp;a)</code></td>
+</tr>
+<tr>
+<td><code>EXE</code></td>
+<td><strong><a href="#operator_binary_or_EXE_nm">operator|</a></strong><code>(const EXE &amp;a , const EXE &amp;b)</code></td>
+</tr>
+<tr>
+<td><code>bool</code></td>
+<td><strong><a href="#operator_logical_or_EXE_nm">operator||</a></strong><code>(const EXE &amp;a , const EXE &amp;b)</code></td>
+</tr>
+<tr>
+<td><code>EXE</code></td>
+<td><strong><a href="#operator_binary_and_EXE_nm">operator&amp;</a></strong><code>(const EXE &amp;a , const EXE &amp;b)</code></td>
+</tr>
+<tr>
+<td><code>bool</code></td>
+<td><strong><a href="#operator_logical_and_EXE_nm">operator&amp;&amp;</a></strong>`(const EXE &amp;a , const EXE &amp;b)</td>
+</tr>
+<tr>
+<td><code>Matrix&amp;</code></td>
+<td><code>template&lt;class T , class Function&gt;</code><strong><a href="#transform_nm">transform</a></strong><code>(Matrix&lt;T&gt; &amp;matrix , Function function)</code></td>
+</tr>
+</tbody>
+</table><h2 id="non-member-types">Non-member types</h2>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>enum class</code></td>
+<td><strong><a href="#EXE">EXE</a></strong><code>{CPU = 0, C = CPU, HOST = CPU, GPU = 1, G = GPU, DEVICE = GPU}</code></td>
+</tr>
+<tr>
+<td><code>typedef Matrix&lt;float&gt;</code></td>
+<td><strong><a href="#FMatrix">FMatrix</a></strong></td>
+</tr>
+<tr>
+<td><code>typedef Matrix&lt;double&gt;</code></td>
+<td><strong><a href="#DMatrix">DMatrix</a></strong></td>
+</tr>
+<tr>
+<td><code>typedef Matrix&lt;long double&gt;</code></td>
+<td><strong><a href="#LDMatrix">LDMatrix</a></strong></td>
+</tr>
+<tr>
+<td><code>typedef Matrix&lt;int&gt;</code></td>
+<td><strong><a href="#IMatrix">IMatrix</a></strong></td>
+</tr>
+<tr>
+<td><code>typedef Matrix&lt;long int&gt;</code></td>
+<td><strong><a href="#LIMatrix">LIMatrix</a></strong></td>
+</tr>
+<tr>
+<td><code>typedef Matrix&lt;long long int&gt;</code></td>
+<td><strong><a href="#LLIMatrix">LLIMatrix</a></strong></td>
+</tr>
+<tr>
+<td><code>typedef Matrix&lt;unsigned int&gt;</code></td>
+<td><strong><a href="#UIMatrix">UIMatrix</a></strong></td>
+</tr>
+<tr>
+<td><code>typedef Matrix&lt;unsigned long&gt;</code></td>
+<td><strong><a href="#ULMatrix">ULMatrix</a></strong></td>
+</tr>
+<tr>
+<td><code>typedef Matrix&lt;unsigned long long&gt;</code></td>
+<td><strong><a href="#ULLMatrix">ULLMatrix</a></strong></td>
+</tr>
+<tr>
+<td><code>typedef Matrix&lt;char&gt;</code></td>
+<td><strong><a href="#CMatrix">CMatrix</a></strong></td>
+</tr>
+<tr>
+<td><code>typedef Matrix&lt;unsigned char&gt;</code></td>
+<td><strong><a href="#UCMatrix">UCMatrix</a></strong></td>
+</tr>
+</tbody>
+</table><h2 id="macros">Macros</h2>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>No value</td>
+<td><strong><a href="#ste_matrix_allow_gpu">STE_MATRIX_ALLOW_GPU</a></strong></td>
+</tr>
+</tbody>
+</table><h2 id="detailed-description">Detailed Description</h2>
+<p>The <code>ste::Matrix</code> template class offers an interface for any matrix computation-related applications.</p>
+<p>Simple to use and highly customizable through inheritance, this class provides high level functions to fasten the developpment.<br>
+Among its main features:</p>
+<blockquote>
+<p>• CUDA-compatible. Refer to the paragraph <strong><a href="#using-a-gpu">Using a GPU</a></strong> for more information.<br>
+• Dynamic reshaping and resizing.<br>
+• Determinant, trace, sum, average, min, max…<br>
+• Cofactors, cofactor matrix, inverse, transpose, Hadamard (element-wise) product.<br>
+• Multiplication, sum, difference operators.</p>
+</blockquote>
+<br>
+<h3 id="initializing-a-stematrix">Initializing a ste::Matrix</h3>
+<p>This class offers four different constructors for convenience purposes.</p>
+<p>The following code snippets creates a <code>2*4</code> float matrix filled with 0, with CPU as default execution policy.</p>
+<pre class=" language-c"><code class="prism ++ language-c">    ste<span class="token punctuation">:</span><span class="token punctuation">:</span>Matrix<span class="token operator">&lt;</span><span class="token keyword">float</span><span class="token operator">&gt;</span> <span class="token function">mat</span><span class="token punctuation">(</span><span class="token number">2</span> <span class="token punctuation">,</span> <span class="token number">4</span> <span class="token punctuation">,</span> <span class="token number">0</span> <span class="token punctuation">,</span> ste<span class="token punctuation">:</span><span class="token punctuation">:</span>EXE<span class="token punctuation">:</span><span class="token punctuation">:</span>CPU<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//2*4 float matrix filled with 0.</span>
+   <span class="token comment">/* 
+    mat is :
+        0 0 0 0
+        0 0 0 0
+    */</span>
+    
+</code></pre>
+<p>To create a square matrix, proceed this way :</p>
+<pre class=" language-c"><code class="prism ++ language-c">    ste<span class="token punctuation">:</span><span class="token punctuation">:</span>Matrix<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">&gt;</span> <span class="token function">mat_square</span><span class="token punctuation">(</span><span class="token number">2</span> <span class="token punctuation">,</span> <span class="token number">99</span> <span class="token punctuation">,</span> ste<span class="token punctuation">:</span><span class="token punctuation">:</span>EXE<span class="token punctuation">:</span><span class="token punctuation">:</span>CPU<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//2*2 int square matrix filled with 99.</span>
+    
+    <span class="token comment">/* 
+    mat_square is :
+        99 99
+        99 99
+    */</span>
+</code></pre>
+<p>It is possible to speficy the data when creating the matrix, as long as</p>
+<pre class=" language-c"><code class="prism ++ language-c">    ste<span class="token punctuation">:</span><span class="token punctuation">:</span>Matrix<span class="token operator">&lt;</span><span class="token keyword">unsigned</span><span class="token operator">&gt;</span> <span class="token function">mat_from_vector</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token number">1</span> <span class="token punctuation">,</span> <span class="token number">2</span> <span class="token punctuation">,</span> <span class="token number">3</span> <span class="token punctuation">,</span><span class="token number">4</span> <span class="token punctuation">,</span><span class="token number">5</span> <span class="token punctuation">,</span> <span class="token number">6</span> <span class="token punctuation">,</span> <span class="token number">7</span> <span class="token punctuation">,</span> <span class="token number">8</span> <span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">}</span> <span class="token punctuation">,</span> <span class="token number">3</span> <span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//3*3 unsigned matrix with CPU as default execution policy.</span>
+    
+    <span class="token comment">/* 
+    mat_from_vector is :
+        1 2 3
+        4 5 6
+        7 8 9
+    */</span>
+</code></pre>
+<p>Finally, if your data is stored in a <code>std::vector&lt;std::vector&lt;T&gt;&gt;</code>, simply proceed this way ;<br>
+<strong>To use this constructor, all <code>std::vector&lt;T&gt;</code> must be of the same size.</strong></p>
+<pre class=" language-c"><code class="prism ++ language-c">    ste<span class="token punctuation">:</span><span class="token punctuation">:</span>Matrix<span class="token operator">&lt;</span><span class="token keyword">double</span><span class="token operator">&gt;</span> <span class="token function">mat_from_vector2D</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">{</span><span class="token number">1</span> <span class="token punctuation">,</span> <span class="token number">2</span> <span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">}</span> <span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token number">4</span> <span class="token punctuation">,</span> <span class="token number">5</span> <span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">}</span><span class="token punctuation">}</span> <span class="token punctuation">,</span> ste<span class="token punctuation">:</span><span class="token punctuation">:</span>EXE<span class="token punctuation">:</span><span class="token punctuation">:</span>GPU<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//2*3 double matrix that will use the GPU (refere to the dedicated paragraph for more details).</span>
+
+    <span class="token comment">/* 
+    mat_from_vector2D is :
+        1 2 3
+        4 5 6
+    */</span>
+</code></pre>
+<br>
+<h3 id="manipulating-a-stematrix-data">Manipulating a ste::Matrix data</h3>
+<h4 id="accessing-an-element">Accessing an element</h4>
+<p>Element access is made possible using <code>at</code>. It <strong>always</strong> returns a reference to the element, meaning that you can modify it this way.</p>
+<p>Both linear indexes and <code>(row, column)</code> coordinates are acceptable arguments.</p>
+<p><strong>The two methods performances are identical.</strong></p>
+<pre class=" language-c"><code class="prism ++ language-c">    ste<span class="token punctuation">:</span><span class="token punctuation">:</span>Matrix<span class="token operator">&lt;</span><span class="token keyword">unsigned</span><span class="token operator">&gt;</span> <span class="token function">mat</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token number">1</span> <span class="token punctuation">,</span> <span class="token number">2</span> <span class="token punctuation">,</span> <span class="token number">3</span> <span class="token punctuation">,</span><span class="token number">4</span> <span class="token punctuation">,</span><span class="token number">5</span> <span class="token punctuation">,</span> <span class="token number">6</span> <span class="token punctuation">,</span> <span class="token number">7</span> <span class="token punctuation">,</span> <span class="token number">8</span> <span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">}</span> <span class="token punctuation">,</span> <span class="token number">3</span> <span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    std<span class="token punctuation">:</span><span class="token punctuation">:</span>cout <span class="token operator">&lt;&lt;</span> mat<span class="token punctuation">.</span><span class="token function">at</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> std<span class="token punctuation">:</span><span class="token punctuation">:</span>endl<span class="token punctuation">;</span>     <span class="token comment">//Prints 4</span>
+    std<span class="token punctuation">:</span><span class="token punctuation">:</span>cout <span class="token operator">&lt;&lt;</span> mat<span class="token punctuation">.</span><span class="token function">at</span><span class="token punctuation">(</span><span class="token number">2</span> <span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> std<span class="token punctuation">:</span><span class="token punctuation">:</span>endl<span class="token punctuation">;</span> <span class="token comment">//Prints 5</span>
+
+</code></pre>
+<p>To access a row or a column, simply use <code>rowAt</code> , <code>lineAt</code> or <code>columnAt</code>.</p>
+<pre class=" language-c"><code class="prism ++ language-c">    ste<span class="token punctuation">:</span><span class="token punctuation">:</span>Matrix<span class="token operator">&lt;</span><span class="token keyword">unsigned</span><span class="token operator">&gt;</span> <span class="token function">mat</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token number">1</span> <span class="token punctuation">,</span> <span class="token number">2</span> <span class="token punctuation">,</span> <span class="token number">3</span> <span class="token punctuation">,</span><span class="token number">4</span> <span class="token punctuation">,</span><span class="token number">5</span> <span class="token punctuation">,</span> <span class="token number">6</span> <span class="token punctuation">,</span> <span class="token number">7</span> <span class="token punctuation">,</span> <span class="token number">8</span> <span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">}</span> <span class="token punctuation">,</span> <span class="token number">3</span> <span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+
+    mat<span class="token punctuation">.</span><span class="token function">rowAt</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment">//Returns std::vector&lt;unsigned&gt;({6 , 7 , 8})</span>
+    mat<span class="token punctuation">.</span><span class="token function">columnAt</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token comment">//Returns std::vector&lt;unsigned&gt;({2,5,8})</span>
+
+</code></pre>
+<h4 id="modifying-the-matrix-shape">Modifying the matrix shape</h4>
+<h5 id="basic-reshaping">Basic reshaping</h5>
+<p><code>ste::Matrix</code> provides <code>O(1)</code> reshaping <strong>as long as data is not appended or removed</strong>.</p>
+<p><code>reshape</code> changes the size of the matrix, and throws an exception if the total number of element do not match.</p>
+<pre class=" language-c"><code class="prism ++ language-c">    ste<span class="token punctuation">:</span><span class="token punctuation">:</span>Matrix<span class="token operator">&lt;</span><span class="token keyword">unsigned</span><span class="token operator">&gt;</span> <span class="token function">mat</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token number">1</span> <span class="token punctuation">,</span> <span class="token number">2</span> <span class="token punctuation">,</span> <span class="token number">3</span> <span class="token punctuation">,</span><span class="token number">4</span> <span class="token punctuation">,</span><span class="token number">5</span> <span class="token punctuation">,</span> <span class="token number">6</span> <span class="token punctuation">,</span> <span class="token number">7</span> <span class="token punctuation">,</span> <span class="token number">8</span> <span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">}</span> <span class="token punctuation">,</span> <span class="token number">3</span> <span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+
+    mat<span class="token punctuation">.</span><span class="token function">reshape</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">9</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//mat is now 1*9 matrix.</span>
+    mat<span class="token punctuation">.</span><span class="token function">reshape</span><span class="token punctuation">(</span><span class="token number">9</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//mat is now 9*1 matrix.</span>
+
+</code></pre>
+<h5 id="appending-data-to-the-matrix">Appending data to the matrix</h5>
+<p>To add column or row, using <code>add</code> or <code>push_back</code> as follow :</p>
+<pre class=" language-c"><code class="prism ++ language-c">    ste<span class="token punctuation">:</span><span class="token punctuation">:</span>Matrix<span class="token operator">&lt;</span><span class="token keyword">float</span><span class="token operator">&gt;</span> <span class="token function">mat</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token number">1</span> <span class="token punctuation">,</span> <span class="token number">2</span> <span class="token punctuation">,</span> <span class="token number">3</span> <span class="token punctuation">,</span><span class="token number">4</span> <span class="token punctuation">,</span><span class="token number">5</span> <span class="token punctuation">,</span> <span class="token number">6</span> <span class="token punctuation">,</span> <span class="token number">7</span> <span class="token punctuation">,</span> <span class="token number">8</span> <span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">}</span> <span class="token punctuation">,</span> <span class="token number">3</span> <span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+
+    mat<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token number">10</span> <span class="token punctuation">,</span> <span class="token number">11</span> <span class="token punctuation">,</span> <span class="token number">12</span><span class="token punctuation">}</span> <span class="token punctuation">,</span> ste<span class="token punctuation">:</span><span class="token punctuation">:</span>FMatrix<span class="token punctuation">:</span><span class="token punctuation">:</span>Orientation<span class="token punctuation">:</span><span class="token punctuation">:</span>ROW<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//Adds a row at the end of the matrix.</span>
+    <span class="token comment">///This syntaxe being heavy, it is recommended to use either 'push_back_row' or 'add_row'.</span>
+
+    <span class="token comment">/*
+        mat is now :
+
+        1   2   3
+        4   5   6
+        7   8   9
+        10  11  12
+    */</span>
+    
+    mat<span class="token punctuation">.</span><span class="token function">push_back_column</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token number">100</span> <span class="token punctuation">,</span> <span class="token number">101</span> <span class="token punctuation">,</span> <span class="token number">102</span> <span class="token punctuation">,</span> <span class="token number">103</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">/*
+        mat is now :
+
+        1   2   3   100
+        4   5   6   101
+        7   8   9   102
+        10  11  12  103
+    */</span>
+
+</code></pre>
+<h5 id="inserting-data">Inserting data</h5>
+<p>You can insert a row or a column using the <code>insert</code> functions.</p>
+<p><strong>The sizes must match when appending to a matrix</strong>.</p>
+<pre class=" language-c"><code class="prism ++ language-c">    ste<span class="token punctuation">:</span><span class="token punctuation">:</span>Matrix<span class="token operator">&lt;</span><span class="token keyword">double</span><span class="token operator">&gt;</span> <span class="token function">mat</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token number">1</span> <span class="token punctuation">,</span> <span class="token number">2</span> <span class="token punctuation">,</span> <span class="token number">3</span> <span class="token punctuation">,</span><span class="token number">4</span> <span class="token punctuation">,</span><span class="token number">5</span> <span class="token punctuation">,</span> <span class="token number">6</span> <span class="token punctuation">,</span> <span class="token number">7</span> <span class="token punctuation">,</span> <span class="token number">8</span> <span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">}</span> <span class="token punctuation">,</span> <span class="token number">3</span> <span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+
+    mat<span class="token punctuation">.</span><span class="token function">insert_row</span><span class="token punctuation">(</span><span class="token number">0</span> <span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token number">10</span> <span class="token punctuation">,</span> <span class="token number">11</span> <span class="token punctuation">,</span> <span class="token number">12</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//Inserts a row at position '0'</span>
+
+    <span class="token comment">/*
+        mat is now :
+
+        10  11  12
+        1   2   3
+        4   5   6
+        7   8   9
+
+    */</span>
+
+    mat<span class="token punctuation">.</span><span class="token function">insert_column</span><span class="token punctuation">(</span><span class="token number">1</span> <span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token number">100</span> <span class="token punctuation">,</span> <span class="token number">101</span> <span class="token punctuation">,</span> <span class="token number">102</span> <span class="token punctuation">,</span> <span class="token number">103</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">//Inserts a column at position '1'</span>
+
+    <span class="token comment">/*
+        mat is now :
+
+        10  100  11  12
+        1   101  2   3
+        4   102  5   6
+        7   103  8   9
+
+    */</span>
+
+</code></pre>
+<h5 id="removing-data">Removing data</h5>
+<p>You can remove a single row or a single column using the <code>remove</code> functions.</p>
+<pre class=" language-c"><code class="prism ++ language-c">
+    ste<span class="token punctuation">:</span><span class="token punctuation">:</span>Matrix<span class="token operator">&lt;</span><span class="token keyword">double</span><span class="token operator">&gt;</span> <span class="token function">mat</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token number">1</span> <span class="token punctuation">,</span> <span class="token number">2</span> <span class="token punctuation">,</span> <span class="token number">3</span> <span class="token punctuation">,</span><span class="token number">4</span> <span class="token punctuation">,</span><span class="token number">5</span> <span class="token punctuation">,</span> <span class="token number">6</span> <span class="token punctuation">,</span> <span class="token number">7</span> <span class="token punctuation">,</span> <span class="token number">8</span> <span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">}</span> <span class="token punctuation">,</span> <span class="token number">3</span> <span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+
+    mat<span class="token punctuation">.</span><span class="token function">remove_row</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//Removes the first row</span>
+
+    <span class="token comment">/*
+        mat is now :
+
+        4   5   6
+        7   8   9
+    */</span>
+
+
+    mat<span class="token punctuation">.</span><span class="token function">remove_column</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//Removes the first column</span>
+
+    <span class="token comment">/*
+        mat is now :
+
+         5   6
+         8   9
+    */</span>
+</code></pre>
+<p>To remove several rows or columns at one, use <code>cut</code> as follows :</p>
+<pre class=" language-c"><code class="prism ++ language-c">
+    ste<span class="token punctuation">:</span><span class="token punctuation">:</span>Matrix<span class="token operator">&lt;</span><span class="token keyword">double</span><span class="token operator">&gt;</span> <span class="token function">mat</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token number">1</span> <span class="token punctuation">,</span> <span class="token number">2</span> <span class="token punctuation">,</span> <span class="token number">3</span> <span class="token punctuation">,</span><span class="token number">4</span> <span class="token punctuation">,</span><span class="token number">5</span> <span class="token punctuation">,</span> <span class="token number">6</span> <span class="token punctuation">,</span> <span class="token number">7</span> <span class="token punctuation">,</span> <span class="token number">8</span> <span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">}</span> <span class="token punctuation">,</span> <span class="token number">3</span> <span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+    
+    mat<span class="token punctuation">.</span><span class="token function">cut_rows</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token number">2</span> <span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//Removes rows 0 and 2.</span>
+    
+    <span class="token comment">/*
+       mat is now :
+        
+        4   5   6
+    */</span>
+    
+    mat<span class="token punctuation">.</span><span class="token function">cut_columns</span><span class="token punctuation">(</span><span class="token number">0</span> <span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//Removes columns 0 to 1 (included).</span>
+   <span class="token comment">/*
+        mat is now :
+          6
+    */</span>
+
+</code></pre>
+<h5 id="swapping-elements">Swapping elements</h5>
+<p>You can swap two rows or columns using the <code>swap</code> functions.</p>
+<pre class=" language-c"><code class="prism ++ language-c">
+    ste<span class="token punctuation">:</span><span class="token punctuation">:</span>Matrix<span class="token operator">&lt;</span><span class="token keyword">double</span><span class="token operator">&gt;</span> <span class="token function">mat</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token number">1</span> <span class="token punctuation">,</span> <span class="token number">2</span> <span class="token punctuation">,</span> <span class="token number">3</span> <span class="token punctuation">,</span><span class="token number">4</span> <span class="token punctuation">,</span><span class="token number">5</span> <span class="token punctuation">,</span> <span class="token number">6</span> <span class="token punctuation">,</span> <span class="token number">7</span> <span class="token punctuation">,</span> <span class="token number">8</span> <span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">}</span> <span class="token punctuation">,</span> <span class="token number">3</span> <span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+    
+    mat<span class="token punctuation">.</span><span class="token function">swap_rows</span><span class="token punctuation">(</span><span class="token number">2</span> <span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//Swaps rows 0 and 2.</span>
+    
+    <span class="token comment">/*
+       mat is now :
+        7   8   9
+        4   5   6
+        1   2   3
+    */</span>
+    
+    mat<span class="token punctuation">.</span><span class="token function">swap_columns</span><span class="token punctuation">(</span><span class="token number">1</span> <span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//Swaps columns 1 and 2.</span>
+   <span class="token comment">/*
+        mat is now :
+        7   9   8
+        4   6   5
+        1   3   2
+    */</span>
+
+</code></pre>
+<h5 id="replacing-data">Replacing data</h5>
+<p>Should you need to replace an entire column or entire row, use the <code>replace</code> functions.</p>
+<pre class=" language-c"><code class="prism ++ language-c">
+    ste<span class="token punctuation">:</span><span class="token punctuation">:</span>Matrix<span class="token operator">&lt;</span><span class="token keyword">float</span><span class="token operator">&gt;</span> <span class="token function">mat</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token number">1</span> <span class="token punctuation">,</span> <span class="token number">2</span> <span class="token punctuation">,</span> <span class="token number">3</span> <span class="token punctuation">,</span><span class="token number">4</span> <span class="token punctuation">,</span><span class="token number">5</span> <span class="token punctuation">,</span> <span class="token number">6</span> <span class="token punctuation">,</span> <span class="token number">7</span> <span class="token punctuation">,</span> <span class="token number">8</span> <span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">}</span> <span class="token punctuation">,</span> <span class="token number">3</span> <span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+
+    mat<span class="token punctuation">.</span><span class="token function">replace_row</span><span class="token punctuation">(</span><span class="token number">0</span> <span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token number">99</span> <span class="token punctuation">,</span> <span class="token number">98</span> <span class="token punctuation">,</span> <span class="token number">97</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">/*
+        mat is now :
+        99  98  97
+        4   5   6
+        7   8   9
+    */</span>
+
+    mat<span class="token punctuation">.</span><span class="token function">replace_column</span><span class="token punctuation">(</span><span class="token number">2</span> <span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token number">100</span> <span class="token punctuation">,</span> <span class="token number">101</span> <span class="token punctuation">,</span> <span class="token number">102</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">/*
+        mat is now :
+        99  98  100
+        4   5   101
+        7   8   102
+    */</span>
+
+</code></pre>
+<h5 id="filling-a-matrix">Filling a matrix</h5>
+<p>You can completely override a matrix content and change its size using <code>fill</code>.</p>
+<p><strong>WARNING!</strong> When the contents are dynamically allocated (pointers), memory <strong>IS NOT FREED</strong>.</p>
+<pre class=" language-c"><code class="prism ++ language-c">
+    ste<span class="token punctuation">:</span><span class="token punctuation">:</span>Matrix<span class="token operator">&lt;</span><span class="token keyword">float</span><span class="token operator">&gt;</span> <span class="token function">mat</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token number">1</span> <span class="token punctuation">,</span> <span class="token number">2</span> <span class="token punctuation">,</span> <span class="token number">3</span> <span class="token punctuation">,</span><span class="token number">4</span> <span class="token punctuation">,</span><span class="token number">5</span> <span class="token punctuation">,</span> <span class="token number">6</span> <span class="token punctuation">,</span> <span class="token number">7</span> <span class="token punctuation">,</span> <span class="token number">8</span> <span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">}</span> <span class="token punctuation">,</span> <span class="token number">3</span> <span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    mat<span class="token punctuation">.</span><span class="token function">fill</span><span class="token punctuation">(</span><span class="token number">8</span> <span class="token punctuation">,</span> <span class="token number">22</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">//mat is now a 8*8 float matrix holding 22 in each element.</span>
+
+    mat<span class="token punctuation">.</span><span class="token function">fill</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">1.6</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//mat is now a 3*2 float matrix holding 1.6 in each element.</span>
+
+</code></pre>
+<h4 id="applying-a-function-to-all-elements">Applying a function to all elements</h4>
+<p>The <code>ste</code> namespace provides the analogs functions to <code>std::for_each</code> and <code>std::transform</code> for any instantiation of a <code>ste::Matrix</code>.</p>
+<p>For convenience purposes, <code>ste::Matrix</code> also has member functions named <code>for_each</code> and <code>transform</code>, that behave the same.</p>
+<pre class=" language-c"><code class="prism ++ language-c">
+    ste<span class="token punctuation">:</span><span class="token punctuation">:</span>Matrix<span class="token operator">&lt;</span><span class="token keyword">float</span><span class="token operator">&gt;</span> <span class="token function">mat</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token number">1</span> <span class="token punctuation">,</span> <span class="token number">2</span> <span class="token punctuation">,</span> <span class="token number">3</span> <span class="token punctuation">,</span><span class="token number">4</span> <span class="token punctuation">,</span><span class="token number">5</span> <span class="token punctuation">,</span> <span class="token number">6</span> <span class="token punctuation">,</span> <span class="token number">7</span> <span class="token punctuation">,</span> <span class="token number">8</span> <span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">}</span> <span class="token punctuation">,</span> <span class="token number">3</span> <span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    ste<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">for_each</span><span class="token punctuation">(</span>mat <span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">float</span> <span class="token operator">&amp;</span>value<span class="token punctuation">)</span><span class="token punctuation">{</span>std<span class="token punctuation">:</span><span class="token punctuation">:</span>cout <span class="token operator">&lt;&lt;</span> value <span class="token operator">&lt;&lt;</span> <span class="token string">" "</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">/*
+    Identical to :
+        mat.for_each([](const float &amp;value){std::cout &lt;&lt; value &lt;&lt; " ";});
+        
+        Prints '1 2 3 4 5 6 7 8 9'.
+    */</span>
+
+
+    ste<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">transform</span><span class="token punctuation">(</span>mat <span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">float</span> <span class="token operator">&amp;</span>value<span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token keyword">return</span> <span class="token number">2</span><span class="token operator">*</span>value<span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">/*
+    Identical to :
+        mat.transform([](const float &amp;value){return 2*value;});
+        
+        mat is now :
+        2  4  6
+        8  10 12
+        14 16 18
+
+    */</span>
+</code></pre>
+<br>
+<h3 id="printing-a-stematrix">Printing a ste::Matrix</h3>
+<p>You can print a <code>ste::Matrix</code> to any <code>std::ostream</code> by using either <code>print() const</code> or <code>operator&lt;&lt;</code>.</p>
+<p>Note that <code>print() const</code> is <code>virtual</code>.</p>
+<pre class=" language-c"><code class="prism ++ language-c">
+    ste<span class="token punctuation">:</span><span class="token punctuation">:</span>Matrix<span class="token operator">&lt;</span><span class="token keyword">float</span><span class="token operator">&gt;</span> <span class="token function">mat</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token number">1</span> <span class="token punctuation">,</span> <span class="token number">2</span> <span class="token punctuation">,</span> <span class="token number">3</span> <span class="token punctuation">,</span><span class="token number">4</span> <span class="token punctuation">,</span><span class="token number">5</span> <span class="token punctuation">,</span> <span class="token number">6</span> <span class="token punctuation">,</span> <span class="token number">7</span> <span class="token punctuation">,</span> <span class="token number">8</span> <span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">}</span> <span class="token punctuation">,</span> <span class="token number">3</span> <span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    mat<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> std<span class="token punctuation">:</span><span class="token punctuation">:</span>endl<span class="token punctuation">;</span> <span class="token comment">//Prints "[ [ 1 2 3 ] [ 4 5 6 ] [ 7 8 9 ] ]" to std::cout.</span>
+    std<span class="token punctuation">:</span><span class="token punctuation">:</span>cout <span class="token operator">&lt;&lt;</span> mat <span class="token operator">&lt;&lt;</span> std<span class="token punctuation">:</span><span class="token punctuation">:</span>endl<span class="token punctuation">;</span> <span class="token comment">//Same as above.</span>
+
+    mat<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span>std<span class="token punctuation">:</span><span class="token punctuation">:</span>clog<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//Prints the matrix contents to std::clog.</span>
+    std<span class="token punctuation">:</span><span class="token punctuation">:</span>clog <span class="token operator">&lt;&lt;</span> mat<span class="token punctuation">;</span> <span class="token comment">//Same as above.</span>
+
+</code></pre>
+<p>To print a matrix size without having to write anything yourself, use <code>print_size() const</code>.</p>
+<pre class=" language-c"><code class="prism ++ language-c">
+    ste<span class="token punctuation">:</span><span class="token punctuation">:</span>Matrix<span class="token operator">&lt;</span><span class="token keyword">float</span><span class="token operator">&gt;</span> <span class="token function">mat</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token number">1</span> <span class="token punctuation">,</span> <span class="token number">2</span> <span class="token punctuation">,</span> <span class="token number">3</span> <span class="token punctuation">,</span><span class="token number">4</span> <span class="token punctuation">,</span><span class="token number">5</span> <span class="token punctuation">,</span> <span class="token number">6</span> <span class="token punctuation">,</span> <span class="token number">7</span> <span class="token punctuation">,</span> <span class="token number">8</span> <span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">}</span> <span class="token punctuation">,</span> <span class="token number">3</span> <span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    mat<span class="token punctuation">.</span><span class="token function">print_size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> std<span class="token punctuation">:</span><span class="token punctuation">:</span>endl<span class="token punctuation">;</span>           <span class="token comment">//Prints "[3 ; 3]" to std::cout.</span>
+
+    mat<span class="token punctuation">.</span><span class="token function">print_size</span><span class="token punctuation">(</span>std<span class="token punctuation">:</span><span class="token punctuation">:</span>cerr<span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> std<span class="token punctuation">:</span><span class="token punctuation">:</span>endl<span class="token punctuation">;</span>  <span class="token comment">//Prints "[3 ; 3]" to std::cerr.</span>
+
+</code></pre>
+<br>
+<h3 id="maths-related-functions">Maths-related functions</h3>
+<p><code>ste::Matrix</code> provides several convenience maths functions.</p>
+<p>You can for example compute the numerical value of the determinant of any square matrix by calling <code>det</code> :</p>
+<pre class=" language-c"><code class="prism ++ language-c">
+    <span class="token keyword">const</span> ste<span class="token punctuation">:</span><span class="token punctuation">:</span>FMatrix <span class="token function">square_mat</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token number">1</span> <span class="token punctuation">,</span> <span class="token number">2</span> <span class="token punctuation">,</span> <span class="token number">3</span> <span class="token punctuation">,</span> <span class="token number">4</span> <span class="token punctuation">,</span> <span class="token number">52</span> <span class="token punctuation">,</span> <span class="token number">6</span> <span class="token punctuation">,</span> <span class="token number">7</span> <span class="token punctuation">,</span> <span class="token number">141</span> <span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">}</span> <span class="token punctuation">,</span> <span class="token number">3</span> <span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//3*3 float matrix</span>
+
+    std<span class="token punctuation">:</span><span class="token punctuation">:</span>cout <span class="token operator">&lt;&lt;</span> square_mat<span class="token punctuation">.</span><span class="token function">det</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> std<span class="token punctuation">:</span><span class="token punctuation">:</span>endl<span class="token punctuation">;</span>     <span class="token comment">//Prints the determinant (here 234) to std::cout</span>
+
+</code></pre>
+<p>Should you need the explicit expression of the inverse of a matrix, you can use <code>operator!</code>, <code>inv</code> or <code>invert</code>.</p>
+<p><strong>Explicitely computing a matrix inverse is HEAVY. You should not try to compute inverses of matrices bigger than 10 x 10.</strong></p>
+<pre class=" language-c"><code class="prism ++ language-c">
+    ste<span class="token punctuation">:</span><span class="token punctuation">:</span>FMatrix <span class="token function">square_mat</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token number">1</span> <span class="token punctuation">,</span> <span class="token number">2</span> <span class="token punctuation">,</span> <span class="token number">3</span> <span class="token punctuation">,</span> <span class="token number">4</span> <span class="token punctuation">,</span> <span class="token number">52</span> <span class="token punctuation">,</span> <span class="token number">6</span> <span class="token punctuation">,</span> <span class="token number">7</span> <span class="token punctuation">,</span> <span class="token number">141</span> <span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">}</span> <span class="token punctuation">,</span> <span class="token number">3</span> <span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//3*3 float matrix</span>
+
+    <span class="token comment">/*
+    This matrix inverse is: 
+        -1.61538   1.73077     -0.615385 
+        0.025641   -0.0512821   0.025641
+        0.854701   -0.542735    0.188034 
+    
+    */</span>
+
+
+    std<span class="token punctuation">:</span><span class="token punctuation">:</span>cout <span class="token operator">&lt;&lt;</span> <span class="token operator">!</span>square_mat <span class="token operator">&lt;&lt;</span> std<span class="token punctuation">:</span><span class="token punctuation">:</span>endl<span class="token punctuation">;</span>              <span class="token comment">//Computes and prints the inverse of square_mat to std::cout</span>
+    std<span class="token punctuation">:</span><span class="token punctuation">:</span>cout <span class="token operator">&lt;&lt;</span> square_mat<span class="token punctuation">.</span><span class="token function">inv</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> std<span class="token punctuation">:</span><span class="token punctuation">:</span>endl<span class="token punctuation">;</span>         <span class="token comment">//Equivalent to above</span>
+    std<span class="token punctuation">:</span><span class="token punctuation">:</span>cout <span class="token operator">&lt;&lt;</span> square_mat<span class="token punctuation">.</span><span class="token function">invert</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> std<span class="token punctuation">:</span><span class="token punctuation">:</span>endl<span class="token punctuation">;</span>      <span class="token comment">//square_mat is now !square_mat.</span>
+
+</code></pre>
+<p>You can also compute any cofactor and the cofactor matrix explicitely :</p>
+<p><strong>Computing the cofactor matrix is the same complexity as computing the inverse.</strong></p>
+<pre class=" language-c"><code class="prism ++ language-c">
+    <span class="token keyword">const</span> ste<span class="token punctuation">:</span><span class="token punctuation">:</span>FMatrix <span class="token function">square_mat</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token number">1</span> <span class="token punctuation">,</span> <span class="token number">2</span> <span class="token punctuation">,</span> <span class="token number">3</span> <span class="token punctuation">,</span><span class="token number">4</span> <span class="token punctuation">,</span><span class="token number">5</span> <span class="token punctuation">,</span> <span class="token number">6</span> <span class="token punctuation">,</span> <span class="token number">7</span> <span class="token punctuation">,</span> <span class="token number">8</span> <span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">}</span> <span class="token punctuation">,</span> <span class="token number">3</span> <span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//3*3 float matrix</span>
+
+    std<span class="token punctuation">:</span><span class="token punctuation">:</span>cout <span class="token operator">&lt;&lt;</span> square_mat<span class="token punctuation">.</span><span class="token function">cofactor</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> std<span class="token punctuation">:</span><span class="token punctuation">:</span>endl<span class="token punctuation">;</span>         <span class="token comment">//Cofactor using linear indexes</span>
+    std<span class="token punctuation">:</span><span class="token punctuation">:</span>cout <span class="token operator">&lt;&lt;</span> square_mat<span class="token punctuation">.</span><span class="token function">cofactor</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> std<span class="token punctuation">:</span><span class="token punctuation">:</span>endl<span class="token punctuation">;</span>       <span class="token comment">//Cofactor using (x,y) indexes</span>
+
+    std<span class="token punctuation">:</span><span class="token punctuation">:</span>cout <span class="token operator">&lt;&lt;</span> square_mat<span class="token punctuation">.</span><span class="token function">cofactormatrix</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> std<span class="token punctuation">:</span><span class="token punctuation">:</span>endl<span class="token punctuation">;</span>    <span class="token comment">//Prints the cofactor matrix</span>
+
+</code></pre>
+<p>Among the other features : <code>trace</code> , <code>max</code> / <code>min</code> , <code>sum</code> and <code>average</code> :</p>
+<pre class=" language-c"><code class="prism ++ language-c">
+    <span class="token keyword">const</span> ste<span class="token punctuation">:</span><span class="token punctuation">:</span>FMatrix <span class="token function">square_mat</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token number">1</span> <span class="token punctuation">,</span> <span class="token number">2</span> <span class="token punctuation">,</span> <span class="token number">3</span> <span class="token punctuation">,</span><span class="token number">4</span> <span class="token punctuation">,</span><span class="token number">5</span> <span class="token punctuation">,</span> <span class="token number">6</span> <span class="token punctuation">,</span> <span class="token number">7</span> <span class="token punctuation">,</span> <span class="token number">8</span> <span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">}</span> <span class="token punctuation">,</span> <span class="token number">3</span> <span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//3*3 float matrix</span>
+
+    std<span class="token punctuation">:</span><span class="token punctuation">:</span>cout <span class="token operator">&lt;&lt;</span> square_mat<span class="token punctuation">.</span><span class="token function">trace</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> std<span class="token punctuation">:</span><span class="token punctuation">:</span>endl<span class="token punctuation">;</span>   <span class="token comment">//Prints the trace of a matrix (the sum of the diagonal terms)</span>
+
+    std<span class="token punctuation">:</span><span class="token punctuation">:</span>cout <span class="token operator">&lt;&lt;</span> square_mat<span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> std<span class="token punctuation">:</span><span class="token punctuation">:</span>endl<span class="token punctuation">;</span>      <span class="token comment">//Prints the maximum of the matrix. Default uses 'std::max_element'</span>
+    std<span class="token punctuation">:</span><span class="token punctuation">:</span>cout <span class="token operator">&lt;&lt;</span> square_mat<span class="token punctuation">.</span><span class="token function">min</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> std<span class="token punctuation">:</span><span class="token punctuation">:</span>endl<span class="token punctuation">;</span>      <span class="token comment">//Prints the minimum of the matrix. Default uses 'std::min_element'</span>
+    std<span class="token punctuation">:</span><span class="token punctuation">:</span>cout <span class="token operator">&lt;&lt;</span> square_mat<span class="token punctuation">.</span><span class="token function">sum</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> std<span class="token punctuation">:</span><span class="token punctuation">:</span>endl<span class="token punctuation">;</span>      <span class="token comment">//Prints the sum of all the elements of the matrix.</span>
+    std<span class="token punctuation">:</span><span class="token punctuation">:</span>cout <span class="token operator">&lt;&lt;</span> square_mat<span class="token punctuation">.</span><span class="token function">average</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> std<span class="token punctuation">:</span><span class="token punctuation">:</span>endl<span class="token punctuation">;</span>  <span class="token comment">//Prints the average of the matrix.</span>
+
+</code></pre>
+<p><strong>If your matrix does not contain a POD type, you can add a criterium to <code>min</code> and <code>max</code>. See their documentation for more details.</strong></p>
+<br>
+<h3 id="converting-to-stdvector-or-stdvectorstdvector">Converting to <code>std::vector</code> or <code>std::vector&lt;std::vector&gt;&gt;</code></h3>
+<p>Especially using CUDA, it is often necessary to be able to obtain a <code>std::vector</code> holding the data.</p>
+<p><code>ste::Matrix</code> provides such a function :</p>
+<pre class=" language-c"><code class="prism ++ language-c">
+    <span class="token keyword">const</span> ste<span class="token punctuation">:</span><span class="token punctuation">:</span>FMatrix <span class="token function">mat_1</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token number">1</span> <span class="token punctuation">,</span> <span class="token number">2</span> <span class="token punctuation">,</span> <span class="token number">3</span> <span class="token punctuation">,</span><span class="token number">4</span> <span class="token punctuation">,</span><span class="token number">5</span> <span class="token punctuation">,</span> <span class="token number">6</span> <span class="token punctuation">,</span> <span class="token number">7</span> <span class="token punctuation">,</span> <span class="token number">8</span> <span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">}</span> <span class="token punctuation">,</span> <span class="token number">3</span> <span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">//3*3 float matrix</span>
+    ste<span class="token punctuation">:</span><span class="token punctuation">:</span>ULLMatrix <span class="token function">mat_2</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token number">10</span> <span class="token punctuation">,</span> <span class="token number">11</span> <span class="token punctuation">,</span> <span class="token number">12</span> <span class="token punctuation">,</span><span class="token number">13</span> <span class="token punctuation">,</span><span class="token number">14</span> <span class="token punctuation">,</span> <span class="token number">15</span> <span class="token punctuation">,</span> <span class="token number">16</span> <span class="token punctuation">,</span> <span class="token number">17</span> <span class="token punctuation">,</span> <span class="token number">18</span><span class="token punctuation">}</span> <span class="token punctuation">,</span> <span class="token number">3</span> <span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//3*3 uint64_t matrix</span>
+
+    mat_1<span class="token punctuation">.</span><span class="token function">toVector1D</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//Returns a const std::vector&lt;float&gt;&amp; holding {1 , 2 , 3 ,4 ,5 , 6 , 7 , 8 , 9}</span>
+    mat_2<span class="token punctuation">.</span><span class="token function">toVector1D</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//Returns a std::vector&lt;uint64_t&gt;&amp; holding {10 , 11 , 12 ,13 ,14 , 15 , 16 , 17 , 18} </span>
+
+</code></pre>
+<p><strong>As the data is passed by reference, it is possible to modify it using <code>toVector1D()</code> when the matrix is not <code>const</code>.</strong></p>
+<pre class=" language-c"><code class="prism ++ language-c">
+    ste<span class="token punctuation">:</span><span class="token punctuation">:</span>FMatrix <span class="token function">a</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token number">1</span> <span class="token punctuation">,</span> <span class="token number">2</span> <span class="token punctuation">,</span> <span class="token number">3</span> <span class="token punctuation">,</span>
+                    <span class="token number">4</span> <span class="token punctuation">,</span> <span class="token number">52</span> <span class="token punctuation">,</span> <span class="token number">6</span> <span class="token punctuation">,</span>
+                    <span class="token number">7</span> <span class="token punctuation">,</span> <span class="token number">141</span> <span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">}</span> <span class="token punctuation">,</span>
+                                  <span class="token number">3</span> <span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//3*3 float matrix</span>
+
+
+    std<span class="token punctuation">:</span><span class="token punctuation">:</span>vector<span class="token operator">&lt;</span><span class="token keyword">float</span><span class="token operator">&gt;</span> <span class="token operator">&amp;</span>vect <span class="token operator">=</span> a<span class="token punctuation">.</span><span class="token function">toVector1D</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    vect<span class="token punctuation">.</span><span class="token function">at</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token number">999</span><span class="token punctuation">;</span>
+
+    std<span class="token punctuation">:</span><span class="token punctuation">:</span>cout <span class="token operator">&lt;&lt;</span> a <span class="token operator">&lt;&lt;</span> std<span class="token punctuation">:</span><span class="token punctuation">:</span>endl<span class="token punctuation">;</span> <span class="token comment">//Prints [ [ 999 2 3 ] [ 4 52 6 ] [ 7 141 9 ] ]</span>
+
+</code></pre>
+<p>Should you need a <code>std::vector&lt;std::vector&lt;T&gt;&gt;</code>, simply use <code>toVector2D</code> :</p>
+<pre class=" language-c"><code class="prism ++ language-c">
+    ste<span class="token punctuation">:</span><span class="token punctuation">:</span>FMatrix <span class="token function">a</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token number">1</span> <span class="token punctuation">,</span> <span class="token number">2</span> <span class="token punctuation">,</span> <span class="token number">3</span> <span class="token punctuation">,</span>
+                    <span class="token number">4</span> <span class="token punctuation">,</span> <span class="token number">52</span> <span class="token punctuation">,</span> <span class="token number">6</span> <span class="token punctuation">,</span>
+                    <span class="token number">7</span> <span class="token punctuation">,</span> <span class="token number">141</span> <span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">}</span> <span class="token punctuation">,</span>
+                                  <span class="token number">3</span> <span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//3*3 float matrix</span>
+
+    std<span class="token punctuation">:</span><span class="token punctuation">:</span>vector<span class="token operator">&lt;</span>std<span class="token punctuation">:</span><span class="token punctuation">:</span>vector<span class="token operator">&lt;</span><span class="token keyword">float</span><span class="token operator">&gt;&gt;</span> two_dimensional_vector <span class="token operator">=</span> a<span class="token punctuation">.</span><span class="token function">toVector2D</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">/*
+        two_dimensional_vector is :
+
+         { {1 ,  2 ,  3} ,  //First vector
+           {4 ,  52 , 6} ,  //Second vector
+           {7 , 141 , 9}    //Third vector
+           }
+    */</span>
+
+</code></pre>
+<p><code>toVector2D</code> orders the data <strong>by row</strong> . This method is <code>virtual</code>, allowing you to change the format should you need it.</p>
+<br>
+<h3 id="using-a-gpu">Using a GPU</h3>
+<h4 id="windows---qt">Windows - <em><strong>Qt</strong></em></h4>
+<p>Configuring Qt on Windows for using CUDA librairies requires you to use <strong>MSVC</strong>.</p>
+<p><strong>Requirements:</strong><br>
+<em>1.</em> Make sure your computer is equipped with a CUDA-compatible GPU.<br>
+<em>2.</em> Download the <a href="https://developer.nvidia.com/cuda-toolkit">CUDA Toolkit</a>.<br>
+<em>3.</em> Download Visual Studio an a version of <strong>MSVC</strong> compatible with the CUDA Toolkit version.</p>
+<p><strong>ste::Matrix specific requirements:</strong></p>
+<p>Add <code>STE_MATRIX_ALLOW_GPU</code> to the <code>DEFINES</code> of your <code>.pro file</code>:</p>
+<pre class=" language-makefile"><code class="prism  language-makefile">DEFINES <span class="token operator">+=</span> STE_MATRIX_ALLOW_GPU
+</code></pre>
+<br>
+<p><strong>Writing the <code>.pro</code> file:</strong></p>
+<p>This tutorial is based on <a href="https://github.com/mihaits/Qt-CUDA-example">this GitHub repository</a> by <a href="https://github.com/mihaits">mihaits</a>.</p>
+<ol>
+<li>CUDA and MSVC have conflicting names in some of their functions. Adding these lines to the <code>.pro</code> file solves the problem:</li>
+</ol>
+<pre class=" language-makefile"><code class="prism  language-makefile"><span class="token comment"># Avoid conflicts between CUDA and MSVC</span>
+QMAKE_LFLAGS_RELEASE <span class="token operator">=</span> /NODEFAULTLIB<span class="token punctuation">:</span>msvcrt.lib
+QMAKE_LFLAGS_DEBUG   <span class="token operator">=</span> /NODEFAULTLIB<span class="token punctuation">:</span>msvcrtd.lib
+QMAKE_LFLAGS_DEBUG   <span class="token operator">=</span> /NODEFAULTLIB<span class="token punctuation">:</span>libcmt.lib
+
+
+
+<span class="token comment"># Avoid conflicts between CUDA and MSVC</span>
+QMAKE_CFLAGS_DEBUG      <span class="token operator">+=</span> /MTd
+QMAKE_CFLAGS_RELEASE    <span class="token operator">+=</span> /MT
+QMAKE_CXXFLAGS_DEBUG    <span class="token operator">+=</span> /MTd
+QMAKE_CXXFLAGS_RELEASE  <span class="token operator">+=</span> /MT
+</code></pre>
+<ol start="2">
+<li>Create a list of the CUDA source files for your project:</li>
+</ol>
+<pre class=" language-makefile"><code class="prism  language-makefile">CUDA_SOURCES <span class="token operator">+=</span>  ../someDistantFolder/some_CUDA_code.cu \
+                 someFolder/other_CUDA_code.cu
+</code></pre>
+<ol start="3">
+<li>Specify the CUDA installation path, the system architecture, the system type (32 bits or 64 bits), the architecture of your GPU, and the CUDA compiler options:</li>
+</ol>
+<pre class=" language-makefile"><code class="prism  language-makefile">CUDA_DIR <span class="token operator">=</span> <span class="token string">"C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v11.1"</span> <span class="token comment">#Path to your CUDA installation</span>
+SYSTEM_NAME <span class="token operator">=</span> x64                                                     <span class="token comment">#NB: SYSTEM DEPENDENT</span>
+SYSTEM_TYPE <span class="token operator">=</span> 64                                                      <span class="token comment">#SAME HERE</span>
+CUDA_ARCH <span class="token operator">=</span> sm_61                                                     <span class="token comment">#Compute capability of the GPU (here GTX Geforce 1050 - Compute capability 6.1 so sm_61)</span>
+NVCC_OPTIONS <span class="token operator">=</span> --use_fast_math                                        <span class="token comment">#CUDA compiler options</span>
+</code></pre>
+<ol start="4">
+<li>Include CUDA headers and CUDA libraires (such as CUBLAs) headers:</li>
+</ol>
+<pre class=" language-makefile"><code class="prism  language-makefile"><span class="token comment">#CUDA Headers</span>
+INCLUDEPATH <span class="token operator">+=</span> <span class="token variable">$$CUDA_DIR/include</span>
+
+<span class="token comment">#CUDA librairies headers</span>
+QMAKE_LIBDIR <span class="token operator">+=</span> <span class="token variable">$$CUDA_DIR/lib/$$SYSTEM_NAME</span>
+
+<span class="token comment">#Required libraires added here</span>
+LIBS <span class="token operator">+=</span> -lcuda -lcudart -lcublas
+
+<span class="token comment"># The following makes sure all path names (which often include spaces) are put between quotation marks</span>
+CUDA_INC <span class="token operator">=</span> <span class="token variable">$$join</span><span class="token punctuation">(</span>INCLUDEPATH,<span class="token string">'" -I"'</span>,<span class="token string">'-I"'</span>,<span class="token string">'"'</span><span class="token punctuation">)</span>
+</code></pre>
+<ol start="5">
+<li>Configure the CUDA compiler:</li>
+</ol>
+<pre class=" language-makefile"><code class="prism  language-makefile"><span class="token comment">#Configuration of the CUDA compiler</span>
+CONFIG<span class="token punctuation">(</span>debug, debug<span class="token operator">|</span>release<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+       <span class="token comment"># Debug mode</span>
+       cuda_d.input <span class="token operator">=</span> CUDA_SOURCES
+       cuda_d.output <span class="token operator">=</span> <span class="token variable">$$CUDA_OBJECTS_DIR/$</span><span class="token punctuation">{</span>QMAKE_FILE_BASE<span class="token punctuation">}</span>_cuda.o
+       cuda_d.commands <span class="token operator">=</span> <span class="token variable">$$CUDA_DIR/bin/nvcc.exe</span> -D_DEBUG <span class="token variable">$$NVCC_OPTIONS</span> <span class="token variable">$$CUDA_INC</span> <span class="token variable">$$LIBS</span> --machine <span class="token variable">$$SYSTEM_TYPE</span> -arch<span class="token operator">=</span><span class="token variable">$$CUDA_ARCH</span> -c -o <span class="token variable">$</span><span class="token punctuation">{</span>QMAKE_FILE_OUT<span class="token punctuation">}</span> <span class="token variable">$</span><span class="token punctuation">{</span>QMAKE_FILE_NAME<span class="token punctuation">}</span>
+       cuda_d.dependency_type <span class="token operator">=</span> TYPE_C
+       QMAKE_EXTRA_COMPILERS <span class="token operator">+=</span> cuda_d
+<span class="token punctuation">}</span>
+<span class="token keyword">else</span> <span class="token punctuation">{</span>
+       <span class="token comment"># Release mode</span>
+       cuda.input <span class="token operator">=</span> CUDA_SOURCES
+       cuda.output <span class="token operator">=</span> <span class="token variable">$$CUDA_OBJECTS_DIR/$</span><span class="token punctuation">{</span>QMAKE_FILE_BASE<span class="token punctuation">}</span>_cuda.o
+       cuda.commands <span class="token operator">=</span> <span class="token variable">$$CUDA_DIR/bin/nvcc.exe</span> <span class="token variable">$$NVCC_OPTIONS</span> <span class="token variable">$$CUDA_INC</span> <span class="token variable">$$LIBS</span> --machine <span class="token variable">$$SYSTEM_TYPE</span> -arch<span class="token operator">=</span><span class="token variable">$$CUDA_ARCH</span> -c -o <span class="token variable">$</span><span class="token punctuation">{</span>QMAKE_FILE_OUT<span class="token punctuation">}</span> <span class="token variable">$</span><span class="token punctuation">{</span>QMAKE_FILE_NAME<span class="token punctuation">}</span>
+       cuda.dependency_type <span class="token operator">=</span> TYPE_C
+       QMAKE_EXTRA_COMPILERS <span class="token operator">+=</span> cuda
+<span class="token punctuation">}</span>
+</code></pre>
+<ol start="6">
+<li>Known troubles:</li>
+</ol>
+<ul>
+<li>Debug build sometimes fails with some CUDA librairies.</li>
+</ul>
+<p><strong>ste::Matrix specific parts:</strong></p>
+<ol>
+<li>Add the CUDA-related headers to the list of the headers:</li>
+</ol>
+<pre class=" language-makefile"><code class="prism  language-makefile">HEADERS <span class="token operator">+=</span> ../Matrix/CUDA_src/CUDA_global.h \
+           ../Matrix/CUDA_src/CUDA_matrix_operators.h \
+</code></pre>
+<ol start="2">
+<li>Add the CUDA-related source files to the list of the CUDA files:</li>
+</ol>
+<pre class=" language-makefile"><code class="prism  language-makefile">CUDA_SOURCES <span class="token operator">+=</span>  ../Matrix/CUDA_src/CUDA_global.cu \
+                 ../Matrix/CUDA_src/CUDA_matrix_operators.cu \
+                 ../Matrix/CUDA_src/CUDA_setup.cu \
+</code></pre>
+<br>
+<p>For a sample <code>.pro</code> file, see <a href="https://github.com/Erellu/ste-Matrix/tree/master/qmake">/qmake</a>.</p>
+<br>
+<h4 id="windows---visual-studio">Windows - <em><strong>Visual Studio</strong></em></h4>
+<p>TO BE ADDED</p>
+<br>
+<h4 id="ubuntu">Ubuntu</h4>
+<p>TO BE ADDED</p>
+<br>
+<h4 id="when-to-use-a-gpu-">When to use a GPU ?</h4>
+<p>Using your GPU for all computations is <strong>not</strong> recommended.<br>
+As its RAM and the CPU one are not shared, it is required to copy data two times, meaning that bottleneck effects occur.<br>
+<strong>Small matrix-related computations run faster on a CPU than on a GPU</strong>.</p>
+<p>For further information, you may look at the following sites:</p>
+<ul>
+<li><a href="https://softwareengineering.stackexchange.com/questions/107416/when-should-i-be-offloading-work-to-a-gpu-instead-of-the-cpu">When should I be offloading work to a GPU instead of the CPU?</a></li>
+<li><a href="https://www.intel.com/content/www/us/en/products/docs/processors/cpu-vs-gpu.html">CPU vs. GPU: Making the Most of Both</a></li>
+<li><a href="https://blogs.nvidia.com/blog/2009/12/16/whats-the-difference-between-a-cpu-and-a-gpu/">What’s the Difference Between a CPU and a GPU?</a></li>
+</ul>
+<br>
+<br>
+<h2 id="public-types-documentation">Public types documentation</h2>
+<br>
+<div id="orientation_doc"></div>
+<h3 id="enum-class-matrixorientation"><code>enum class</code> Matrix::Orientation</h3>
+
+<table>
+<thead>
+<tr>
+<th>Constant</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Orientation::ROW</code></td>
+<td>0</td>
+<td>Specifier for functions that apply either on rows or on columns, such as <code>replace</code>, <code>swap</code> or <code>remove</code>.</td>
+</tr>
+<tr>
+<td><code>Orientation::LINE</code></td>
+<td><code>Orientation::ROW</code></td>
+<td>Alias for <code>Orientation::ROW</code></td>
+</tr>
+<tr>
+<td><code>Orientation::RW</code></td>
+<td><code>Orientation::ROW</code></td>
+<td>Alias for <code>Orientation::ROW</code></td>
+</tr>
+<tr>
+<td><code>Orientation::R</code></td>
+<td><code>Orientation::ROW</code></td>
+<td>Alias for <code>Orientation::ROW</code></td>
+</tr>
+<tr>
+<td><code>Orientation::COLUMN</code></td>
+<td>1</td>
+<td>Specifier for functions that apply either on rows or on columns, such as <code>replace</code>, <code>swap</code> or <code>remove</code>.</td>
+</tr>
+<tr>
+<td><code>Orientation::COL</code></td>
+<td><code>Orientation::COLUMN</code></td>
+<td>Alias for <code>Orientation::COLUMN</code></td>
+</tr>
+<tr>
+<td><code>Orientation::CL</code></td>
+<td><code>Orientation::COLUMN</code></td>
+<td>Alias for <code>Orientation::COLUMN</code></td>
+</tr>
+<tr>
+<td><code>Orientation::C</code></td>
+<td><code>Orientation::COLUMN</code></td>
+<td>Alias for <code>Orientation::COLUMN</code></td>
+</tr>
+</tbody>
+</table><h2 id="member-functions-documentation">Member Functions Documentation</h2>
+<br>
+<div id="matrix_constructor_0"></div>
+<h3 id="matrixconst-size_t-rows--const-size_tcolumns--const-t-value--t0--const-exe-device--execpu"><strong>Matrix</strong><code>(const size_t &amp;rows , const size_t&amp;columns , const T &amp;value = T(0) , const EXE &amp;device = EXE::CPU)</code></h3>
+<p>Constructs a matrix of size <code>rows * columns</code> filled with <code>value</code> and with execution policy <code>device</code>.</p>
+<p>Default fill value is <code>T(0)</code>.<br>
+Default execution policy is <code>EXE::CPU</code>.</p>
+<br>
+<div id="matrix_constructor_1"></div>
+<h3 id="matrixconst-size_t-size--0--const-t-value--t0--const-exe-device--execpu"><strong>Matrix</strong><code>(const size_t &amp;size = 0 , const T &amp;value = T(0) , const EXE &amp;device = EXE::CPU)</code></h3>
+<p>Constructs a square matrix of size <code>size</code> filled with <code>value</code> and with execution policy <code>device</code>.</p>
+<p>Default fill value is <code>T(0)</code>.<br>
+Default execution policy is <code>EXE::CPU</code>.</p>
+<p><strong>This is the default constructor called by <code>Matrix()</code>, which constructs en empty matrix (0 by 0).</strong></p>
+<br>
+<div id="matrix_constructor_2"></div>
+<h3 id="matrixconst-stdvectort-data--const-size_t-rows--const-size_tcolumns--const-exe-device--execpu"><strong>Matrix</strong><code>(const std::vector&lt;T&gt; &amp;data , const size_t &amp;rows , const size_t&amp;columns , const EXE &amp;device = EXE::CPU)</code></h3>
+<p>Constructs a matrix from the elements of <code>data</code>.</p>
+<p><em><strong>Throws an exception</strong></em> if <code>rows * columns != data.size()</code>.</p>
+<br>
+<div id="matrix_constructor_3"></div>
+<h3 id="matrixconst-stdvectorstdvectort-data--const-exe-device--execpu"><strong>Matrix</strong><code>(const std::vector&lt;std::vector&lt;T&gt;&gt; &amp;data , const EXE &amp;device = EXE::CPU)</code></h3>
+<p>Constructs a matrix from a two dimensional vector.</p>
+<p><em><strong>Throws an exception</strong></em> if the size of all the vectors is not identical.</p>
+<br>
+<div id="add"></div>
+<h3 id="matrix-addconst-stdvectort-data--const-orientation-orientation"><code>Matrix&amp;</code> <strong>add</strong><code>(const std::vector&lt;T&gt; &amp;data , const Orientation &amp;orientation)</code></h3>
+<p>Adds <code>data</code> as a row or a column at the end of the matrix according to <code>orientation</code>.</p>
+<p><em><strong>Throws an exception</strong></em> if the number of elements in <code>data</code> do not match the matrix dimensions.</p>
+<br>
+<div id="add_column"></div>
+<h3 id="matrix-add_columnconst-stdvectort-data"><code>Matrix&amp;</code> <strong>add_column</strong><code>(const std::vector&lt;T&gt; &amp;data)</code></h3>
+<p>Adds <code>data</code> as a column at the end of the matrix.</p>
+<p><em><strong>Throws an exception</strong></em> if the number of elements in <code>data</code> do not match the matrix dimensions.</p>
+<pre class=" language-c"><code class="prism ++ language-c">
+    mat<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>data <span class="token punctuation">,</span> ste<span class="token punctuation">:</span><span class="token punctuation">:</span>Matrix<span class="token operator">&lt;</span>T<span class="token operator">&gt;</span><span class="token punctuation">:</span><span class="token punctuation">:</span>Orientation<span class="token punctuation">:</span><span class="token punctuation">:</span>COLUMN<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+</code></pre>
+<br>
+<div id="add_line"></div>
+<h3 id="matrix-add_lineconst-stdvectort-data"><code>Matrix&amp;</code> <strong>add_line</strong><code>(const std::vector&lt;T&gt; &amp;data)</code></h3>
+<p>Alias for <strong><a href="#add_row">add_row</a></strong>.</p>
+<br>
+<div id="add_row"></div>
+<h3 id="matrix-add_rowconst-stdvectort-data"><code>Matrix&amp;</code> <strong>add_row</strong><code>(const std::vector&lt;T&gt; &amp;data)</code></h3>
+<p>Adds <code>data</code> as a row at the end of the matrix.</p>
+<p><em><strong>Throws an exception</strong></em> if the number of elements in <code>data</code> do not match the matrix dimensions.</p>
+<p>This function is identical to:</p>
+<pre class=" language-c"><code class="prism ++ language-c">
+    mat<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>data <span class="token punctuation">,</span> ste<span class="token punctuation">:</span><span class="token punctuation">:</span>Matrix<span class="token operator">&lt;</span>T<span class="token operator">&gt;</span><span class="token punctuation">:</span><span class="token punctuation">:</span>Orientation<span class="token punctuation">:</span><span class="token punctuation">:</span>ROW<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+</code></pre>
+<br>
+<div id="average"></div>
+<h3 id="t-average-const"><code>T</code> <strong>average</strong><code>() const</code></h3>
+<p>Computes the average of the matrix.</p>
+<p>Implementation gives :</p>
+<pre class=" language-c"><code class="prism ++ language-c">
+    mat<span class="token punctuation">.</span><span class="token function">average</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> mat<span class="token punctuation">.</span><span class="token function">sum</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">.</span><span class="token operator">/</span><span class="token punctuation">(</span>mat<span class="token punctuation">.</span>elements<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+</code></pre>
+<br>
+<div id="at_0"></div>
+<h3 id="t-atconst-size_t-row--const-size_t-column"><code>T&amp;</code> <strong>at</strong><code>(const size_t &amp;row , const size_t &amp;column)</code></h3>
+<p>Returns a reference to the element at the <code>(x,y)</code> position specified in argument.</p>
+<p><em><strong>Throws an exception</strong></em> if the position is outside the matrix.</p>
+<p>This is identical to calling :</p>
+<pre class=" language-c"><code class="prism ++ language-c">
+    mat<span class="token punctuation">.</span><span class="token function">at</span><span class="token punctuation">(</span>row <span class="token operator">*</span>_columns <span class="token operator">+</span> column<span class="token punctuation">)</span><span class="token punctuation">.</span>
+
+</code></pre>
+<br>
+<div id="at_1"></div>
+<h3 id="t-atconst-size_t-linear_index"><code>T&amp;</code> <strong>at</strong><code>(const size_t &amp;linear_index)</code></h3>
+<p>Returns a reference to the element at the linear index specified in argument.</p>
+<p><em><strong>Throws an exception</strong></em> if the position is outside the matrix.</p>
+<br>
+<div id="at_2"></div>
+<h3 id="const-t-atconst-size_t-row--const-size_t-column"><code>const T&amp;</code> <strong>at</strong><code>(const size_t &amp;row , const size_t &amp;column)</code></h3>
+<p>Returns a reference to the element at the <code>(x,y)</code> position specified in argument.</p>
+<p><em><strong>Throws an exception</strong></em> if the position is outside the matrix.</p>
+<br>
+<div id="at_3"></div>
+<h3 id="const-t-atconst-size_t-linear_index"><code>const T&amp;</code> <strong>at</strong><code>(const size_t &amp;linear_index)</code></h3>
+<p>Returns a reference to the element at the linear index specified in argument.</p>
+<p><em><strong>Throws an exception</strong></em> if the position is outside the matrix.</p>
+<br>
+<div id="begin_0"></div>
+<h3 id="auto-begin-const"><code>auto</code> <strong>begin</strong><code>() const</code></h3>
+<p>Returns an iterator to the beginning of the data of the matrix.</p>
+<br>
+<div id="begin_1"></div>
+<h3 id="auto-begin"><code>auto</code> <strong>begin</strong><code>()</code></h3>
+<p>Returns an iterator to the beginning of the data of the matrix.</p>
+<p>Non-const equivalent of <strong><a href="#begin_0">begin</a></strong>.</p>
+<br>
+<div id="begin_row"></div>
+<h3 id="virtual-size_t-begin_row-const"><code>virtual size_t</code> <strong>begin_row</strong><code>() const</code></h3>
+<p>Provided for specifying were the rows begin in the data.</p>
+<p>Default implementation returns <code>0</code>.</p>
+<br>
+<div id="begin_line"></div>
+<h3 id="size_t-begin_line-const"><code>size_t</code> <strong>begin_line</strong><code>() const</code></h3>
+<p>Alias for <strong><a href="#begin_row">begin_row</a></strong></p>
+<br>
+<div id="begin_column"></div>
+<h3 id="virtual-size_t-begin_column-const"><code>virtual size_t</code> <strong>begin_column</strong><code>() const</code></h3>
+<p>Provided for specifying were the columns begin in the data.</p>
+<p>Default implementation returns <code>0</code>.</p>
+<br>
+<div id="clear"></div>
+<h3 id="matrix-clear"><code>Matrix&amp;</code> <strong>clear</strong><code>()</code></h3>
+<p>Resizes the matrix to <code>(0 ; 0)</code> and removes all the elements from the data it holds.</p>
+<p><strong>WARNING : MEMORY IS NOT FREED WHEN T IS DYNAMICALLY ALLOCATED…</strong></p>
+<br>
+<div id="cofactor_0"></div>
+<h3 id="t-cofactorconst-size_t-row--const-size_t-column-const"><code>T</code> <strong>cofactor</strong><code>(const size_t &amp;row , const size_t &amp;column) const</code></h3>
+<p>Computes the cofactor of the element speficied in argument.</p>
+<p><em><strong>Throws an exception</strong></em> if the position is outside the matrix.</p>
+<br>
+<div id="cofactor_1"></div>
+<h3 id="t-cofactorconst-size_t-index-const"><code>T</code> <strong>cofactor</strong><code>(const size_t &amp;index) const</code></h3>
+<p>Computes the cofactor of the element speficied in argument.</p>
+<p><em><strong>Throws an exception</strong></em> if the position is outside the matrix.</p>
+<p>This is equivalent as calling:</p>
+<pre class=" language-c"><code class="prism ++ language-c">
+    mat<span class="token punctuation">.</span><span class="token function">cofactor</span><span class="token punctuation">(</span>index <span class="token operator">/</span> _columns <span class="token punctuation">,</span> index <span class="token operator">%</span> _columns<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+</code></pre>
+<br>
+<div id="cofactormatrix"></div>
+<h3 id="matrix-cofactormatrix-const"><code>Matrix</code> <strong>cofactormatrix</strong><code>() const</code></h3>
+<p>Computes the cofactor matrix.</p>
+<br>
+<div id="comatrix"></div>
+<h3 id="matrix-comatrix-const"><code>Matrix</code> <strong>comatrix</strong><code>() const</code></h3>
+<p>Alias for <strong><a href="#cofactormatrix">cofactormatrix</a></strong>.</p>
+<br>
+<div id="columnAt"></div>
+<h3 id="stdvectort-columnatconst-size_t-index-const"><code>std::vector&lt;T&gt;</code> <strong>columnAt</strong><code>(const size_t &amp;index) const</code></h3>
+<p>Extracts a column of the matrix and returns it as a <code>std::vector&lt;T&gt;</code>.</p>
+<p><em><strong>Throws an exception</strong></em> if the position is outside the matrix.</p>
+<br>
+<div id="columns"></div>
+<h3 id="const-size_t-columns-const"><code>const size_t&amp;</code> <strong>columns</strong><code>() const</code></h3>
+<p>Returns the number of columns of the matrix.</p>
+<br>
+<div id="cut_0"></div>
+<h3 id="matrix-cutstdvectorsize_t-indexes--const-orientation-orientation"><code>Matrix&amp;</code> <strong>cut</strong><code>(std::vector&lt;size_t&gt; indexes , const Orientation &amp;orientation)</code></h3>
+<p>Removes all the rows or columns according to the indexes speficied in <code>indexes</code>.</p>
+<p><em><strong>Throws an exception</strong></em> if one the positions is outside the matrix.</p>
+<br>
+<div id="cut_1"></div>
+<h3 id="matrix-cutconst-size_t-begin--const-size_t-end--const-orientation-orientation"><code>Matrix&amp;</code> <strong>cut</strong><code>(const size_t &amp;begin , const size_t &amp;end , const Orientation &amp;orientation)</code></h3>
+<p>Removes all the rows or columns from <code>begin</code> to <code>end</code> (included).</p>
+<p><em><strong>Throws an exception</strong></em> if one the positions is outside the matrix.</p>
+<br>
+<div id="cut_columns_0"></div>
+<h3 id="matrix-cut_columnsconst-stdvectorsize_t-indexes"><code>Matrix&amp;</code> <strong>cut_columns</strong><code>(const std::vector&lt;size_t&gt; &amp;indexes)</code></h3>
+<p>Removes all the columns specified in <code>indexes</code>.</p>
+<p><em><strong>Throws an exception</strong></em> if one the positions is outside the matrix.</p>
+<p>This is identical as calling:</p>
+<pre class=" language-c"><code class="prism ++ language-c">
+    mat<span class="token punctuation">.</span><span class="token function">cut</span><span class="token punctuation">(</span>indexes <span class="token punctuation">,</span> ste<span class="token punctuation">:</span><span class="token punctuation">:</span>Matrix<span class="token operator">&lt;</span>T<span class="token operator">&gt;</span><span class="token punctuation">:</span><span class="token punctuation">:</span>Orientation<span class="token punctuation">:</span><span class="token punctuation">:</span>COLUMN<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+</code></pre>
+<br>
+<div id="cut_columns_1"></div>
+<h3 id="matrix-cut_columnsconst-size_t-begin--const-size_t-end"><code>Matrix&amp;</code> <strong>cut_columns</strong><code>(const size_t &amp;begin , const size_t &amp;end)</code></h3>
+<p>Removes all the columns between <code>begin</code> and <code>end</code> (included).</p>
+<p><em><strong>Throws an exception</strong></em> if one the positions is outside the matrix.</p>
+<p>This is identical as calling:</p>
+<pre class=" language-c"><code class="prism ++ language-c">
+    mat<span class="token punctuation">.</span><span class="token function">cut</span><span class="token punctuation">(</span>begin <span class="token punctuation">,</span> end <span class="token punctuation">,</span> ste<span class="token punctuation">:</span><span class="token punctuation">:</span>Matrix<span class="token operator">&lt;</span>T<span class="token operator">&gt;</span><span class="token punctuation">:</span><span class="token punctuation">:</span>Orientation<span class="token punctuation">:</span><span class="token punctuation">:</span>COLUMN<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+</code></pre>
+<br>
+<div id="cut_lines_0"></div>
+<h3 id="matrix-cut_linesconst-stdvectorsize_t-indexes"><code>Matrix&amp;</code> <strong>cut_lines</strong><code>(const std::vector&lt;size_t&gt; &amp;indexes)</code></h3>
+<p>Alias for <strong><a href="#cut_rows_0">cut_rows</a></strong>.</p>
+<br>
+<div id="cut_lines_1"></div>
+<h3 id="matrix-cut_linesconst-size_t-begin--const-size_t-end"><code>Matrix&amp;</code> <strong>cut_lines</strong><code>(const size_t &amp;begin , const size_t &amp;end)</code></h3>
+<p>Alias for <strong><a href="#cut_rows_1">cut_rows</a></strong>.</p>
+<br>
+<div id="cut_rows_0"></div>
+<h3 id="matrix-cut_rowsconst-stdvectorsize_t-indexes"><code>Matrix&amp;</code> <strong>cut_rows</strong><code>(const std::vector&lt;size_t&gt; &amp;indexes)</code></h3>
+<p>Removes all the rows specified in <code>indexes</code>.</p>
+<p><em><strong>Throws an exception</strong></em> if one the positions is outside the matrix.</p>
+<p>This is identical as calling:</p>
+<pre class=" language-c"><code class="prism ++ language-c">
+    mat<span class="token punctuation">.</span><span class="token function">cut</span><span class="token punctuation">(</span>indexes <span class="token punctuation">,</span> ste<span class="token punctuation">:</span><span class="token punctuation">:</span>Matrix<span class="token operator">&lt;</span>T<span class="token operator">&gt;</span><span class="token punctuation">:</span><span class="token punctuation">:</span>Orientation<span class="token punctuation">:</span><span class="token punctuation">:</span>ROW<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+</code></pre>
+<br>
+<div id="cut_rows_1"></div>
+<h3 id="matrix-cut_rowsconst-size_t-begin--const-size_t-end"><code>Matrix&amp;</code> <strong>cut_rows</strong><code>(const size_t &amp;begin , const size_t &amp;end)</code></h3>
+<p>Removes all the rows between <code>begin</code> and <code>end</code> (included).</p>
+<p><em><strong>Throws an exception</strong></em> if one the positions is outside the matrix.</p>
+<p>This is identical as calling:</p>
+<pre class=" language-c"><code class="prism ++ language-c">
+    mat<span class="token punctuation">.</span><span class="token function">cut</span><span class="token punctuation">(</span>begin <span class="token punctuation">,</span> end <span class="token punctuation">,</span> ste<span class="token punctuation">:</span><span class="token punctuation">:</span>Matrix<span class="token operator">&lt;</span>T<span class="token operator">&gt;</span><span class="token punctuation">:</span><span class="token punctuation">:</span>Orientation<span class="token punctuation">:</span><span class="token punctuation">:</span>ROW<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+</code></pre>
+<br>
+<div id="deleteAll"></div>
+<h3 id="matrix-deleteall"><code>Matrix&amp;</code> <strong>deleteAll</strong><code>()</code></h3>
+<p>Frees the memory of all elements contained by the matrix, which is resized to <code>(0 ; 0)</code>.</p>
+<p><em><strong>This member function is only available when T is dynamically allocated.</strong></em></p>
+<br>
+<div id="det"></div>
+<h3 id="virtual-t-det-const"><code>virtual T</code> <strong>det</strong><code>() const</code></h3>
+<p>Computes the determinant of the matrix.</p>
+<p><em><strong>Throws an exception</strong></em> if the matrix is not squared.</p>
+<p><em>If your matrix has specific properties that simplify the computation of the determinant, it is recommended to override this function in a subclass.</em></p>
+<br>
+<div id="device_0"></div>
+<h3 id="const-exe-device-const"><code>const EXE&amp;</code> <strong>device</strong><code>() const</code></h3>
+<p>Returns a reference to the execution policy of the matrix.</p>
+<br>
+<div id="device_1"></div>
+<h3 id="exe-device"><code>EXE&amp;</code> <strong>device</strong><code>()</code></h3>
+<p>Returns a reference to the execution policy of the matrix.</p>
+<br>
+<div id="elements"></div>
+<h3 id="size_t-elements-const"><code>size_t</code> <strong>elements</strong><code>() const</code></h3>
+<p>Returns the total of elements stored in a matrix.</p>
+<p><strong>As a <code>ste::Matrix</code> is always contiguous</strong>, <code>elements</code> returns <code>_rows * columns</code>.</p>
+<br>
+<div id="element_wise"></div>
+<h3 id="matrix-element_wiseconst-matrix-arg-const"><code>Matrix</code> <strong>element_wise</strong><code>(const Matrix &amp;arg) const</code></h3>
+<p>Alias for <strong><a href="#hadamard">hadamard</a></strong>.</p>
+<p>Computes the Hadamard product (element-wise product) of the matrix and the argument.</p>
+<br>
+<div id="empty"></div>
+<h3 id="bool-empty-const"><code>bool</code> <strong>empty</strong><code>() const</code></h3>
+<p>Returns <code>true</code> if the matrix is empty, <code>false</code> otherwise.</p>
+<br>
+<div id="end_0"></div>
+<h3 id="auto-end-const"><code>auto</code> <strong>end</strong><code>() const</code></h3>
+<p>Returns an iterator to the end of the data in the matrix.</p>
+<br>
+<div id="end_1"></div>
+<h3 id="auto-end"><code>auto</code> <strong>end</strong><code>()</code></h3>
+<p>Returns an iterator to the end of the data in the matrix.</p>
+<br>
+<div id="end_column"></div>
+<h3 id="virtual-size_t-end_column-const"><code>virtual size_t</code> <strong>end_column</strong><code>() const</code></h3>
+<p>Provided for specifying were the columns end in the data.</p>
+<p>Default implementation returns <code>_columns</code>.</p>
+<br>
+<div id="end_line"></div>
+<h3 id="size_t-end_line-const"><code>size_t</code> <strong>end_line</strong><code>() const</code></h3>
+<p>Alias for <strong><a href="#end_row">end_row</a></strong>.</p>
+<br>
+<div id="end_row"></div>
+<h3 id="virtual-size_t-end_row-const"><code>virtual size_t</code> <strong>end_row</strong><code>() const</code></h3>
+<p>Provided for specifying were the rows end in the data.</p>
+<p>Default implementation returns <code>_rows</code>.</p>
+<br>
+<div id="fill_0"></div>
+<h3 id="matrix-fillconst-size_t-size--const-t-value"><code>Matrix&amp;</code> <strong>fill</strong><code>(const size_t &amp;size , const T &amp;value)</code></h3>
+<p>Resizes the matrix to <code>(size ; size)</code> and fills it with <code>value</code>.</p>
+<p><em><strong>WARNING:</strong></em> when T is dynamically allocated, <em><strong>MEMORY IS NOT FREED</strong></em>.</p>
+<br>
+<div id="fill_1"></div>
+<h3 id="matrix-fillconst-size_t-rows--const-size_t-columns--const-t-value"><code>Matrix&amp;</code> <strong>fill</strong><code>(const size_t &amp;rows , const size_t &amp;columns , const T &amp;value)</code></h3>
+<p>Resizes the matrix to <code>(rows ; columns)</code> and fills it with <code>value</code>.</p>
+<p><em><strong>WARNING:</strong></em> when T is dynamically allocated, <em><strong>MEMORY IS NOT FREED</strong></em>.</p>
+<br>
+<div id="for_each_0"></div>
+<h3 id="matrix-templateclass-functionfor_eachfunction-function"><code>Matrix&amp;</code> <code>template&lt;class Function&gt;</code><strong>for_each</strong><code>(Function function)</code></h3>
+<p>Applies <code>function</code> according to <code>std::for_each</code> to all the elements of the matrix.</p>
+<br>
+<div id="for_each_1"></div>
+<h3 id="matrix-templateclass-functionfor_eachfunction-function-const"><code>Matrix&amp;</code> <code>template&lt;class Function&gt;</code><strong>for_each</strong><code>(Function function) const</code></h3>
+<p>Applies <code>function</code> according to <code>std::for_each</code> to all the elements of the matrix.</p>
+<p>This member function is the <code>const</code> equivalent of <strong><a href="#for_each_0">for_each</a></strong>.</p>
+<br>
+<div id="hadamard"></div>
+<h3 id="matrix-hadamardconst-matrix-arg-const"><code>Matrix</code> <strong>hadamard</strong><code>(const Matrix &amp;arg) const</code></h3>
+<p>Computes the Hadamard product (element-wise product) of the matrix and the argument.</p>
+<br>
+<div id="insert"></div>
+<h3 id="matrix-insertconst-size_t-element_index--const-orientation-orientation--const-stdvectort-data"><code>Matrix&amp;</code> <strong>insert</strong><code>(const size_t &amp;element_index , const Orientation &amp;orientation , const std::vector&lt;T&gt; &amp;data)</code></h3>
+<p>Inserts <code>data</code> as either a row or a column (according to <code>orientation</code>) at the position <code>element_index</code>.</p>
+<br>
+<div id="insert_column"></div>
+<h3 id="matrix-insert_columnconst-size_t-index--const-stdvectort-data"><code>Matrix&amp;</code> <strong>insert_column</strong><code>(const size_t &amp;index , const std::vector&lt;T&gt; &amp;data)</code></h3>
+<p>Inserts <code>data</code> as a column at the position <code>element_index</code>.</p>
+<p>Calling this function is equivalent to:</p>
+<pre class=" language-c"><code class="prism ++ language-c">
+    mat<span class="token punctuation">.</span><span class="token function">insert</span><span class="token punctuation">(</span>index <span class="token punctuation">,</span> ste<span class="token punctuation">:</span><span class="token punctuation">:</span>Matrix<span class="token operator">&lt;</span>T<span class="token operator">&gt;</span><span class="token punctuation">:</span><span class="token punctuation">:</span>Orientation<span class="token punctuation">:</span><span class="token punctuation">:</span>COLUMN <span class="token punctuation">,</span> data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+</code></pre>
+<br>
+<div id="insert_line"></div>
+<h3 id="matrix-insert_lineconst-size_t-index--const-stdvectort-data"><code>Matrix&amp;</code> <strong>insert_line</strong><code>(const size_t &amp;index , const std::vector&lt;T&gt; &amp;data)</code></h3>
+<p>Alias for <strong><a href="#insert_row">insert_row</a></strong>.</p>
+<br>
+<div id="insert_row"></div>
+<h3 id="matrix-insert_rowconst-size_t-index--const-stdvectort-data"><code>Matrix&amp;</code> <strong>insert_row</strong><code>(const size_t &amp;index , const std::vector&lt;T&gt; &amp;data)</code></h3>
+<p>Inserts <code>data</code> as a row at the position <code>element_index</code>.</p>
+<p>Calling this function is equivalent to:</p>
+<pre class=" language-c"><code class="prism ++ language-c">
+    mat<span class="token punctuation">.</span><span class="token function">insert</span><span class="token punctuation">(</span>index <span class="token punctuation">,</span> ste<span class="token punctuation">:</span><span class="token punctuation">:</span>Matrix<span class="token operator">&lt;</span>T<span class="token operator">&gt;</span><span class="token punctuation">:</span><span class="token punctuation">:</span>Orientation<span class="token punctuation">:</span><span class="token punctuation">:</span>ROW <span class="token punctuation">,</span> data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+</code></pre>
+<br>
+<div id="inv"></div>
+<h3 id="matrix-inv-const"><code>Matrix</code> <strong>inv</strong><code>() const</code></h3>
+<p>Returns the inverse of the matrix, as computed by <strong><a href="#operator_not">operator!</a></strong>.</p>
+<br>
+<div id="invert"></div>
+<h3 id="matrix-invert"><code>Matrix&amp;</code> <strong>invert</strong><code>()</code></h3>
+<p>Inverts the matrix using <strong><a href="#operator_not">operator!</a></strong>.</p>
+<br>
+<div id="isColumn"></div>
+<h3 id="bool-iscolumn-const"><code>bool</code> <strong>isColumn</strong><code>() const</code></h3>
+<p>Returns <code>true</code> if the matrix is a column, <code>false</code> otherwise.</p>
+<br>
+<div id="isInvertible"></div>
+<h3 id="bool-isinvertible-const"><code>bool</code> <strong>isInvertible</strong><code>() const</code></h3>
+<p>Returns <code>true</code> if the matrix is invertible, <code>false</code> otherwise.</p>
+<br>
+<div id="isLine"></div>
+<h3 id="bool-isline-const"><code>bool</code> <strong>isLine</strong><code>() const</code></h3>
+<p>Alias for <strong><a href="#isRow">isRow</a></strong></p>
+<br>
+<div id="isRow"></div>
+<h3 id="bool-isrow-const"><code>bool</code> <strong>isRow</strong><code>() const</code></h3>
+<p>Returns <code>true</code> if the matrix is a row, <code>false</code> otherwise.</p>
+<br>
+<div id="isSquare"></div>
+<h3 id="bool-issquare-const"><code>bool</code> <strong>isSquare</strong><code>() const</code></h3>
+<p>Returns <code>true</code> if the matrix is square, <code>false</code> otherwise.</p>
+<br>
+<div id="lineAt"></div>
+<h3 id="stdvectort-lineatconst-size_t-index-const"><code>std::vector&lt;T&gt;</code> <strong>lineAt</strong><code>(const size_t &amp;index) const</code></h3>
+<p>Alias for <strong><a href="#rowAt">rowAt</a></strong>.</p>
+<br>
+<div id="lines"></div>
+<h3 id="const-size_t-lines-const"><code>const size_t&amp;</code> <strong>lines</strong><code>() const</code></h3>
+<p>Alias for <strong><a href="#rows">rows</a>.</strong></p>
+<br>
+<div id="max"></div>
+<h3 id="t-maxstdfunctiont-const-stdvectort-criterium--const-stdvectort-datareturn-stdmax_elementdata.begin--data.end-const"><code>T</code> <strong>max</strong><code>(std::function&lt;T (const std::vector&lt;T&gt;&amp;)&gt; criterium = [](const std::vector&lt;T&gt; &amp;data){return *std::max_element(data.begin() , data.end());}) const</code></h3>
+<p>Returns the maximum of the matrix according to the argument.</p>
+<p>Default uses <code>std::max_element</code>.</p>
+<br>
+<div id="mean"></div>
+<h3 id="virtual-t-mean-const"><code>virtual T</code> <strong>mean</strong><code>() const</code></h3>
+<p>Alias for <strong><a href="#average">average</a></strong>.</p>
+<br>
+<div id="min"></div>
+<h3 id="t-minstdfunctiont-const-stdvectort-criterium--const-stdvectort-datareturn-stdmax_elementdata.begin--data.end-const"><code>T</code> <strong>min</strong><code>(std::function&lt;T (const std::vector&lt;T&gt;&amp;)&gt; criterium = [](const std::vector&lt;T&gt; &amp;data){return *std::max_element(data.begin() , data.end());}) const</code></h3>
+<p>Returns the minimum of the matrix according to the argument.</p>
+<p>Default uses `std::min_element</p>
+<br>
+<div id="operator_equal_0"></div>
+<h3 id="matrix-operatorconst-matrix-arg"><code>Matrix&amp;</code> <strong>operator=</strong><code>(const Matrix &amp;arg)</code></h3>
+<p>Assignement operator. Copies the contents of the argument in the matrix.</p>
+<br>
+<div id="operator_equal_1"></div>
+<h3 id="matrix-operatorconst-stdvectorstdvectort-arg"><code>Matrix&amp;</code> <strong>operator=</strong><code>(const std::vector&lt;std::vector&lt;T&gt;&gt; &amp;arg)</code></h3>
+<p>Assignement operator. Copies the contents of the argument in the matrix.</p>
+<p><em><strong>Throws an exception</strong></em> if the size of all the vectors is not identical.</p>
+<br>
+<div id="operator_equal_2"></div>
+<h3 id="matrix-operatorconst-stdvectort-arg"><code>Matrix&amp;</code> <strong>operator=</strong><code>(const std::vector&lt;T&gt; &amp;arg)</code></h3>
+<p>Assignement operator. Copies the contents of the argument in the matrix.</p>
+<p><em><strong>Throws an exception</strong></em> if <code>arg.size() != _data.size()</code>, meaning you cannot resize a matrix with this operator.</p>
+<br>
+<div id="operator_mult_0"></div>
+<h3 id="virtual-matrix-operatorconst-matrix-arg-const"><code>virtual Matrix</code> <strong>operator*</strong><code>(const Matrix &amp;arg) const</code></h3>
+<p>Computes the usual matrix product of the object and the argument.</p>
+<p><em><strong>Throws an exception</strong></em> if the sizes do not match.</p>
+<p>A new object is created, meaning that a deep-copy occurs.</p>
+<br>
+<div id="operator_mult_1"></div>
+<h3 id="matrix-operatorconst-t-arg-const"><code>Matrix</code> <strong>operator*</strong><code>(const T &amp;arg) const</code></h3>
+<p>Computes the product of the matrix and a constant.</p>
+<p>A new object is created, meaning that a deep-copy occurs.</p>
+<br>
+<div id="operator_mult_equal_0"></div>
+<h3 id="matrix-operatorconst-matrix-arg-1"><code>Matrix&amp;</code> <strong>operator*=</strong><code>(const Matrix &amp;arg)</code></h3>
+<p>Computes the usual matrix product of the object and the argument, and returns a reference to it.</p>
+<br>
+<div id="operator_mult_equal_1"></div>
+<h3 id="matrix-operatorconst-t-arg"><code>Matrix&amp;</code> <strong>operator*=</strong><code>(const T &amp;arg)</code></h3>
+<p>Computes the product of the matrix and a constant, and returns a reference to it.</p>
+<br>
+<div id="operator_plus_0"></div>
+<h3 id="matrix-operatorconst-matrix-arg-const"><code>Matrix</code> <strong>operator+</strong><code>(const Matrix &amp;arg) const</code></h3>
+<p>Computes the usual matrix sum of the object and the argument.</p>
+<p>A new object is created, meaning that a deep-copy occurs.</p>
+<p><em><strong>Throws an exception</strong></em> if the size do not match.</p>
+<br>
+<div id="operator_plus_1"></div>
+<h3 id="matrix-operatorconst-t-arg-const-1"><code>Matrix</code> <strong>operator+</strong><code>(const T &amp;arg) const</code></h3>
+<p>Adds the argument to all the elements of the matrix.</p>
+<p>A new object is created, meaning that a deep-copy occurs.</p>
+<br>
+<div id="operator_plus_equal_0"></div>
+<h3 id="matrix-operatorconst-matrix-arg-2"><code>Matrix&amp;</code> <strong>operator+=</strong><code>(const Matrix &amp;arg)</code></h3>
+<p>Computes the usual matrix sum of the object and the argument, and returns a reference to it.</p>
+<p><em><strong>Throws an exception</strong></em> if the size do not match.</p>
+<br>
+<div id="operator_plus_equal_1"></div>
+<h3 id="matrix-operatorconst-t-arg-1"><code>Matrix&amp;</code> <strong>operator+=</strong><code>(const T &amp;arg)</code></h3>
+<p>Adds the argument to all the elements of the matrix, and returns a reference to it.</p>
+<br>
+<div id="operator_minus_0"></div>
+<h3 id="matrix-operator-const-matrix-arg-const"><code>Matrix</code> <strong>operator-</strong><code>(const Matrix &amp;arg) const</code></h3>
+<p>Computes the usual matrix difference of the object and the argument.</p>
+<p>A new object is created, meaning that a deep-copy occurs.</p>
+<p><em><strong>Throws an exception</strong></em> if the size do not match.</p>
+<br>
+<div id="operator_minus_1"></div>
+<h3 id="matrix-operator-const-t-arg-const"><code>Matrix</code> <strong>operator-</strong><code>(const T &amp;arg) const</code></h3>
+<p>Substracts the argument to all the elements of the matrix.</p>
+<p>A new object is created, meaning that a deep-copy occurs.</p>
+<br>
+<div id="operator_minus_2"></div>
+<h3 id="matrix-operator--const"><code>Matrix</code> <strong>operator-</strong><code>() const</code></h3>
+<p>Returns the opposite of the matrix.</p>
+<p>A new object is created, meaning that a deep-copy occurs.</p>
+<br>
+<div id="operator_minus_equal_0"></div>
+<h3 id="matrix-operator-const-matrix-arg"><code>Matrix&amp;</code> <strong>operator-=</strong><code>(const Matrix &amp;arg)</code></h3>
+<p>Computes the usual matrix sum of the object and the argument, and returns a reference to it.</p>
+<p><em><strong>Throws an exception</strong></em> if the size do not match.</p>
+<br>
+<div id="operator_minus_equal_1"></div>
+<h3 id="matrix-operator-const-t-arg"><code>Matrix&amp;</code> <strong>operator-=</strong><code>(const T &amp;arg)</code></h3>
+<p>Substracts the argument to all the elements of the matrix, and returns a reference to it.</p>
+<br>
+<div id="operator_not"></div>
+<h3 id="virtual-matrix-operator-const"><code>virtual Matrix</code> <strong>operator!</strong><code>() const</code></h3>
+<p>Computes the inverse of the matrix and returns it as a new object.</p>
+<p>To fasten calculations, pre-computed formulas are used for matrices up to <code>(4 ; 4)</code>.</p>
+<p><em>If your matrices have specific properties that simplify the determination of the inverse, it is recommended to override this function in a subclass.</em></p>
+<p><strong>Explicitely computing an inverse is HEAVY. It is recommended to avoid such computations for matrices bigger than <code>(10 ; 10)</code>.</strong></p>
+<br>
+<div id="operator_power"></div>
+<h3 id="virtual-matrix-operatorconst-long-long-int-arg-const"><code>virtual Matrix</code> <strong>operator^</strong><code>(const long long int &amp;arg) const</code></h3>
+<p>Power operator. Returns the matrix to the specified power.</p>
+<p>A new object is created, meaning that a deep-copy occurs.</p>
+<p><em><strong>Throws an exception</strong></em> if the matrix is not square.<br>
+<em><strong>Throws an exception</strong></em> if the matrix is not invertible and the power is negative.</p>
+<br>
+<div id="operator_power_equal"></div>
+<h3 id="virtual-matrix-operatorconst-long-long-int-arg"><code>virtual Matrix&amp;</code> <strong>operator^=</strong><code>(const long long int &amp;arg)</code></h3>
+<p>Power operator. Returns the matrix to the specified power.</p>
+<p><em><strong>Throws an exception</strong></em> if the matrix is not square.<br>
+<em><strong>Throws an exception</strong></em> if the matrix is not invertible and the power is negative.</p>
+<br>
+<div id="operator_equality"></div>
+<h3 id="virtual-bool-operatorconst-matrix-arg-const"><code>virtual bool</code> <strong>operator==</strong><code>(const Matrix &amp;arg) const</code></h3>
+<p>Equality operator.</p>
+<p>Returns <code>true</code> if the argument and the matrix are of the same size and hold the same elements at the same positions.</p>
+<p><em>You may override this function if you need comparison by adresses.</em></p>
+<br>
+<div id="operator_difference"></div>
+<h3 id="virtual-bool-operatorconst-matrix-arg-const-1"><code>virtual bool</code> <strong>operator!=</strong><code>(const Matrix &amp;arg) const</code></h3>
+<p>Difference operator.</p>
+<p>Returns the opposite of the result obtained by <strong><a href="#operator_equality">operator==</a></strong>.</p>
+<br>
+<div id="print"></div>
+<h3 id="virtual-stdostream-printstdostream-outstream--stdcout-const"><code>virtual std::ostream&amp;</code> <strong>print</strong><code>(std::ostream &amp;outstream = std::cout) const</code></h3>
+<p>Prints the matrix to the speficied <code>std::outstream</code>, and returns a reference to the stream.</p>
+<p><em>You may override this function, should you prefer another format.</em></p>
+<br>
+<div id="print_size"></div>
+<h3 id="virtual-stdostream-print_sizestdostream-outstream--stdcout-const"><code>virtual std::ostream&amp;</code> <strong>print_size</strong><code>(std::ostream &amp;outstream = std::cout) const</code></h3>
+<p>Prints the size of matrix to the speficied <code>std::outstream</code>, and returns a reference to the stream.</p>
+<p><em>You may override this function, should you prefer another format.</em></p>
+<br>
+<div id="push_back"></div>
+<h3 id="matrix-push_backconst-stdvectort-data--const-orientation-orientation"><code>Matrix&amp;</code> <strong>push_back</strong><code>(const std::vector&lt;T&gt; &amp;data , const Orientation &amp;orientation)</code></h3>
+<p>Alias for <strong><a href="#add">add</a>.</strong></p>
+<br>
+<div id="push_back_column"></div>
+<h3 id="matrix-push_back_columnconst-stdvectort-data"><code>Matrix&amp;</code> <strong>push_back_column</strong><code>(const std::vector&lt;T&gt; &amp;data)</code></h3>
+<p>Alias for <strong><a href="#add_column">add_column</a>.</strong></p>
+<br>
+<div id="push_back_line"></div>
+<h3 id="matrix-push_back_lineconst-stdvectort-data"><code>Matrix&amp;</code> <strong>push_back_line</strong><code>(const std::vector&lt;T&gt; &amp;data)</code></h3>
+<p>Alias for <strong><a href="#add_line">add_line</a>.</strong></p>
+<br>
+<div id="push_back_row"></div>
+<h3 id="matrix-push_back_rowconst-stdvectort-data"><code>Matrix&amp;</code> <strong>push_back_row</strong><code>(const std::vector&lt;T&gt; &amp;data)</code></h3>
+<p>Alias for <strong><a href="#add_row">add_row</a>.</strong></p>
+<br>
+<div id="remove"></div>
+<h3 id="matrix-removeconst-size_t-element_index--const-orientation-orientation"><code>Matrix&amp;</code> <strong>remove</strong><code>(const size_t &amp;element_index , const Orientation &amp;orientation)</code></h3>
+<p>Removes the row or column specified in argument, and returns a reference to the matrix.</p>
+<p><em><strong>Throws an exception</strong></em> if the index is outside the matrix.</p>
+<br>
+<div id="remove_column"></div>
+<h3 id="matrix-remove_columnconst-size_t-index"><code>Matrix&amp;</code> <strong>remove_column</strong><code>(const size_t &amp;index)</code></h3>
+<p>Removes the column specified in argument, and returns a reference to the matrix.</p>
+<p><em><strong>Throws an exception</strong></em> if the index is outside the matrix.</p>
+<br>
+<div id="remove_line"></div>
+<h3 id="matrix-remove_lineconst-size_t-index"><code>Matrix&amp;</code> <strong>remove_line</strong><code>(const size_t &amp;index)</code></h3>
+<p>Alias for <strong><a href="#remove_row">remove_row</a></strong>.</p>
+<br>
+<div id="remove_row"></div>
+<h3 id="matrix-remove_rowconst-size_t-index"><code>Matrix&amp;</code> <strong>remove_row</strong><code>(const size_t &amp;index)</code></h3>
+<p>Removes the row specified in argument, and returns a reference to the matrix.</p>
+<p><em><strong>Throws an exception</strong></em> if the index is outside the matrix.</p>
+<br>
+<div id="replace_0"></div>
+<h3 id="matrix-replaceconst-size_t-row--const-unsigned-column--const-t-value"><code>Matrix&amp;</code> <strong>replace</strong><code>(const size_t &amp;row , const unsigned &amp;column , const T &amp;value)</code></h3>
+<p>Replaces the element at <code>(row ; column)</code> by <code>value</code> and returns a reference to the matrix.</p>
+<p><em><strong>Throws an exception</strong></em> if the position is outside the matrix.</p>
+<br>
+<div id="replace_1"></div>
+<h3 id="matrix-replaceconst-size_t-index--const-t-value"><code>Matrix&amp;</code> <strong>replace</strong><code>(const size_t &amp;index , const T &amp;value)</code></h3>
+<p>Replaces the element at the linear index in argument by <code>value</code> and returns a reference to the matrix.</p>
+<p><em><strong>Throws an exception</strong></em> if the position is outside the matrix.</p>
+<br>
+<div id="replace_2"></div>
+<h3 id="matrix-replaceconst-size_t-value_index-const-orientation-orientation--const-stdvectort-value"><code>Matrix&amp;</code> <strong>replace</strong><code>(const size_t &amp;value_index ,const Orientation &amp;orientation , const std::vector&lt;T&gt; &amp;value)</code></h3>
+<p>Replaces the row or column at <code>value_index</code> by <code>value</code>, and returns a reference to the matrix.</p>
+<p><em><strong>Throws an exception</strong></em> if the position is outside the matrix.</p>
+<p><em><strong>Throws an exception</strong></em> if the size of <code>value</code> does not match the matrix’ one.</p>
+<br>
+<div id="replace_3"></div>
+<h3 id="matrix-replaceconst-size_t-row_begin-const-size_t-row_end-const-size_t-column_begin-const-size_t-column_endconst-t-value"><code>Matrix&amp;</code> <strong>replace</strong><code>(const size_t &amp;row_begin, const size_t &amp;row_end ,const size_t &amp;column_begin, const size_t &amp;column_end,const T &amp;value)</code></h3>
+<p>Replaces the contents in the range specified by <code>value</code> and returns a reference to the matrix.</p>
+<p><em><strong>Throws an exception</strong></em> if one of the positions is outside the matrix.</p>
+<br>
+<div id="replace_column"></div>
+<h3 id="matrix-replace_columnconst-size_t-value_index--const-stdvectort-value"><code>Matrix&amp;</code> <strong>replace_column</strong><code>(const size_t &amp;value_index , const std::vector&lt;T&gt; &amp;value)</code></h3>
+<p>Replaces the column at <code>value_index</code> by <code>value</code> and returns a reference to the matrix.</p>
+<p><em><strong>Throws an exception</strong></em> if the position is outside the matrix.</p>
+<p><em><strong>Throws an exception</strong></em> if the size of <code>value</code> does not match the matrix’ one.</p>
+<br>
+<div id="replace_line"></div>
+<h3 id="matrix-replace_lineconst-size_t-value_index--const-stdvectort-value"><code>Matrix&amp;</code> <strong>replace_line</strong><code>(const size_t &amp;value_index , const std::vector&lt;T&gt; &amp;value)</code></h3>
+<p>Alias for <strong><a href="#replace_row">replace_row</a></strong>.</p>
+<br>
+<div id="replace_row"></div>
+<h3 id="matrix-replace_rowconst-size_t-value_index--const-stdvectort-value"><code>Matrix&amp;</code> <strong>replace_row</strong><code>(const size_t &amp;value_index , const std::vector&lt;T&gt; &amp;value)</code></h3>
+<p>Replaces the row at <code>value_index</code> by <code>value</code> and returns a reference to the matrix.</p>
+<p><em><strong>Throws an exception</strong></em> if the position is outside the matrix.</p>
+<p><em><strong>Throws an exception</strong></em> if the size of <code>value</code> does not match the matrix’ one.</p>
+<br>
+<div id="reshape"></div>
+<h3 id="matrix-reshapeconst-size_t-rows--const-size_t-columns"><code>Matrix&amp;</code> <strong>reshape</strong><code>(const size_t &amp;rows , const size_t &amp;columns)</code></h3>
+<p>Changes the shape of the matrix to <code>(rows ; columns)</code>.</p>
+<p><em><strong>Throws an exception</strong></em> if the number of elements is different.</p>
+<br>
+<div id="rowAt"></div>
+<h3 id="stdvectort-rowatconst-size_t-index-const"><code>std::vector&lt;T&gt;</code> <strong>rowAt</strong><code>(const size_t &amp;index) const</code></h3>
+<p>Extracts a row of the matrix and returns it as a <code>std::vector&lt;T&gt;</code>.</p>
+<p><em><strong>Throws an exception</strong></em> if the position is outside the matrix.</p>
+<br>
+<div id="rows"></div>
+<h3 id="const-size_t-rows-const"><code>const size_t&amp;</code> <strong>rows</strong><code>() const</code></h3>
+<p>Returns a reference to the total number of rows in the matrix.</p>
+<br>
+<div id="self_transpose"></div>
+<h3 id="matrix-self_transpose"><code>Matrix&amp;</code> <strong>self_transpose</strong><code>()</code></h3>
+<p><em><strong>This function is still under developpment.</strong></em></p>
+<p>Transposes the matrix in place and returns a reference to it.</p>
+<br>
+<div id="setDevice"></div>
+<h3 id="matrix-setdeviceconst-exe-device"><code>Matrix&amp;</code> <strong>setDevice</strong><code>(const EXE &amp;device)</code></h3>
+<p>Changes the execution policy for the computations involving the matrix to <code>device</code>.</p>
+<br>
+<div id="size"></div>
+<h3 id="const-stdvectorsize_t-size-const"><code>const std::vector&lt;size_t&gt;</code> <strong>size</strong><code>() const</code></h3>
+<p>Returns a <code>std::vector&lt;size_t&gt;</code> holding <code>{_rows , _columns}</code>.</p>
+<br>
+<div id="sum"></div>
+<h3 id="virtual-t-sum-const"><code>virtual T</code> <strong>sum</strong><code>() const</code></h3>
+<p>Computes the sum of all the elements of the matrix.</p>
+<br>
+<div id="swap"></div>
+<h3 id="matrix-swapconst-size_t-element_1--const-size_t-element_2--const-orientation-orientation"><code>Matrix&amp;</code> <strong>swap</strong><code>(const size_t &amp;element_1 , const size_t &amp;element_2 , const Orientation &amp;orientation)</code></h3>
+<p>Swaps two rows or two columns at the specified indexes.</p>
+<p><em><strong>Throws an exception</strong></em> if one of the positions is outside the matrix.</p>
+<br>
+<div id="swap_columns"></div>
+<h3 id="matrix-swap_columnsconst-size_t-element_1--const-size_t-element_2"><code>Matrix&amp;</code> <strong>swap_columns</strong><code>(const size_t &amp;element_1 , const size_t &amp;element_2)</code></h3>
+<p>Swaps the two columns at the positions in argument.</p>
+<p><em><strong>Throws an exception</strong></em> if one of the positions is outside the matrix.</p>
+<br>
+<div id="swap_lines"></div>
+<h3 id="matrix-swap_linesconst-size_t-element_1--const-size_t-element_2"><code>Matrix&amp;</code> <strong>swap_lines</strong><code>(const size_t &amp;element_1 , const size_t &amp;element_2)</code></h3>
+<p>Alias for <strong><a href="#swap_rows">swap_rows</a></strong>.</p>
+<br>
+<div id="swap_rows"></div>
+<h3 id="matrix-swap_rowsconst-size_t-element_1--const-size_t-element_2"><code>Matrix&amp;</code> <strong>swap_rows</strong><code>(const size_t &amp;element_1 , const size_t &amp;element_2)</code></h3>
+<p>Swaps the two rows at the positions in argument.</p>
+<p><em><strong>Throws an exception</strong></em> if one of the positions is outside the matrix.</p>
+<br>
+<div id="toVector1D_0"></div>
+<h3 id="const-stdvectort-tovector1d-const"><code>const std::vector&lt;T&gt;&amp;</code> <strong>toVector1D</strong><code>() const</code></h3>
+<p>Returns a reference to the vector holding the data of the matrix.</p>
+<br>
+<div id="toVector1D_1"></div>
+<h3 id="stdvectort-tovector1d"><code>std::vector&lt;T&gt;&amp;</code> <strong>toVector1D</strong><code>()</code></h3>
+<p>Returns a reference to the vector holding the data of the matrix.</p>
+<p><em><strong>It is possible to modify the matrix through this method.</strong></em></p>
+<br>
+<div id="toVector2D"></div>
+<h3 id="virtual-stdvectorstdvectort-tovector2d-const"><code>virtual std::vector&lt;std::vector&lt;T&gt;&gt;</code> <strong>toVector2D</strong><code>() const</code></h3>
+<p>Constructs a <code>std::vector&lt;std::vector&lt;T&gt;&gt;</code> from the matrix data.</p>
+<p><strong>Data is ordered row by row.</strong></p>
+<p><em>This member is virtual, allowing you to change the export format.</em></p>
+<br>
+<div id="trace"></div>
+<h3 id="t-trace-const"><code>T</code> <strong>trace</strong><code>() const</code></h3>
+<p>Computes the trace of the matrix.</p>
+<br>
+<div id="transform"></div>
+<h3 id="matrix-templateclass-function-transformfunction-function"><code>Matrix&amp;</code> <code>template&lt;class Function&gt;</code> <strong>transform</strong><code>(Function function)</code></h3>
+<p>Applies <code>function</code> according to <code>std::transform</code> to all the elements of the matrix.</p>
+<br>
+<div id="transpose"></div>
+<h3 id="matrix-transpose-const"><code>Matrix</code> <strong>transpose</strong><code>() const</code></h3>
+<p>Returns the transpose of the matrix.</p>
+<br>
+<div id="transpose_in_place"></div>
+<h3 id="matrix-transpose_in_place"><code>Matrix&amp;</code> <strong>transpose_in_place</strong><code>()</code></h3>
+<p>Alias for <strong><a href="#self_transpose">self_transpose</a></strong>.</p>
+<br>
+<br>
+<h2 id="static-member-functions-documentation">Static member functions documentation</h2>
+<br>
+<div id="eye"></div>
+<h3 id="matrix-eye-const-size_t-size--const-exe-device--execpu"><code>Matrix</code> <strong>eye</strong> <code>(const size_t &amp;size , const EXE &amp;device = EXE::CPU)</code></h3>
+<p>Returns the identity matrix of dimensions <code>(size ; size)</code>.</p>
+<p>Elements of the diagonal are <code>T(1)</code>.</p>
+<br>
+<div id="ones_0"></div>
+<h3 id="matrix-ones-const-size_t-size--const-exe-device--execpu"><code>Matrix</code> <strong>ones</strong> <code>(const size_t &amp;size , const EXE &amp;device = EXE::CPU)</code></h3>
+<p>Returns a square matrix of dimensions <code>(size ; size)</code> filled with <code>T(1)</code>.</p>
+<br>
+<div id="ones_1"></div>
+<h3 id="matrix-ones-const-size_t-rows--const-size_t-columns--const-exe-device--execpu"><code>Matrix</code> <strong>ones</strong> <code>(const size_t &amp;rows , const size_t &amp;columns , const EXE &amp;device = EXE::CPU)</code></h3>
+<p>Returns a matrix of dimensions <code>(rows ; columns)</code> filled with <code>T(1)</code>.</p>
+<br>
+<div id="uniform_0"></div>
+<h3 id="matrix-uniform-const-size_t-size--const-exe-device--execpu"><code>Matrix</code> <strong>uniform</strong> <code>(const size_t &amp;size , const EXE &amp;device = EXE::CPU)</code></h3>
+<p>Returns a square matrix of dimensions <code>(size ; size)</code> filled with uniformly distributed numbers (according to <code>std::uniform_real_distribution&lt;T&gt;</code>).</p>
+<br>
+<div id="uniform_1"></div>
+<h3 id="matrix-uniform-const-size_t-rows--const-size_t-columns--const-exe-device--execpu"><code>Matrix</code> <strong>uniform</strong> <code>(const size_t &amp;rows , const size_t &amp;columns , const EXE &amp;device = EXE::CPU)</code></h3>
+<p>Returns a matrix of dimensions <code>(rows ; columns)</code> filled with uniformly distributed numbers (according to <code>std::uniform_real_distribution&lt;T&gt;</code>).</p>
+<br>
+<div id="uniform_int_0"></div>
+<h3 id="matrix-uniform_int-const-size_t-size--const-exe-device--execpu"><code>Matrix</code> <strong>uniform_int</strong> <code>(const size_t &amp;size , const EXE &amp;device = EXE::CPU)</code></h3>
+<p>Returns a square matrix of dimensions <code>(size ; size)</code> filled with uniformly distributed numbers (according to <code>std::uniform_int&lt;T&gt;</code>).</p>
+<br>
+<div id="uniform_int_1"></div>
+<h3 id="matrix-uniform_int-const-size_t-rows--const-size_t-columns--const-exe-device--execpu"><code>Matrix</code> <strong>uniform_int</strong> <code>(const size_t &amp;rows , const size_t &amp;columns , const EXE &amp;device = EXE::CPU)</code></h3>
+<p>Returns a matrix of dimensions <code>(rows ; columns)</code> filled with uniformly distributed numbers (according to <code>std::uniform_int&lt;T&gt;</code>).</p>
+<br>
+<div id="rand_0"></div>
+<h3 id="matrix-rand-const-size_t-size--const-exe-device--execpu"><code>Matrix</code> <strong>rand</strong> <code>(const size_t &amp;size , const EXE &amp;device = EXE::CPU)</code></h3>
+<p>Alias for <strong><a href="#uniform_0">uniform</a></strong>.</p>
+<br>
+<div id="rand_1"></div>
+<h3 id="matrix-rand-const-size_t-rows--const-size_t-columns--const-exe-device--execpu"><code>Matrix</code> <strong>rand</strong> <code>(const size_t &amp;rows , const size_t &amp;columns , const EXE &amp;device = EXE::CPU)</code></h3>
+<p>Alias for <strong><a href="#uniform_1">uniform</a></strong>.</p>
+<br>
+<div id="randn_0"></div>
+<h3 id="matrix-randn-const-size_t-size--const-t-mean--t0--const-t-standard_deviation--t1.-const-exe-device--execpu"><code>Matrix</code> <strong>randn</strong> <code>(const size_t &amp;size , const T &amp;mean = T(0) , const T &amp;standard_deviation = T(1.), const EXE &amp;device = EXE::CPU)</code></h3>
+<p>Returns a square matrix of dimensions <code>(size ; size)</code> filled with normally distributed numbers (according to <code>std::normal_distribution&lt;T&gt;</code>) with the parameters in argument.</p>
+<br>
+<div id="randn_1"></div>
+<h3 id="matrix-randn-const-size_t-rows--const-size_t-columns--const-t-mean--t0--const-t-standard_deviation--t1-const-exe-device--execpu"><code>Matrix</code> <strong>randn</strong> <code>(const size_t &amp;rows , const size_t &amp;columns , const T &amp;mean = T(0) , const T &amp;standard_deviation = T(1) const EXE &amp;device = EXE::CPU)</code></h3>
+<p>Returns a matrix of dimensions <code>(rows ; columns)</code> filled with normally distributed numbers (according to <code>std::normal_distribution&lt;T&gt;</code>) with the parameters in argument.</p>
+<br>
+<div id="zeroes_0"></div>
+<h3 id="matrix-zeroes-const-size_t-size--const-exe-device--execpu"><code>Matrix</code> <strong>zeroes</strong> <code>(const size_t &amp;size , const EXE &amp;device = EXE::CPU)</code></h3>
+<p>Returns a square matrix of dimensions <code>(size ; size)</code> filled with <code>T(0)</code>.</p>
+<br>
+<div id="zeroes_1"></div>
+<h3 id="matrix-zeroes-const-size_t-rows--const-size_t-columns--const-exe-device--execpu"><code>Matrix</code> <strong>zeroes</strong> <code>(const size_t &amp;rows , const size_t &amp;columns , const EXE &amp;device = EXE::CPU)</code></h3>
+<p>Returns a matrix of dimensions <code>(rows ; columns)</code> filled with <code>T(0)</code>.</p>
+<br>
+<br>
+<h2 id="non-member-functions-documentation">Non-member functions documentation</h2>
+<br>
+<div id="element_wise_nm"></div>
+<h3 id="matrix-templateclass-t-element_wiseconst-matrixt-arg1--const-matrixt-arg2"><code>Matrix</code> <code>template&lt;class T&gt;</code> <strong>element_wise</strong><code>(const Matrix&lt;T&gt; &amp;arg1 , const Matrix&lt;T&gt; &amp;arg2)</code></h3>
+<p>Alias for <strong><a href="#hadamard_nm">hadamard</a></strong>.</p>
+<p>Computes the Hadamard product (element-wise product) of the two matrices.</p>
+<br>
+<div id="for_each_nm_0"></div>
+<h3 id="matrix-templateclass-t--class-function-for_eachmatrixt-matrix--function-function"><code>Matrix&amp;</code> <code>template&lt;class T , class Function&gt;</code> <strong>for_each</strong><code>(Matrix&lt;T&gt; &amp;matrix , Function function)</code></h3>
+<p>Applies <code>function</code> according to <code>std::for_each</code> to all the elements of the matrix in argument.</p>
+<br>
+<div id="for_each_nm_1"></div>
+<h3 id="const-matrix-templateclass-t--class-function-for_eachconst-matrixt-matrix--function-function"><code>const Matrix&amp;</code> <code>template&lt;class T , class Function&gt;</code> <strong>for_each</strong><code>(const Matrix&lt;T&gt; &amp;matrix , Function function)</code></h3>
+<p><code>const</code> equivalent of <strong><a href="#for_each_nm_0">for_each</a></strong>.</p>
+<br>
+<div id="hadamard_nm"></div>
+<h3 id="matrix-templateclass-t-hadamardconst-matrixt-arg1--const-matrixt-arg2"><code>Matrix</code> <code>template&lt;class T&gt;</code> <strong>hadamard</strong><code>(const Matrix&lt;T&gt; &amp;arg1 , const Matrix&lt;T&gt; &amp;arg2)</code></h3>
+<p>Computes the Hadamard product (element-wise product) of the two matrices.</p>
+<br>
+<div id="invert_nm"></div>
+<h3 id="matrix-templateclass-t-invertmatrixt-matrix"><code>Matrix&amp;</code> <code>template&lt;class T&gt;</code> <strong>invert</strong><code>(Matrix&lt;T&gt; &amp;matrix)</code></h3>
+<p>Inverts the matrix in argument and returns a reference to it.</p>
+<br>
+<div id="operator_print_mat_nm"></div>
+<h3 id="stdostream-templateclass-t-operatorstdostream-outstream--const-matrixt-arg"><code>std::ostream&amp;</code> <code>template&lt;class T&gt;</code> <strong>operator&lt;&lt;</strong><code>(std::ostream &amp;outstream , const Matrix&lt;T&gt; &amp;arg)</code></h3>
+<p>Prints a matrix to a <code>std::ostream</code>, and returns a reference to the stream.</p>
+<br>
+<div id="operator_print_EXE_nm"></div>
+<h3 id="stdostream-operatorstdostream-outstream--const-exe-a"><code>std::ostream&amp;</code> <strong>operator&lt;&lt;</strong><code>(std::ostream &amp;outstream , const EXE &amp;a)</code></h3>
+<p>Prints a <code>ste::EXE</code> to a <code>std::ostream</code>, and returns a reference to the stream.</p>
+<br>
+<div id="operator_binary_or_EXE_nm"></div>
+<h3 id="exe-operatorconst-exe-a--const-exe-b"><code>EXE</code> <strong>operator|</strong><code>(const EXE &amp;a , const EXE &amp;b)</code></h3>
+<p>Binary OR for <code>ste::EXE</code>.</p>
+<p>Returns <code>EXE::GPU</code> if <code>a == EXE::GPU</code> or <code>b == EXE::GPU</code>, or <code>EXE::CPU</code> otherwise.</p>
+<br>
+<div id="operator_logical_or_EXE_nm"></div>
+<h3 id="bool-operatorconst-exe-a--const-exe-b"><code>bool</code> <strong>operator||</strong><code>(const EXE &amp;a , const EXE &amp;b)</code></h3>
+<p>Logical OR for <code>ste::EXE</code>.</p>
+<p>Returns <code>true</code> if <code>a == EXE::GPU</code> or <code>b == EXE::GPU</code>.</p>
+<br>
+<div id="operator_binary_and_EXE_nm"></div>
+<h3 id="bool-operatorconst-exe-a--const-exe-b-1"><code>bool</code> <strong>operator&amp;</strong><code>(const EXE &amp;a , const EXE &amp;b)</code></h3>
+<p>Binary AND for <code>ste::EXE</code>.</p>
+<p>Returns <code>EXE::GPU</code> if <code>a == EXE::GPU</code> and <code>b == EXE::GPU</code>, or <code>EXE::CPU</code> otherwise.</p>
+<br>
+<div id="operator_logical_and_EXE_nm"></div>
+<h3 id="exe-operatorconst-exe-a--const-exe-b-1"><code>EXE</code> <strong>operator&amp;&amp;</strong><code>(const EXE &amp;a , const EXE &amp;b)</code></h3>
+<p>Logical AND for <code>ste::EXE</code>.</p>
+<p>Returns <code>true</code> if <code>a == EXE::GPU</code> and <code>b == EXE::GPU</code>, or <code>false</code> otherwise.</p>
+<br>
+<div id="transform_nm"></div>
+<h3 id="matrix-templateclass-t--class-function-transformmatrixt-matrix--function-function"><code>Matrix&amp;</code> <code>template&lt;class T , class Function&gt;</code> <strong>transform</strong><code>(Matrix&lt;T&gt; &amp;matrix , Function function)</code></h3>
+<p>Applies <code>function</code> to all the elements of <code>matrix</code>, according to <code>std::transform</code>.</p>
+<h2 id="non-member-types-documentation">Non-member Types Documentation</h2>
+<br>
+<div id="EXE"></div>
+<h3 id="enum-class-steexe"><code>enum class</code> ste::EXE</h3>
+<p><code>enum class</code> used to specify the execution policy for the calculations involving a ste::Matrix.</p>
+
+<table>
+<thead>
+<tr>
+<th>Constant</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>EXE::CPU</code></td>
+<td>0</td>
+<td>All calculations involving this matrix will use the CPU, except the ones involving GPU matrices with <code>EXE::GPU</code> for <code>_device</code>.</td>
+</tr>
+<tr>
+<td><code>EXE::C</code></td>
+<td>EXE::CPU</td>
+<td>Alias for EXE::CPU.</td>
+</tr>
+<tr>
+<td><code>EXE::HOST</code></td>
+<td>EXE::CPU</td>
+<td>Alias for EXE::CPU.</td>
+</tr>
+<tr>
+<td><code>EXE::GPU</code></td>
+<td>1</td>
+<td>All calculations involving this matrix will use the GPU. <strong>This member only exists if</strong> <code>STE_MATRIX_ALLOW_GPU</code> <strong>has been</strong> <code>#define</code><strong>d.</strong></td>
+</tr>
+<tr>
+<td><code>EXE::G</code></td>
+<td>EXE::GPU</td>
+<td>Alias for EXE::GPU.</td>
+</tr>
+<tr>
+<td><code>EXE::DEVICE</code></td>
+<td>EXE::GPU</td>
+<td>Alias for EXE::GPU.</td>
+</tr>
+</tbody>
+</table><br>
+<div id="FMatrix"></div>
+<h3 id="typedef-matrixfloat-fmatrix"><code>typedef Matrix&lt;float&gt;</code> <strong>FMatrix</strong></h3>
+<p>Shortcut for <code>ste::Matrix&lt;float&gt;</code>.</p>
+<br>
+<div id="DMatrix"></div>
+<h3 id="typedef-matrixdouble-dmatrix"><code>typedef Matrix&lt;double&gt;</code> <strong>DMatrix</strong></h3>
+<p>Shortcut for <code>ste::Matrix&lt;double&gt;</code>.</p>
+<br>
+<div id="LDMatrix"></div>
+<h3 id="typedef-matrixlong-double-ldmatrix"><code>typedef Matrix&lt;long double&gt;</code> <strong>LDMatrix</strong></h3>
+<p>Shortcut for <code>ste::Matrix&lt;long double&gt;</code>.</p>
+<br>
+<div id="IMatrix"></div>
+<h3 id="typedef-matrixint-imatrix"><code>typedef Matrix&lt;int&gt;</code> <strong>IMatrix</strong></h3>
+<p>Shortcut for <code>ste::Matrix&lt;int&gt;</code>.</p>
+<br>
+<div id="LIMatrix"></div>
+<h3 id="typedef-matrixlong-int-limatrix"><code>typedef Matrix&lt;long int&gt;</code> <strong>LIMatrix</strong></h3>
+<p>Shortcut for <code>ste::Matrix&lt;long int&gt;</code>.</p>
+<br>
+<div id="LLIMatrix"></div>
+<h3 id="typedef-matrixlong-long-int-llimatrix"><code>typedef Matrix&lt;long long int&gt;</code> <strong>LLIMatrix</strong></h3>
+<p>Shortcut for <code>ste::Matrix&lt;long long int&gt;</code>.</p>
+<br>
+<div id="UIMatrix"></div>
+<h3 id="typedef-matrixunsigned-int-uimatrix"><code>typedef Matrix&lt;unsigned int&gt;</code> <strong>UIMatrix</strong></h3>
+<p>Shortcut for <code>ste::Matrix&lt;unsigned int&gt;</code>.</p>
+<br>
+<div id="ULMatrix"></div>
+<h3 id="typedef-matrixunsigned-long-ulmatrix"><code>typedef Matrix&lt;unsigned long&gt;</code> <strong>ULMatrix</strong></h3>
+<p>Shortcut for <code>ste::Matrix&lt;unsigned long&gt;</code>.</p>
+<br>
+<div id="ULLMatrix"></div>
+<h3 id="typedef-matrixunsigned-long-long-ullmatrix"><code>typedef Matrix&lt;unsigned long long&gt;</code> <strong>ULLMatrix</strong></h3>
+<p>Shortcut for <code>ste::Matrix&lt;unsigned long long&gt;</code>.</p>
+<br>
+<div id="CMatrix"></div>
+<h3 id="typedef-matrixchar-cmatrix"><code>typedef Matrix&lt;char&gt;</code> <strong>CMatrix</strong></h3>
+<p>Shortcut for <code>ste::Matrix&lt;char&gt;</code>.</p>
+<br>
+<div id="UCMatrix"></div>
+<h3 id="typedef-matrixunsigned-char-ucmatrix"><code>typedef Matrix&lt;unsigned char&gt;</code> <strong>UCMatrix</strong></h3>
+<p>Shortcut for <code>ste::Matrix&lt;unsigned char&gt;</code>.</p>
+<br>
+<br>
+<h2 id="macro-documentation">Macro Documentation</h2>
+<h3 id="ste_matrix_allow_gpu">STE_MATRIX_ALLOW_GPU</h3>
+<p>Enables the possibility to use the GPU for calculations.</p>
+<p>When <code>STE_MATRIX_ALLOW_GPU</code> is defined, <strong><a href="#EXE"><code>ste::EXE</code></a></strong> gains the member <code>ste::EXE::GPU</code> and its aliases, allowing you to choose a device for the calculations.</p>
+<p>See paragraph <strong><a href="#using-a-gpu">Using a GPU</a></strong> for more information.</p>
+<br>
+<br>
+<br>
+<h1 id="license">License</h1>
+<p>This class is provided with the <strong>GNU General Public License v3.0</strong>.</p>
+<p>See <a href="https://github.com/Erellu/ste-Matrix/blob/master/LICENSE">ste-Matrix/LICENSE</a> for more information.</p>
+<h1 id="authors">Authors</h1>
+<p><em><strong>Developer / Tester:</strong></em> DUHAMEL Erwan (<a href="mailto:erwanduhamel@outlook.com">erwanduhamel@outlook.com</a>)</p>
+<p><em><strong>Tester:</strong></em> SOUDIER Jean (<a href="mailto:jean.soudier@insa-strasbourg.fr">jean.soudier@insa-strasbourg.fr</a>)</p>
+</div>
+</body>
+
+</html>

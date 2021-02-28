@@ -1,0 +1,169 @@
+***********************************************************************************************************
+*******                                                                                             *******
+*******                                         VER 1.0.0                                           *******
+*******                                                                                             *******
+***********************************************************************************************************
+
+
+Ver 1.0.0
+
+• Initial release.
+
+___________________________________________________________________________________
+
+
+Ver 1.0.0.a
+
+• Greatly improved at() performances when using linear indexing.
+
+
+___________________________________________________________________________________
+
+Ver 1.0.0.b
+
+
+• Added documentation.
+
+
+___________________________________________________________________________________
+
+
+Ver 1.0.0.c
+
+• Determinant now computes up to 10 times faster.
+• replace(...), insert(...), push_back(...), remove(...), swap(...) now return a reference to the object.
+
+___________________________________________________________________________________
+
+Ver 1.0.0.d
+
+• Updated operator*= and operator ^=.
+
+___________________________________________________________________________________
+
+
+Ver 1.1.0.a
+
+• Pre-release of ver 1.1.0.b. See changes below.
+
+___________________________________________________________________________________
+
+Ver 1.1.0.b
+
+                                **MAJOR RELEASE**
+
+Major bug fixes, and functionnalities added.
+
+
+• Added operator<<(...), a function that prints the matrix to any std::ostream.
+• Added cut(...), a function that removes a list a rows / columns.
+• Fixed fill().
+
+
+• toVector1D() now returns a reference to the data, meaning it is possible to modify it that way.
+• Changed sum().
+• Changed trace().
+• Changed zeroes(...) and ones(...).
+• Changed cofactormatrix().
+• Changed transform(...) , for_each(...) return type. They now return a reference to the object.
+• fill() now also returns a reference to the object.
+• Modified some function signatures. fill() , add(...), remove(...), insert(...), columnAt(...), average(...) are not virtual anymore.
+
+
+• Some variables / arguments had their names modified.
+• Swapped mean() and average() definitions to match the documentation.
+
+• Modified README.md layout.
+
+
+***********************************************************************************************************
+*******                                                                                             *******
+*******                                         VER 2.0.0                                           *******
+*******                                                                                             *******
+***********************************************************************************************************
+
+
+                                             "The GPU Update"
+
+___________________________________________________________________________________
+
+Ver 2.0.0
+
+
+                                **MAJOR RELEASE**
+
+• Fixed cut(begin , end , orientation).
+• `swap` second argument is now passed by reference.
+• `inv` is now `const`.
+
+
+• Added _device attribute, EXE enum and setDevice member function that allows the users to speficify on what device (CPU or GPU) the computation involving this matrix should be done.
+
+• Added criterium argument to `max()` and `min()`, enabling the user to specify how the max and min should be found. Default (no arguments) returns `*std::max_element` and `*std::min_element` respectively.
+• Added `operator-()`, enabling the use of -x (where x is a ste::Matrix)
+• Added `operator=(const std::vector<T> &data)`, allowing to change the contents of the matrix providing that the argument contains as many elements as the matrix.
+• Added begin() and end(), two member functions that return iterators to the matrix data begin and end respectively.
+• [WIP] Added `self_transpose()`, a member function that transposes the current matrix in place. [WIP]
+• [WIP] Added `transpose_in_place()`, a member function used as alias for 'self_transpose()'. [WIP]
+• Added in-code documentation that was missing for some functions.
+• Added `operator<<(std::ostream &outstream , const EXE &a)`, instantiation of `operator<<` for ste::EXE.
+• Added `operator&&(const EXE &a , const EXE &b)`, instantiation of `operator&&` for ste::EXE.
+• Added `operator||(const EXE &a , const EXE &b)`, instantiation of `operator||` for ste::EXE.
+• Added `operator|(const EXE &a , const EXE &b)`, instantiation of `operator|` for ste::EXE.
+• Added `operator&(const EXE &a , const EXE &b)`, instantiation of `operator&` for ste::EXE.
+
+• Updated `print()` and `print_size()`. It is now possible to specify any std::ostream for printing the matrix or its size.
+• `print()` and `print_size()` now return the std::ostream specified in argument.
+• Updated `deleteAll()`. A `static_assert` now checks that `T` is dynamically allocated.
+• `operator^` and `operator^=` now throw an exception if the matrix is not square.
+
+
+• `const` version of `at` now returns `const T&` instead of `T`.
+• `columns`, `rows` and `lines` now return `const size_t&` instead of `uint64_t`.
+• `clear` now returns a reference to the matrix.
+• `deleteAll` now returns a reference to the matrix.
+• `invert()` is no longer `const`, and now changes the value of the matrix to the one of its inverse.
+• Removed `inverse()`.
+
+• Modified code formatting.
+• Removed `virtual` qualifer from the following member functions :
+```c++
+    transpose()
+    cofactor(...)
+    cofactormatrix()
+    comatrix()
+    hadamard(...)
+    max(...)
+    min(...)
+    toVector1D()
+    operator=(...)
+    operator-=(...)
+    operator+=(...)
+    operator-(...)
+    operator+(...)
+```
+
+• Added `virtual` qualifier to `operator!()`
+
+• `static invert(...)` `static hadamard(...)` , `static element_wise(...)` , `static for_each(...)`, and`static transform` are no longer member functions. Call is now through `ste::for_each` and `ste::transform`.
+• `for_each` and `transform` are now template functions. Casting a lambda to a std::function is no longer required.
+• `hadamard` and its alisas `element_wise` are now member functions of the `ste` namespace . The ste::Matrix versions still exist
+• `invert` is now a member functions of the `ste` namespace.
+
+• Improved `replace(...)`.
+• Improved `det()`.
+• Improved `operator!`.
+• Improved `operator*=(const Matrix&)` when GPU use is enabled.
+• Improved `rowAt(...)`.
+
+
+• Replaced `uint64_t` by `size_t` in the entire file for clarity.
+• Other minor changes that do not affect the class usage.
+
+
+• Updated README.
+• Added documentation.
+• Added this file.
+
+
+___________________________________________________________________________________

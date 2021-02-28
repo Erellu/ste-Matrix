@@ -2,11 +2,15 @@
 
 C++ class that provides an interface for matrix-based computing.
 
+
+** FOR DETAILED DOCUMENTATION, SEE /documentation**
+
+
 # Features
 
  • Can hold any class.
  
- • **\[WIP\]**  Possibility to use GPU for calculations only by having `#define USE_GPU`. 
+ • **\[WIP\]**  Possibility to use GPU for calculations.
  
  • Fast conversion to `std::vector<T>` to facilitate GPU-acceleration-based algorithms. 
 
@@ -24,14 +28,12 @@ C++ class that provides an interface for matrix-based computing.
  
  • Fast reshaping (`O(1)`).
 
- • Possibility to directly print contents and size to `stdout`.
+ • Possibility to directly print contents and size to `stdout` or any `std::ostream`.
  
  • Possibility to override most functions in subclasses to increase performances in specific cases.
 
 
 ## Convenience types
-
-
 
 |                |Type                           |Shortcut                   |
 |----------------|-------------------------------|---------------------------|
@@ -46,6 +48,22 @@ C++ class that provides an interface for matrix-based computing.
 |                |`Matrix<unsigned long long>`   |`ULLMatrix`                |
 |                |`Matrix<char>`                 |`CMatrix`                  |
 |                |`Matrix<unsigned char>`        |`UCMatrix`                 |
+
+# Enum
+
+## Member enums
+ 
+|Name                                    |Contents        |Description                                                              |Notes                                                                                                                         |
+|----------------------------------------|----------------|-------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------|
+|`enum class ste::Matrix<>::Orientation` |`ROW` , `COLUMN`| Used to specify if a function needs to be applied to a row or a column. |This enum holds redundant members : `LINE`, `RW`, `R` are equivalent to `ROW`. `COL` , `CL` , `C` are equivalent to `COLUMN`. |
+
+## Non-member enum
+
+|Name                  |Contents     |Description                                         |Notes                                                                                                                                                                |
+|----------------------|-------------|----------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|`enum class ste::EXE` |`CPU` , `GPU`| Used to specify the execution policy for a matrix. | See Paragraph `Using the GPU` for more details. This enum holds redundant members :, `C`, `HOST` are equivalent to `CPU`. `G` , `DEVICE` , are equivalent to `GPU`. |
+
+**N.B** : `ste::EXE::GPU` and its alias are only available if `STE_MATRIX_ALLOW_GPU` is `#define`d.
 
 
 # Member functions
@@ -62,15 +80,16 @@ C++ class that provides an interface for matrix-based computing.
  
 ### Accessors:
 
-|      |Function    |Description                                                           |Notes                                                |
-|------|------------|----------------------------------------------------------------------|-----------------------------------------------------|
-|      | `size`     | Returns the size of the matrix, as `const std::vector<uint64_t>`.    |                                                     |
-|      |`columns`   | Returns the number of columns of the matrix.                         |                                                     |
-|      |`rows`      | Returns the number of rows of the matrix.                            |                                                     |
-|      |`lines`     | Alias for `'rows'`.                                                  |                                                     |
-|      |`elements`  | Returns the total number of elements in the matrix.                  |                                                     |
-|      |`clear`     | Clears all the element in the matrix, and sets its size to (0 ; 0).  | **WARNING : MEMORY IS NOT FREED.**                  |
-|      |`deleteAll` | Calls `'delete'` on every element, and sets the matrix size to (0 ; 0).| **Undefined behavior if `T` is not a pointer.**   |
+|      |Function    |Description                                                                    |Notes                                                |
+|------|------------|-------------------------------------------------------------------------------|-----------------------------------------------------|
+|      |`size`      | Returns the size of the matrix, as `const std::vector<uint64_t>`.             |                                                     |
+|      |`columns`   | Returns the number of columns of the matrix.                                  |                                                     |
+|      |`rows`      | Returns the number of rows of the matrix.                                     |                                                     |
+|      |`lines`     | Alias for `'rows'`.                                                           |                                                     |
+|      |`device`    | Returns the device on which the operations involving the matrix will be made. |                                                     |
+|      |`elements`  | Returns the total number of elements in the matrix.                           |                                                     |
+|      |`clear`     | Clears all the element in the matrix, and sets its size to (0 ; 0).           | **WARNING : MEMORY IS NOT FREED.**                  |
+|      |`deleteAll` | Calls `'delete'` on every element, and sets the matrix size to (0 ; 0).       | **Only available when T is dynamically allocated.** |
 
 
  
@@ -102,7 +121,7 @@ C++ class that provides an interface for matrix-based computing.
 |------|---------------------|--------------------------------------------------------------------------------------------------|---------------------------------------------------------------------|
 |      |`replace`            | Replaces the element, the row or the column specified in argument by the value in last argument. | **WARNING ! If `T` is dynamically allocated, memory IS NOT freed.** |
 |      |`replace_row`        | Replaces a row by the one specified in argument.                                                 | **WARNING ! If `T` is dynamically allocated, memory IS NOT freed.** |
-|      |`replace_line`       | Alias for `'replace_row'`.                                                                         | **WARNING ! If `T` is dynamically allocated, memory IS NOT freed.** |
+|      |`replace_line`       | Alias for `'replace_row'`.                                                                       | **WARNING ! If `T` is dynamically allocated, memory IS NOT freed.** |
 |      |`replace_column`     | Replaces a column by the one specified in argument.                                              | **WARNING ! If `T` is dynamically allocated, memory IS NOT freed.** |
 
 
@@ -157,25 +176,25 @@ C++ class that provides an interface for matrix-based computing.
 
  
 ### Converting the matrix to STL vectors:
-|          |Function      |Description                                            |
-|----------|--------------|-------------------------------------------------------|
-|***[v]*** | `toVector2D` | Converts the matrix to `std::vector<std::vector<T>>`. |
-|***[v]*** | `toVector1D` | Converts the matrix to ` std::vector<T>`.             |
+|          |Function      |Description                                                                                    |
+|----------|--------------|-----------------------------------------------------------------------------------------------|
+|***[v]*** | `toVector2D` | Converts the matrix to `std::vector<std::vector<T>>`.                                         |
+|          | `toVector1D` | Converts the matrix to `std::vector<T>&` or `const std::vector<T>&` depending on the context. |
 
  
 ### Printing the matrix:
-|          |Function     |Description                                   |
-|----------|-------------|----------------------------------------------|
-|***[v]*** |`print`      | Prints the contents of the matrix in stdout. |
-|***[v]*** |`print_size` | Prints the size of the matrix in stdout.     |
+|          |Function     |Description                                                                                                    |
+|----------|-------------|---------------------------------------------------------------------------------------------------------------|
+|***[v]*** |`print`      | Prints the contents of the matrix in the specified std::ostream. If not specified, it prints it in std::cout. |
+|***[v]*** |`print_size` | Prints the size of the matrix in the specified std::ostream. If not specified, it prints it in std::cout.     |
 
  
 ### Iterator-like functions:
 
 |          |Function        |Description                                                                                                                               |
 |----------|----------------|------------------------------------------------------------------------------------------------------------------------------------------|
-|***[v]*** |`begin_row`     | Convenience function that returns `0`, to provide syntax as close as the one relative to `std::algorithm` as possible.                   |
-|          | ` begin_line`  | Alias for `'begin_row'`.                                                                                                                 |
+|***[v]*** | `begin_row`    | Convenience function that returns `0`, to provide syntax as close as the one relative to `std::algorithm` as possible.                   |
+|          | `begin_line`   | Alias for `'begin_row'`.                                                                                                                 |
 |***[v]*** | `begin_column` | Convenience function that returns `0`, to provide syntax as close as the one relative to `std::algorithm` as possible.                   |
 |***[v]*** | `end_row`      | Convenience function that returns the number of lines, to provide syntax as close as the one relative to `std::algorithm` as possible.   |
 |          | `end_line`     | Alias for `'end_row'`.                                                                                                                   |
@@ -202,16 +221,17 @@ C++ class that provides an interface for matrix-based computing.
 ### Matrix-algebra related functions:
 |          |Function         |Description                                                                                                                                                                      |
 |----------|-----------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|***[v]*** |`trace`          | Returns the trace of the matrix, computed as `T` (meaning that rounding error and overflow may occur). Throws an exception (std::invalid_argument) if the matrix is not square. |
+|          |`trace`          | Returns the trace of the matrix, computed as `T` (meaning that rounding error and overflow may occur). Throws an exception (std::invalid_argument) if the matrix is not square. |
 |***[v]*** |`det`            | Returns the determinant of the matrix. Throws an exception (`std::invalid_argument`) is the matrix is not square.                                                               |
-|***[v]*** |`cofactor`       | Returns the cofactor of the specified line and column or linear index. Throws an exception if one of them is outside the matrix.                                                |
-|***[v]*** |`comatrix`       | Returns the cofactor matrix. Convenience function that returns `cofactormatrix()`.                                                                                              |
-|***[v]*** |`cofactormatrix` | Returns the cofactor matrix.                                                                                                                                                    |
-|***[v]*** |`transpose`      | Returns the transpose of the matrix.                                                                                                                                            |
+|          |`cofactor`       | Returns the cofactor of the specified line and column or linear index. Throws an exception if one of them is outside the matrix.                                                |
+|          |`comatrix`       | Returns the cofactor matrix. Convenience function that returns `cofactormatrix()`.                                                                                              |
+|          |`cofactormatrix` | Returns the cofactor matrix.                                                                                                                                                    |
+|          |`transpose`      | Returns the transpose of the matrix.                                                                                                                                            |
+|          |`self_transpose` | Transposes current the matrix and returns a reference to it.                                                                                                                    |
 |          |`inv`            | Returns the inverse of the matrix as computed by `operator!`.                                                                                                                   |
 |          |`inverse`        | Returns the inverse of the matrix as computed by `operator!`.                                                                                                                   |
 |**[S]**   |`invert`         | Returns the inverse of the matrix as computed by `operator!`.                                                                                                                   |
-|***[v]*** |`hadamard`       | Returns the Hadamard product of two matrices. Throws an exception if the sizes do not match.                                                                                    |
+|**[S]**   |`hadamard`       | Returns the Hadamard product of two matrices. Throws an exception if the sizes do not match.                                                                                    |
 |          |`element_wise`   | Convenience function that returns the Hadamard product of two matrices. Calls `hadamard`.                                                                                       |
 
 ### Matrix creation:
@@ -232,16 +252,16 @@ C++ class that provides an interface for matrix-based computing.
 ### Operators:
 |          |Function      |Description                                                                                                                                                                                                 |
 |----------|--------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|***[v]*** | `operator=`  | Assignment operator. Supports assignments from `std::vector<std::vector<T>>` and from other `Matrix`.                                                                                                      |
+|          | `operator=`  | Assignment operator. Supports assignments from `std::vector<std::vector<T>>` and from other `Matrix`.                                                                                                      |
 |                                                                                                                                                                                                                                      |
-|***[v]*** | `operator+`  | Computes the addition of a `Matrix` with another (term by term). Also supports the addition of value in `T`. In that case, it is the same as adding a Matrix of the same size holding only the same value. |
-|***[v]*** | `operator+=` | Adds arg to all the elements of the `Matrix`, and returns a reference to it.                                                                                                                               |
+|          | `operator+`  | Computes the addition of a `Matrix` with another (term by term). Also supports the addition of value in `T`. In that case, it is the same as adding a Matrix of the same size holding only the same value. |
+|          | `operator+=` | Adds arg to all the elements of the `Matrix`, and returns a reference to it.                                                                                                                               |
 |                                                                                                                                                                                                                                      |
 |***[v]*** | `operator*`  | Computes the usual matrix product of two matrices or multiplies term by term by the `T` speficied.                                                                                                         |
 |***[v]*** | `operator*=` | Multiplies the matrix by the argument using the usual matrux product definition (or term by term if the argument is a `T`), and returns a reference to it.                                                 |
 |                                                                                                                                                                                                                                      |
-|***[v]*** | `operator-`  | Computes the substraction of two Matrix or substacts the `T` argument to all elements.                                                                                                                     |
-|***[v]*** | `operator-=` | Computes the term by term difference of the matrix and the argument, or substracts the `T` in argument to all elements. Returns a reference to the current object.                                         |
+|          | `operator-`  | Computes the substraction of two Matrix or substacts the `T` argument to all elements.                                                                                                                     |
+|          | `operator-=` | Computes the term by term difference of the matrix and the argument, or substracts the `T` in argument to all elements. Returns a reference to the current object.                                         |
 |                                                                                                                                                                                                                                      |
 |***[v]*** | `operator!`  | Returns the inverse of the matrix.                                                                                                                                                                         |
 |                                                                                                                                                                                                                                      |
@@ -252,15 +272,63 @@ C++ class that provides an interface for matrix-based computing.
 |***[v]*** | `operator!=` | Returns the opposite of the result given by operator==.                                                                                                                                                    |
 
 ### Other non-member functions:
-|          |Function      | Description                                      |
-|----------|--------------|--------------------------------------------------|
-|          |`operator<<`  | Prints the matrix to the specified std::ostream. |
+
+
+|      |Function           |Description                                                                                                                                  | Notes                                                            |
+|------|-------------------|---------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------|
+|      |`operator<<`       | Prints the matrix to the specified std::ostream.                                                                                            |                                                                  |
+|      |`for_each`         | Analog to std::for_each. Applies the function in argument to every element in the matrix.                                                   | **WIP : Possibility to apply on a specific part of the matrix.** |
+|      |`transform`        | Analog to std::transform. Applies the function in argument to every element in the matrix and modifies them according to its return value.  | **WIP : Possibility to apply on a specific part of the matrix.** |
+
+
+
+# Using the GPU
+
+To use the GPU for the calculations, you must `#define STE_MATRIX_ALLOW_GPU` first.
+Then, you only need to specify on which device (CPU or GPU) the calculations involving a matrix will be made.
+Example:
+```c++
+
+ste::IMatrix mat(28 , 28 , 0 , ste::EXE::CPU); //Calculations involving 'mat' will be made using the CPU unless it involves a matrix that requires to use the GPU.
+const ste::FMatrix mat2(300 , 300 , 128.1f , ste::EXE::GPU); //ALL calculations involving 'mat2' will be made using the GPU.
+
+
+```
+
+***It is possible to change the execution policy during runtime :***
+
+```c++
+
+ste::FMatrix mat2(300 , 300 , 128.1f , ste::EXE::GPU); //ALL calculations involving 'mat2' will be made using the GPU.
+
+//Do stuff here
+
+mat2.device() = ste::EXE::CPU; //Now computations involving this matrix will be made using the CPU, except the ones involving a matrix with GPU execution policy.
+
+//Do stuff here
+
+mat2.setDevice(ste::EXE::GPU); //Analog to above, but using Matrix::setDevice
+
+//...
+
+
+```
+
+
+
+On Windows, compiling CUDA requires you to :
+    > Have it installed on your computer.
+    > Use the Microsoft compiler (MSCV).
+
+See **/documentation** for more details on how to use a CUDA-compatible GPU.
+
+**A sample of a Qt .pro file is available in the 'qmake' folder.** 
 
 
 # Upcoming features:
 
 - Determinant calculated on GPU.
-- Cofactormatrix determined on GPU.
+- Faster cofactormatrix.
 - Transpose determined on GPU.
 - Invert determined on GPU.
 

@@ -3,7 +3,7 @@
 C++ class that provides an interface for matrix-based computing.
 
 
-** FOR DETAILED DOCUMENTATION, SEE /documentation**
+**FOR DETAILED DOCUMENTATION, SEE /documentation**
 
 
 # Features

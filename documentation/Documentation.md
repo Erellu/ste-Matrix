@@ -186,7 +186,7 @@ _HTML export by [StackEdit](https://stackedit.io/)._
 | `EXE`                 | **[operator\|](#operator_binary_or_EXE_nm)**`(const EXE &a , const EXE &b)`                                       |
 | `bool`                | **[operator\|\|](#operator_logical_or_EXE_nm)**`(const EXE &a , const EXE &b)`                                    |
 | `EXE`                 | **[operator&](#operator_binary_and_EXE_nm)**`(const EXE &a , const EXE &b)`                                       |
-| `bool`                | **[operator&&](#operator_logical_and_EXE_nm)**`(const EXE &a , const EXE &b)                                      |
+| `bool`                | **[operator&&](#operator_logical_and_EXE_nm)**`(const EXE &a , const EXE &b)`                                     |
 | `Matrix&`             | `template<class T , class Function>`**[transform](#transform_nm)**`(Matrix<T> &matrix , Function function)`       |
 
 ## Non-member types
@@ -938,7 +938,7 @@ Default fill value is `T(0)`.
 Default execution policy is `EXE::CPU`.
 
 
-**This is the default constructor called by `Matrix()`, which constructs en empty matrix (0 by 0).**
+**This is the default constructor called by `Matrix()`, which constructs an empty matrix (0 by 0).**
 
 <br>
 <div id="matrix_constructor_2"></div>

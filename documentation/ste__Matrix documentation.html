@@ -1149,7 +1149,7 @@ Among its main features:</p>
 <p><strong>Requirements:</strong><br>
 <em>1.</em> Make sure your computer is equipped with a CUDA-compatible GPU.<br>
 <em>2.</em> Download the <a href="https://developer.nvidia.com/cuda-toolkit">CUDA Toolkit</a>.<br>
-<em>3.</em> Download Visual Studio an a version of <strong>MSVC</strong> compatible with the CUDA Toolkit version.</p>
+<em>3.</em> Download Visual Studio and a version of <strong>MSVC</strong> compatible with the CUDA Toolkit version.</p>
 <p><strong>ste::Matrix specific requirements:</strong></p>
 <p>Add <code>STE_MATRIX_ALLOW_GPU</code> to the <code>DEFINES</code> of your <code>.pro file</code>:</p>
 <pre class=" language-makefile"><code class="prism  language-makefile">DEFINES <span class="token operator">+=</span> STE_MATRIX_ALLOW_GPU
@@ -1378,7 +1378,7 @@ Default execution policy is <code>EXE::CPU</code>.</p>
 <p>Computes the average of the matrix.</p>
 <p>Implementation gives :</p>
 <pre class=" language-c"><code class="prism ++ language-c">
-    mat<span class="token punctuation">.</span><span class="token function">average</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> mat<span class="token punctuation">.</span><span class="token function">sum</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">.</span><span class="token operator">/</span><span class="token punctuation">(</span>mat<span class="token punctuation">.</span>elements<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    mat<span class="token punctuation">.</span><span class="token function">average</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> mat<span class="token punctuation">.</span><span class="token function">sum</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">.</span><span class="token operator">/</span><span class="token punctuation">(</span>mat<span class="token punctuation">.</span><span class="token function">elements</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 </code></pre>
 <br>
@@ -1433,7 +1433,7 @@ Default execution policy is <code>EXE::CPU</code>.</p>
 <div id="clear"></div>
 <h3 id="matrix-clear"><code>Matrix&amp;</code> <strong>clear</strong><code>()</code></h3>
 <p>Resizes the matrix to <code>(0 ; 0)</code> and removes all the elements from the data it holds.</p>
-<p><strong>WARNING : MEMORY IS NOT FREED WHEN T IS DYNAMICALLY ALLOCATED…</strong></p>
+<p><strong>WARNING : MEMORY IS NOT FREED WHEN T IS DYNAMICALLY ALLOCATED.</strong></p>
 <br>
 <div id="cofactor_0"></div>
 <h3 id="t-cofactorconst-size_t-row--const-size_t-column-const"><code>T</code> <strong>cofactor</strong><code>(const size_t &amp;row , const size_t &amp;column) const</code></h3>
@@ -1444,7 +1444,7 @@ Default execution policy is <code>EXE::CPU</code>.</p>
 <h3 id="t-cofactorconst-size_t-index-const"><code>T</code> <strong>cofactor</strong><code>(const size_t &amp;index) const</code></h3>
 <p>Computes the cofactor of the element speficied in argument.</p>
 <p><em><strong>Throws an exception</strong></em> if the position is outside the matrix.</p>
-<p>This is equivalent as calling:</p>
+<p>This is equivalent to calling:</p>
 <pre class=" language-c"><code class="prism ++ language-c">
     mat<span class="token punctuation">.</span><span class="token function">cofactor</span><span class="token punctuation">(</span>index <span class="token operator">/</span> _columns <span class="token punctuation">,</span> index <span class="token operator">%</span> _columns<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
@@ -1481,7 +1481,7 @@ Default execution policy is <code>EXE::CPU</code>.</p>
 <h3 id="matrix-cut_columnsconst-stdvectorsize_t-indexes"><code>Matrix&amp;</code> <strong>cut_columns</strong><code>(const std::vector&lt;size_t&gt; &amp;indexes)</code></h3>
 <p>Removes all the columns specified in <code>indexes</code>.</p>
 <p><em><strong>Throws an exception</strong></em> if one the positions is outside the matrix.</p>
-<p>This is identical as calling:</p>
+<p>This is identical to calling:</p>
 <pre class=" language-c"><code class="prism ++ language-c">
     mat<span class="token punctuation">.</span><span class="token function">cut</span><span class="token punctuation">(</span>indexes <span class="token punctuation">,</span> ste<span class="token punctuation">:</span><span class="token punctuation">:</span>Matrix<span class="token operator">&lt;</span>T<span class="token operator">&gt;</span><span class="token punctuation">:</span><span class="token punctuation">:</span>Orientation<span class="token punctuation">:</span><span class="token punctuation">:</span>COLUMN<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
@@ -1491,7 +1491,7 @@ Default execution policy is <code>EXE::CPU</code>.</p>
 <h3 id="matrix-cut_columnsconst-size_t-begin--const-size_t-end"><code>Matrix&amp;</code> <strong>cut_columns</strong><code>(const size_t &amp;begin , const size_t &amp;end)</code></h3>
 <p>Removes all the columns between <code>begin</code> and <code>end</code> (included).</p>
 <p><em><strong>Throws an exception</strong></em> if one the positions is outside the matrix.</p>
-<p>This is identical as calling:</p>
+<p>This is identical to calling:</p>
 <pre class=" language-c"><code class="prism ++ language-c">
     mat<span class="token punctuation">.</span><span class="token function">cut</span><span class="token punctuation">(</span>begin <span class="token punctuation">,</span> end <span class="token punctuation">,</span> ste<span class="token punctuation">:</span><span class="token punctuation">:</span>Matrix<span class="token operator">&lt;</span>T<span class="token operator">&gt;</span><span class="token punctuation">:</span><span class="token punctuation">:</span>Orientation<span class="token punctuation">:</span><span class="token punctuation">:</span>COLUMN<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
@@ -1509,7 +1509,7 @@ Default execution policy is <code>EXE::CPU</code>.</p>
 <h3 id="matrix-cut_rowsconst-stdvectorsize_t-indexes"><code>Matrix&amp;</code> <strong>cut_rows</strong><code>(const std::vector&lt;size_t&gt; &amp;indexes)</code></h3>
 <p>Removes all the rows specified in <code>indexes</code>.</p>
 <p><em><strong>Throws an exception</strong></em> if one the positions is outside the matrix.</p>
-<p>This is identical as calling:</p>
+<p>This is identical to calling:</p>
 <pre class=" language-c"><code class="prism ++ language-c">
     mat<span class="token punctuation">.</span><span class="token function">cut</span><span class="token punctuation">(</span>indexes <span class="token punctuation">,</span> ste<span class="token punctuation">:</span><span class="token punctuation">:</span>Matrix<span class="token operator">&lt;</span>T<span class="token operator">&gt;</span><span class="token punctuation">:</span><span class="token punctuation">:</span>Orientation<span class="token punctuation">:</span><span class="token punctuation">:</span>ROW<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
@@ -1519,7 +1519,7 @@ Default execution policy is <code>EXE::CPU</code>.</p>
 <h3 id="matrix-cut_rowsconst-size_t-begin--const-size_t-end"><code>Matrix&amp;</code> <strong>cut_rows</strong><code>(const size_t &amp;begin , const size_t &amp;end)</code></h3>
 <p>Removes all the rows between <code>begin</code> and <code>end</code> (included).</p>
 <p><em><strong>Throws an exception</strong></em> if one the positions is outside the matrix.</p>
-<p>This is identical as calling:</p>
+<p>This is identical to calling:</p>
 <pre class=" language-c"><code class="prism ++ language-c">
     mat<span class="token punctuation">.</span><span class="token function">cut</span><span class="token punctuation">(</span>begin <span class="token punctuation">,</span> end <span class="token punctuation">,</span> ste<span class="token punctuation">:</span><span class="token punctuation">:</span>Matrix<span class="token operator">&lt;</span>T<span class="token operator">&gt;</span><span class="token punctuation">:</span><span class="token punctuation">:</span>Orientation<span class="token punctuation">:</span><span class="token punctuation">:</span>ROW<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
@@ -1716,7 +1716,7 @@ Default execution policy is <code>EXE::CPU</code>.</p>
 <h3 id="matrix-operatorconst-matrix-arg-const"><code>Matrix</code> <strong>operator+</strong><code>(const Matrix &amp;arg) const</code></h3>
 <p>Computes the usual matrix sum of the object and the argument.</p>
 <p>A new object is created, meaning that a deep-copy occurs.</p>
-<p><em><strong>Throws an exception</strong></em> if the size do not match.</p>
+<p><em><strong>Throws an exception</strong></em> if the sizes do not match.</p>
 <br>
 <div id="operator_plus_1"></div>
 <h3 id="matrix-operatorconst-t-arg-const-1"><code>Matrix</code> <strong>operator+</strong><code>(const T &amp;arg) const</code></h3>
@@ -1726,7 +1726,7 @@ Default execution policy is <code>EXE::CPU</code>.</p>
 <div id="operator_plus_equal_0"></div>
 <h3 id="matrix-operatorconst-matrix-arg-2"><code>Matrix&amp;</code> <strong>operator+=</strong><code>(const Matrix &amp;arg)</code></h3>
 <p>Computes the usual matrix sum of the object and the argument, and returns a reference to it.</p>
-<p><em><strong>Throws an exception</strong></em> if the size do not match.</p>
+<p><em><strong>Throws an exception</strong></em> if the sizes do not match.</p>
 <br>
 <div id="operator_plus_equal_1"></div>
 <h3 id="matrix-operatorconst-t-arg-1"><code>Matrix&amp;</code> <strong>operator+=</strong><code>(const T &amp;arg)</code></h3>
@@ -1736,7 +1736,7 @@ Default execution policy is <code>EXE::CPU</code>.</p>
 <h3 id="matrix-operator-const-matrix-arg-const"><code>Matrix</code> <strong>operator-</strong><code>(const Matrix &amp;arg) const</code></h3>
 <p>Computes the usual matrix difference of the object and the argument.</p>
 <p>A new object is created, meaning that a deep-copy occurs.</p>
-<p><em><strong>Throws an exception</strong></em> if the size do not match.</p>
+<p><em><strong>Throws an exception</strong></em> if the sizes do not match.</p>
 <br>
 <div id="operator_minus_1"></div>
 <h3 id="matrix-operator-const-t-arg-const"><code>Matrix</code> <strong>operator-</strong><code>(const T &amp;arg) const</code></h3>
@@ -1751,7 +1751,7 @@ Default execution policy is <code>EXE::CPU</code>.</p>
 <div id="operator_minus_equal_0"></div>
 <h3 id="matrix-operator-const-matrix-arg"><code>Matrix&amp;</code> <strong>operator-=</strong><code>(const Matrix &amp;arg)</code></h3>
 <p>Computes the usual matrix sum of the object and the argument, and returns a reference to it.</p>
-<p><em><strong>Throws an exception</strong></em> if the size do not match.</p>
+<p><em><strong>Throws an exception</strong></em> if the sizes do not match.</p>
 <br>
 <div id="operator_minus_equal_1"></div>
 <h3 id="matrix-operator-const-t-arg"><code>Matrix&amp;</code> <strong>operator-=</strong><code>(const T &amp;arg)</code></h3>

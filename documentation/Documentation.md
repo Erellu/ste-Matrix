@@ -734,7 +734,7 @@ Configuring Qt on Windows for using CUDA librairies requires you to use **MSVC**
 **Requirements:**
 *1.* Make sure your computer is equipped with a CUDA-compatible GPU.
 *2.* Download the [CUDA Toolkit](https://developer.nvidia.com/cuda-toolkit).
-*3.* Download Visual Studio an a version of **MSVC** compatible with the CUDA Toolkit version.
+*3.* Download Visual Studio and a version of **MSVC** compatible with the CUDA Toolkit version.
 
 
 **ste::Matrix specific requirements:**
@@ -1024,7 +1024,7 @@ Implementation gives :
 
 ```c++
 
-    mat.average() == mat.sum() * (1./(mat.elements));
+    mat.average() == mat.sum() * (1./(mat.elements()));
 
 ```
 
@@ -1134,7 +1134,7 @@ Default implementation returns `0`.
 
 Resizes the matrix to `(0 ; 0)` and removes all the elements from the data it holds.
  
-**WARNING : MEMORY IS NOT FREED WHEN T IS DYNAMICALLY ALLOCATED..**
+**WARNING : MEMORY IS NOT FREED WHEN T IS DYNAMICALLY ALLOCATED.**
 
 
 <br>
@@ -1156,7 +1156,7 @@ Computes the cofactor of the element speficied in argument.
  
 ***Throws an exception*** if the position is outside the matrix.
 
-This is equivalent as calling:
+This is equivalent to calling:
 
 ```c++
 
@@ -1229,7 +1229,7 @@ Removes all the columns specified in `indexes`.
  
 ***Throws an exception*** if one the positions is outside the matrix.
 
-This is identical as calling:
+This is identical to calling:
 
 ```c++
 
@@ -1247,7 +1247,7 @@ Removes all the columns between `begin` and `end` (included).
 
 ***Throws an exception*** if one the positions is outside the matrix.
 
-This is identical as calling:
+This is identical to calling:
 
 ```c++
 
@@ -1280,7 +1280,7 @@ Removes all the rows specified in `indexes`.
  
 ***Throws an exception*** if one the positions is outside the matrix.
 
-This is identical as calling:
+This is identical to calling:
 
 ```c++
 
@@ -1299,7 +1299,7 @@ Removes all the rows between `begin` and `end` (included).
 
 ***Throws an exception*** if one the positions is outside the matrix.
 
-This is identical as calling:
+This is identical to calling:
 
 ```c++
 
@@ -1675,7 +1675,7 @@ Computes the usual matrix sum of the object and the argument.
  
 A new object is created, meaning that a deep-copy occurs.
  
-***Throws an exception*** if the size do not match.
+***Throws an exception*** if the sizes do not match.
 
 <br>
 
@@ -1695,7 +1695,7 @@ A new object is created, meaning that a deep-copy occurs.
 
 Computes the usual matrix sum of the object and the argument, and returns a reference to it.
  
-***Throws an exception*** if the size do not match.
+***Throws an exception*** if the sizes do not match.
 
 <br>
 <div id = "operator_plus_equal_1"></div>
@@ -1713,7 +1713,7 @@ Computes the usual matrix difference of the object and the argument.
  
 A new object is created, meaning that a deep-copy occurs.
  
-***Throws an exception*** if the size do not match.
+***Throws an exception*** if the sizes do not match.
 
 
 <br>
@@ -1743,7 +1743,7 @@ A new object is created, meaning that a deep-copy occurs.
 
 Computes the usual matrix sum of the object and the argument, and returns a reference to it.
  
-***Throws an exception*** if the size do not match.
+***Throws an exception*** if the sizes do not match.
 
 
 

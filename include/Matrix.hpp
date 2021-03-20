@@ -1,5 +1,5 @@
-#ifndef MATRIX_H
-#define MATRIX_H
+#ifndef STE_MATRIX_HPP
+#define STE_MATRIX_HPP
 
 ///TODO / Upcoming :
 
@@ -1745,7 +1745,7 @@ std::ostream& operator<<(std::ostream &outstream , const Matrix<T> &arg){
  }
 
 ///operator| | Instantiation of operator| for ste::EXE.
-EXE operator|(const EXE &a , const EXE &b){
+inline EXE operator|(const EXE &a , const EXE &b){
 
 #ifdef STE_MATRIX_ALLOW_GPU
     return ((a == EXE::GPU) || (b == EXE::GPU)) ? EXE::GPU : EXE::CPU;
@@ -1758,7 +1758,7 @@ EXE operator|(const EXE &a , const EXE &b){
 }
 
 ///operator|| | Instantiation of operator|| for ste::EXE.
-bool operator||(const EXE &a , const EXE &b){
+inline bool operator||(const EXE &a , const EXE &b){
 
 #ifdef STE_MATRIX_ALLOW_GPU
     return(a == EXE::GPU) || (b == EXE::GPU);
@@ -1771,7 +1771,7 @@ bool operator||(const EXE &a , const EXE &b){
 }
 
 ///operator& | Instantiation of operator& for ste::EXE.
-EXE operator&(const EXE &a , const EXE &b){
+inline EXE operator&(const EXE &a , const EXE &b){
 
 #ifdef STE_MATRIX_ALLOW_GPU
     return ((a == EXE::GPU) && (b == EXE::GPU)) ? EXE::GPU : EXE::CPU;
@@ -1784,7 +1784,7 @@ EXE operator&(const EXE &a , const EXE &b){
 }
 
 ///operator&& | Instantiation of operator& for ste::EXE.
-bool operator&&(const EXE &a , const EXE &b){
+inline bool operator&&(const EXE &a , const EXE &b){
 
 
 #ifdef STE_MATRIX_ALLOW_GPU
@@ -1798,7 +1798,7 @@ bool operator&&(const EXE &a , const EXE &b){
 }
 
 ///operator<< | Instantiation of operator<< for ste::EXE.
-std::ostream& operator<<(std::ostream &outstream , const EXE &a){
+inline std::ostream& operator<<(std::ostream &outstream , const EXE &a){
 
 
     switch(a){
@@ -1876,4 +1876,4 @@ typedef Matrix<unsigned char> UCMatrix;
 
 
 } //namespace ste
-#endif // MATRIX_H
+#endif // STE_MATRIX_HPP

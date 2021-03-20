@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ste::Matrix documentation</title>
+  <title>ste::Matrix class documentation</title>
   <link rel="stylesheet" href="https://stackedit.io/style.css" />
 </head>
 
@@ -259,12 +259,12 @@
 <td><strong><a href="#fill_1">fill</a></strong><code>(const size_t &amp;rows , const size_t &amp;columns , const T &amp;value)</code></td>
 </tr>
 <tr>
-<td><code>Matrix&amp;</code></td>
-<td><code>template&lt;class Function&gt;</code><strong><a href="#for_each_0">for_each</a></strong><code>(Function function)</code></td>
+<td><code>template&lt;class Function&gt; Matrix&amp;</code></td>
+<td><strong><a href="#for_each_0">for_each</a></strong><code>(Function function)</code></td>
 </tr>
 <tr>
-<td><code>const Matrix&amp;</code></td>
-<td><code>template&lt;class Function&gt;</code><strong><a href="#for_each_1">for_each</a></strong><code>(Function function) const</code></td>
+<td><code>template&lt;class Function&gt; const Matrix&amp;</code></td>
+<td><strong><a href="#for_each_1">for_each</a></strong><code>(Function function) const</code></td>
 </tr>
 <tr>
 <td><code>Matrix</code></td>
@@ -547,8 +547,8 @@
 <td><strong><a href="#trace">trace</a></strong><code>() const</code></td>
 </tr>
 <tr>
-<td><code>Matrix&amp;</code></td>
-<td><code>template&lt;class Function&gt;</code><strong><a href="#transform">transform</a></strong><code>(Function function)</code></td>
+<td><code>template&lt;class Function&gt; Matrix&amp;</code></td>
+<td><strong><a href="#transform">transform</a></strong><code>(Function function)</code></td>
 </tr>
 <tr>
 <td><code>Matrix</code></td>
@@ -634,51 +634,51 @@
 <tbody>
 <tr>
 <td><code>Matrix</code></td>
-<td><code>template&lt;class T&gt;</code><strong><a href="#element_wise_nm">element_wise</a></strong><code>(const Matrix&lt;T&gt; &amp;arg1 , const Matrix&lt;T&gt; &amp;arg2)</code></td>
+<td><code>template&lt;class T&gt;</code> <strong><a href="#element_wise_nm">element_wise</a></strong><code>(const Matrix&lt;T&gt; &amp;arg1 , const Matrix&lt;T&gt; &amp;arg2)</code></td>
 </tr>
 <tr>
 <td><code>Matrix&amp;</code></td>
-<td><code>template&lt;class T , class Function&gt;</code><strong><a href="#for_each_nm_0">for_each</a></strong><code>(Matrix&lt;T&gt; &amp;matrix , Function function)</code></td>
+<td><code>template&lt;class T , class Function&gt;</code> <strong><a href="#for_each_nm_0">for_each</a></strong><code>(Matrix&lt;T&gt; &amp;matrix , Function function)</code></td>
 </tr>
 <tr>
 <td><code>const Matrix&amp;</code></td>
-<td><code>template&lt;class T , class Function&gt;</code><strong><a href="#for_each_nm_1">for_each</a></strong><code>(const Matrix&lt;T&gt; &amp;matrix , Function function)</code></td>
+<td><code>template&lt;class T , class Function&gt;</code> <strong><a href="#for_each_nm_1">for_each</a></strong><code>(const Matrix&lt;T&gt; &amp;matrix , Function function)</code></td>
 </tr>
 <tr>
 <td><code>Matrix</code></td>
-<td><code>template&lt;class T&gt;</code><strong><a href="#hadamard_nm">hadamard</a></strong><code>(const Matrix&lt;T&gt; &amp;arg1 , const Matrix&lt;T&gt; &amp;arg2)</code></td>
+<td><code>template&lt;class T&gt;</code> <strong><a href="#hadamard_nm">hadamard</a></strong><code>(const Matrix&lt;T&gt; &amp;arg1 , const Matrix&lt;T&gt; &amp;arg2)</code></td>
 </tr>
 <tr>
 <td><code>Matrix&amp;</code></td>
-<td><code>template&lt;class T&gt;</code><strong><a href="#invert_nm">invert</a></strong><code>(Matrix&lt;T&gt; &amp;arg)</code></td>
+<td><code>template&lt;class T&gt;</code> <strong><a href="#invert_nm">invert</a></strong><code>(Matrix&lt;T&gt; &amp;arg)</code></td>
 </tr>
 <tr>
 <td><code>std::ostream&amp;</code></td>
-<td><code>template&lt;class T&gt;</code><strong><a href="#operator_print_mat_nm">operator&lt;&lt;</a></strong><code>(std::ostream &amp;outstream , const Matrix&lt;T&gt; &amp;arg)</code></td>
+<td><code>template&lt;class T&gt;</code> <strong><a href="#operator_print_mat_nm">operator&lt;&lt;</a></strong><code>(std::ostream &amp;outstream , const Matrix&lt;T&gt; &amp;arg)</code></td>
 </tr>
 <tr>
 <td><code>std::ostream&amp;</code></td>
-<td><strong><a href="#operator_print_EXE_nm">operator&lt;&lt;</a></strong><code>(std::ostream &amp;outstream , const EXE &amp;a)</code></td>
+<td><code>inline</code> <strong><a href="#operator_print_EXE_nm">operator&lt;&lt;</a></strong><code>(std::ostream &amp;outstream , const EXE &amp;a)</code></td>
 </tr>
 <tr>
 <td><code>EXE</code></td>
-<td><strong><a href="#operator_binary_or_EXE_nm">operator|</a></strong><code>(const EXE &amp;a , const EXE &amp;b)</code></td>
+<td><code>inline</code> <strong><a href="#operator_binary_or_EXE_nm">operator|</a></strong><code>(const EXE &amp;a , const EXE &amp;b)</code></td>
 </tr>
 <tr>
 <td><code>bool</code></td>
-<td><strong><a href="#operator_logical_or_EXE_nm">operator||</a></strong><code>(const EXE &amp;a , const EXE &amp;b)</code></td>
+<td><code>inline</code> <strong><a href="#operator_logical_or_EXE_nm">operator||</a></strong><code>(const EXE &amp;a , const EXE &amp;b)</code></td>
 </tr>
 <tr>
 <td><code>EXE</code></td>
-<td><strong><a href="#operator_binary_and_EXE_nm">operator&amp;</a></strong><code>(const EXE &amp;a , const EXE &amp;b)</code></td>
+<td><code>inline</code> <strong><a href="#operator_binary_and_EXE_nm">operator&amp;</a></strong><code>(const EXE &amp;a , const EXE &amp;b)</code></td>
 </tr>
 <tr>
 <td><code>bool</code></td>
-<td><strong><a href="#operator_logical_and_EXE_nm">operator&amp;&amp;</a></strong><code>(const EXE &amp;a , const EXE &amp;b)</code></td>
+<td><code>inline</code> <strong><a href="#operator_logical_and_EXE_nm">operator&amp;&amp;</a></strong><code>(const EXE &amp;a , const EXE &amp;b)</code></td>
 </tr>
 <tr>
 <td><code>Matrix&amp;</code></td>
-<td><code>template&lt;class T , class Function&gt;</code><strong><a href="#transform_nm">transform</a></strong><code>(Matrix&lt;T&gt; &amp;matrix , Function function)</code></td>
+<td><code>template&lt;class T , class Function&gt;</code> <strong><a href="#transform_nm">transform</a></strong><code>(Matrix&lt;T&gt; &amp;matrix , Function function)</code></td>
 </tr>
 </tbody>
 </table><h2 id="non-member-types">Non-member types</h2>
@@ -1591,11 +1591,11 @@ Default execution policy is <code>EXE::CPU</code>.</p>
 <p><em><strong>WARNING:</strong></em> when T is dynamically allocated, <em><strong>MEMORY IS NOT FREED</strong></em>.</p>
 <br>
 <div id="for_each_0"></div>
-<h3 id="matrix-templateclass-functionfor_eachfunction-function"><code>Matrix&amp;</code> <code>template&lt;class Function&gt;</code><strong>for_each</strong><code>(Function function)</code></h3>
+<h3 id="templateclass-function-matrix-for_eachfunction-function"><code>template&lt;class Function&gt; Matrix&amp;</code> <strong>for_each</strong><code>(Function function)</code></h3>
 <p>Applies <code>function</code> according to <code>std::for_each</code> to all the elements of the matrix.</p>
 <br>
 <div id="for_each_1"></div>
-<h3 id="matrix-templateclass-functionfor_eachfunction-function-const"><code>Matrix&amp;</code> <code>template&lt;class Function&gt;</code><strong>for_each</strong><code>(Function function) const</code></h3>
+<h3 id="templateclass-function-matrix-for_eachfunction-function-const"><code>template&lt;class Function&gt; Matrix&amp;</code> <strong>for_each</strong><code>(Function function) const</code></h3>
 <p>Applies <code>function</code> according to <code>std::for_each</code> to all the elements of the matrix.</p>
 <p>This member function is the <code>const</code> equivalent of <strong><a href="#for_each_0">for_each</a></strong>.</p>
 <br>
@@ -1940,7 +1940,7 @@ Default execution policy is <code>EXE::CPU</code>.</p>
 <p>Computes the trace of the matrix.</p>
 <br>
 <div id="transform"></div>
-<h3 id="matrix-templateclass-function-transformfunction-function"><code>Matrix&amp;</code> <code>template&lt;class Function&gt;</code> <strong>transform</strong><code>(Function function)</code></h3>
+<h3 id="templateclass-function-matrix-transformfunction-function"><code>template&lt;class Function&gt; Matrix&amp;</code> <strong>transform</strong><code>(Function function)</code></h3>
 <p>Applies <code>function</code> according to <code>std::transform</code> to all the elements of the matrix.</p>
 <br>
 <div id="transpose"></div>
@@ -2011,56 +2011,56 @@ Default execution policy is <code>EXE::CPU</code>.</p>
 <h2 id="non-member-functions-documentation">Non-member functions documentation</h2>
 <br>
 <div id="element_wise_nm"></div>
-<h3 id="matrix-templateclass-t-element_wiseconst-matrixt-arg1--const-matrixt-arg2"><code>Matrix</code> <code>template&lt;class T&gt;</code> <strong>element_wise</strong><code>(const Matrix&lt;T&gt; &amp;arg1 , const Matrix&lt;T&gt; &amp;arg2)</code></h3>
+<h3 id="templateclass-t-matrix-element_wiseconst-matrixt-arg1--const-matrixt-arg2"><code>template&lt;class T&gt; Matrix</code> <strong>element_wise</strong><code>(const Matrix&lt;T&gt; &amp;arg1 , const Matrix&lt;T&gt; &amp;arg2)</code></h3>
 <p>Alias for <strong><a href="#hadamard_nm">hadamard</a></strong>.</p>
 <p>Computes the Hadamard product (element-wise product) of the two matrices.</p>
 <br>
 <div id="for_each_nm_0"></div>
-<h3 id="matrix-templateclass-t--class-function-for_eachmatrixt-matrix--function-function"><code>Matrix&amp;</code> <code>template&lt;class T , class Function&gt;</code> <strong>for_each</strong><code>(Matrix&lt;T&gt; &amp;matrix , Function function)</code></h3>
+<h3 id="templateclass-t--class-function-matrix-for_eachmatrixt-matrix--function-function"><code>template&lt;class T , class Function&gt; Matrix&amp;</code> <strong>for_each</strong><code>(Matrix&lt;T&gt; &amp;matrix , Function function)</code></h3>
 <p>Applies <code>function</code> according to <code>std::for_each</code> to all the elements of the matrix in argument.</p>
 <br>
 <div id="for_each_nm_1"></div>
-<h3 id="const-matrix-templateclass-t--class-function-for_eachconst-matrixt-matrix--function-function"><code>const Matrix&amp;</code> <code>template&lt;class T , class Function&gt;</code> <strong>for_each</strong><code>(const Matrix&lt;T&gt; &amp;matrix , Function function)</code></h3>
+<h3 id="templateclass-t--class-function-const-matrix-for_eachconst-matrixt-matrix--function-function"><code>template&lt;class T , class Function&gt; const Matrix&amp;</code> <strong>for_each</strong><code>(const Matrix&lt;T&gt; &amp;matrix , Function function)</code></h3>
 <p><code>const</code> equivalent of <strong><a href="#for_each_nm_0">for_each</a></strong>.</p>
 <br>
 <div id="hadamard_nm"></div>
-<h3 id="matrix-templateclass-t-hadamardconst-matrixt-arg1--const-matrixt-arg2"><code>Matrix</code> <code>template&lt;class T&gt;</code> <strong>hadamard</strong><code>(const Matrix&lt;T&gt; &amp;arg1 , const Matrix&lt;T&gt; &amp;arg2)</code></h3>
+<h3 id="templateclass-t-matrix-hadamardconst-matrixt-arg1--const-matrixt-arg2"><code>template&lt;class T&gt; Matrix</code> <strong>hadamard</strong><code>(const Matrix&lt;T&gt; &amp;arg1 , const Matrix&lt;T&gt; &amp;arg2)</code></h3>
 <p>Computes the Hadamard product (element-wise product) of the two matrices.</p>
 <br>
 <div id="invert_nm"></div>
-<h3 id="matrix-templateclass-t-invertmatrixt-matrix"><code>Matrix&amp;</code> <code>template&lt;class T&gt;</code> <strong>invert</strong><code>(Matrix&lt;T&gt; &amp;matrix)</code></h3>
+<h3 id="templateclass-t-matrix-invertmatrixt-matrix"><code>template&lt;class T&gt; Matrix&amp;</code> <strong>invert</strong><code>(Matrix&lt;T&gt; &amp;matrix)</code></h3>
 <p>Inverts the matrix in argument and returns a reference to it.</p>
 <br>
 <div id="operator_print_mat_nm"></div>
-<h3 id="stdostream-templateclass-t-operatorstdostream-outstream--const-matrixt-arg"><code>std::ostream&amp;</code> <code>template&lt;class T&gt;</code> <strong>operator&lt;&lt;</strong><code>(std::ostream &amp;outstream , const Matrix&lt;T&gt; &amp;arg)</code></h3>
+<h3 id="templateclass-t-stdostream-operatorstdostream-outstream--const-matrixt-arg"><code>template&lt;class T&gt; std::ostream&amp;</code> <strong>operator&lt;&lt;</strong><code>(std::ostream &amp;outstream , const Matrix&lt;T&gt; &amp;arg)</code></h3>
 <p>Prints a matrix to a <code>std::ostream</code>, and returns a reference to the stream.</p>
 <br>
 <div id="operator_print_EXE_nm"></div>
-<h3 id="stdostream-operatorstdostream-outstream--const-exe-a"><code>std::ostream&amp;</code> <strong>operator&lt;&lt;</strong><code>(std::ostream &amp;outstream , const EXE &amp;a)</code></h3>
+<h3 id="inline-stdostream-operatorstdostream-outstream--const-exe-a"><code>inline std::ostream&amp;</code> <strong>operator&lt;&lt;</strong><code>(std::ostream &amp;outstream , const EXE &amp;a)</code></h3>
 <p>Prints a <code>ste::EXE</code> to a <code>std::ostream</code>, and returns a reference to the stream.</p>
 <br>
 <div id="operator_binary_or_EXE_nm"></div>
-<h3 id="exe-operatorconst-exe-a--const-exe-b"><code>EXE</code> <strong>operator|</strong><code>(const EXE &amp;a , const EXE &amp;b)</code></h3>
+<h3 id="inline-exe-operatorconst-exe-a--const-exe-b"><code>inline EXE</code> <strong>operator|</strong><code>(const EXE &amp;a , const EXE &amp;b)</code></h3>
 <p>Binary OR for <code>ste::EXE</code>.</p>
 <p>Returns <code>EXE::GPU</code> if <code>a == EXE::GPU</code> or <code>b == EXE::GPU</code>, or <code>EXE::CPU</code> otherwise.</p>
 <br>
 <div id="operator_logical_or_EXE_nm"></div>
-<h3 id="bool-operatorconst-exe-a--const-exe-b"><code>bool</code> <strong>operator||</strong><code>(const EXE &amp;a , const EXE &amp;b)</code></h3>
+<h3 id="inline-bool-operatorconst-exe-a--const-exe-b"><code>inline bool</code> <strong>operator||</strong><code>(const EXE &amp;a , const EXE &amp;b)</code></h3>
 <p>Logical OR for <code>ste::EXE</code>.</p>
 <p>Returns <code>true</code> if <code>a == EXE::GPU</code> or <code>b == EXE::GPU</code>.</p>
 <br>
 <div id="operator_binary_and_EXE_nm"></div>
-<h3 id="bool-operatorconst-exe-a--const-exe-b-1"><code>bool</code> <strong>operator&amp;</strong><code>(const EXE &amp;a , const EXE &amp;b)</code></h3>
+<h3 id="inline-bool-operatorconst-exe-a--const-exe-b-1"><code>inline bool</code> <strong>operator&amp;</strong><code>(const EXE &amp;a , const EXE &amp;b)</code></h3>
 <p>Binary AND for <code>ste::EXE</code>.</p>
 <p>Returns <code>EXE::GPU</code> if <code>a == EXE::GPU</code> and <code>b == EXE::GPU</code>, or <code>EXE::CPU</code> otherwise.</p>
 <br>
 <div id="operator_logical_and_EXE_nm"></div>
-<h3 id="exe-operatorconst-exe-a--const-exe-b-1"><code>EXE</code> <strong>operator&amp;&amp;</strong><code>(const EXE &amp;a , const EXE &amp;b)</code></h3>
+<h3 id="inline-exe-operatorconst-exe-a--const-exe-b-1"><code>inline EXE</code> <strong>operator&amp;&amp;</strong><code>(const EXE &amp;a , const EXE &amp;b)</code></h3>
 <p>Logical AND for <code>ste::EXE</code>.</p>
 <p>Returns <code>true</code> if <code>a == EXE::GPU</code> and <code>b == EXE::GPU</code>, or <code>false</code> otherwise.</p>
 <br>
 <div id="transform_nm"></div>
-<h3 id="matrix-templateclass-t--class-function-transformmatrixt-matrix--function-function"><code>Matrix&amp;</code> <code>template&lt;class T , class Function&gt;</code> <strong>transform</strong><code>(Matrix&lt;T&gt; &amp;matrix , Function function)</code></h3>
+<h3 id="templateclass-t--class-function-matrix-transformmatrixt-matrix--function-function"><code>template&lt;class T , class Function&gt; Matrix&amp;</code> <strong>transform</strong><code>(Matrix&lt;T&gt; &amp;matrix , Function function)</code></h3>
 <p>Applies <code>function</code> to all the elements of <code>matrix</code>, according to <code>std::transform</code>.</p>
 <h2 id="non-member-types-documentation">Non-member Types Documentation</h2>
 <br>

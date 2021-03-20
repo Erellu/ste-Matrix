@@ -28,130 +28,130 @@ _HTML export by [StackEdit](https://stackedit.io/)._
 ## Public functions
 
 
-|                                       |                                                                                                                                                                    |
-|---------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|                                       | **[Matrix](#matrix_constructor_0)**`(const  size_t  &rows  ,  const  size_t& columns  ,  const  T  &value  =  T(0)  ,  const  EXE  &device  =  EXE::CPU)`          |
-|                                       | **[Matrix](#matrix_constructor_1)**`(const  size_t  &size  =  0  ,  const  T  &value  =  T(0)  ,  const  EXE  &device  =  EXE::CPU)`                               |
-|                                       | **[Matrix](#matrix_constructor_2)**`(const std::vector<T> &data , const size_t &rows , const size_t&columns , const EXE &device = EXE::CPU)`                       |
-|                                       | **[Matrix](#matrix_constructor_3)**`(const std::vector<std::vector<T>> &data , const EXE &device = EXE::CPU)`                                                      |
-| `Matrix&`                             | **[add](#add)**`(const std::vector<T> &data , const Orientation &orientation)`                                                                                     |
-| `Matrix&`                             | **[add_row](#add_row)**`(const std::vector<T> &data)`                                                                                                              |
-| `Matrix&`                             | **[add_line](#add_line)**`(const std::vector<T> &data)`                                                                                                            |
-| `Matrix&`                             | **[add_column](#add_column)**`(const std::vector<T> &data)`                                                                                                        |
-| `T`                                   | **[average](#average)**`() const`                                                                                                                                  |
-| `T&`                                  | **[at](#at_0)**`(const size_t &row , const size_t &column)`                                                                                                        |
-| `T&`                                  | **[at](#at_1)**`(const size_t &linear_index)`                                                                                                                      |
-| `const T&`                            | **[at](#at_2)**`(const size_t &row , const size_t &column) const`                                                                                                  |
-| `const T&`                            | **[at](#at_3)**`(const size_t &linear_index) const`                                                                                                                |
-| `auto`                                | **[begin](#begin_0)**`() const`                                                                                                                                    |
-| `auto`                                | **[begin](#begin_1)**`()`                                                                                                                                          |
-| `virtual size_t`                      | **[begin_row](#begin_row)**`() const`                                                                                                                              |
-| `size_t`                              | **[begin_line](#begin_line)**`() const`                                                                                                                            |
-| `virtual size_t`                      | **[begin_column](#begin_column)**`() const`                                                                                                                        |
-| `Matrix&`                             | **[clear](#clear)**`()`                                                                                                                                            |
-| `T`                                   | **[cofactor](#cofactor_0)**`(const size_t &row , const size_t &column) const`                                                                                      |
-| `T`                                   | **[cofactor](#cofactor_1)**`(const size_t &index) const`                                                                                                           |
-| `Matrix`                              | **[cofactormatrix](#cofactormatrix)**`() const `                                                                                                                   |
-| `Matrix`                              | **[comatrix](#comatrix)**`() const`                                                                                                                                |
-| `std::vector<T>`                      | **[columnAt](#columnAt)**`(const size_t &index) const`                                                                                                             |
-| `const size_t&`                       | **[columns](#columns)**`() const`                                                                                                                                  |
-| `Matrix&`                             | **[cut](#cut_0)**`(std::vector<size_t> indexes , const Orientation &orientation)`                                                                                  |
-| `Matrix&`                             | **[cut](#cut_1)**`(const size_t &begin , const size_t &end , const Orientation &orientation)`                                                                      |
-| `Matrix&`                             | **[cut_columns](#cut_columns_0)**`(const std::vector<size_t> &indexes)`                                                                                            |
-| `Matrix&`                             | **[cut_columns](#cut_columns_1)**`(const size_t &begin , const size_t &end)`                                                                                       |
-| `Matrix&`                             | **[cut_lines](#cut_lines_0)**`(const std::vector<size_t> &indexes)`                                                                                                |
-| `Matrix&`                             | **[cut_lines](#cut_lines_1)**`(const size_t &begin , const size_t &end)`                                                                                           |
-| `Matrix&`                             | **[cut_rows](#cut_rows_0)**`(const std::vector<size_t> &indexes)`                                                                                                  |
-| `Matrix&`                             | **[cut_rows](#cut_rows_1)**`(const size_t &begin , const size_t &end)`                                                                                             |
-| `Matrix&`                             | **[deleteAll](#deleteAll)**`()`                                                                                                                                    |
-| `virtual T`                           | **[det](#det)**`() const`                                                                                                                                          |
-| `const EXE&`                          | **[device](#device_0)**`() const`                                                                                                                                  |
-| `EXE&`                                | **[device](#device_1)**`()`                                                                                                                                        |
-| `size_t`                              | **[elements](#elements)**`() const`                                                                                                                                |
-| `Matrix`                              | **[element_wise](#element_wise)**`(const Matrix &arg) const`                                                                                                       |
-| `bool`                                | **[empty](#empty)**`() const`                                                                                                                                      |
-| `auto`                                | **[end](#end_0)**`()`                                                                                                                                              |
-| `auto`                                | **[end](#end_1)**`() const`                                                                                                                                        |
-| `virtual size_t`                      | **[end_column](#end_column)**`() const`                                                                                                                            |
-| `size_t`                              | **[end_line](#end_line)**`() const`                                                                                                                                |
-| `virtual size_t`                      | **[end_row](#end_row)**`() const`                                                                                                                                  |
-| `Matrix&`                             | **[fill](#fill_0)**`(const size_t &size , const T &value)`                                                                                                         |
-| `Matrix&`                             | **[fill](#fill_1)**`(const size_t &rows , const size_t &columns , const T &value)`                                                                                 |
-| `Matrix&`                             | `template<class Function>`**[for_each](#for_each_0)**`(Function function)`                                                                                         |
-| `const Matrix&`                       | `template<class Function>`**[for_each](#for_each_1)**`(Function function) const`                                                                                   |
-| `Matrix`                              | **[hadamard](#hadamard)**`(const Matrix &arg) const`                                                                                                               |
-| `Matrix&`                             | **[insert](#insert)**`(const size_t &element_index , const Orientation &orientation , const std::vector<T> &data)`                                                 |
-| `Matrix&`                             | **[insert_column](#insert_column)**`(const size_t &index , const std::vector<T> &data)`                                                                            |
-| `Matrix&`                             | **[insert_line](#insert_line)**`(const size_t &index , const std::vector<T> &data)`                                                                                |
-| `Matrix&`                             | **[insert_row](#insert_row)**`(const size_t &index , const std::vector<T> &data)`                                                                                  |
-| `Matrix`                              | **[inv](#inv)**`() const`                                                                                                                                          |
-| `Matrix&`                             | **[invert](#invert)**`()`                                                                                                                                          |
-| `bool`                                | **[isColumn](#isColumn)**`() const`                                                                                                                                |
-| `bool`                                | **[isInvertible](#isInvertible)**`() const`                                                                                                                        |
-| `bool`                                | **[isLine](#isLine)**`() const`                                                                                                                                    |
-| `bool`                                | **[isRow](#isRow)**`() const`                                                                                                                                      |
-| `bool`                                | **[isSquare](#isSquare)**`() const`                                                                                                                                |
-| `std::vector<T>`                      | **[lineAt](#lineAt)**`(const size_t &index) const`                                                                                                                 |
-| `const size_t&`                       | **[lines](#lines)**`() const`                                                                                                                                      |
-| `T`                                   | **[max](#max)**`(std::function<T (const std::vector<T>&)> criterium = [](const std::vector<T> &data){return *std::max_element(data.begin() , data.end());}) const` |
-| `virtual T`                           | **[mean](#mean)**`() const`                                                                                                                                        |
-| `T`                                   | **[min](#min)**`(std::function<T (const std::vector<T>&)> criterium = [](const std::vector<T> &data){return *std::min_element(data.begin() , data.end());}) const` |
-| `Matrix&`                             | **[operator=](#operator_equal_0)**`(const Matrix &arg)`                                                                                                            |
-| `Matrix&`                             | **[operator=](#operator_equal_1)**`(const std::vector<std::vector<T>> &arg)`                                                                                       |
-| `Matrix&`                             | **[operator=](#operator_equal_2)**`(const std::vector<T> &arg)`                                                                                                    |
-| `virtual Matrix`                      | **[operator\*](#operator_mult_0)**`(const Matrix &arg) const`                                                                                                      |
-| `Matrix`                              | **[operator\*](#operator_mult_1)**` (const T &arg) const`                                                                                                          |
-| `virtual Matrix&`                     | **[operator\*=](#operator_mult_equal_0)**`(const Matrix &arg)`                                                                                                     |
-| `Matrix&`                             | **[operator\*=](#operator_mult_equal_1)**`(const T &arg)`                                                                                                          |
-| `Matrix`                              | **[operator+](#operator_plus_0)**`(const Matrix &arg) const`                                                                                                       |
-| `Matrix`                              | **[operator+](#operator_plus_1)**`(const T &arg) const`                                                                                                            |
-| `Matrix&`                             | **[operator+=](#operator_plus_equal_0)**`(const Matrix &arg)`                                                                                                      |
-| `Matrix&`                             | **[operator+=](#operator_plus_equal_1)**`(const T &arg)`                                                                                                           |
-| `Matrix`                              | **[operator-](#operator_minus_0)**`(const Matrix &arg) const`                                                                                                      |
-| `Matrix`                              | **[operator-](#operator_minus_1)**`(const T &arg) const`                                                                                                           |
-| `Matrix`                              | **[operator-](#operator_minus_2)**`() const`                                                                                                                       |
-| `Matrix&`                             | **[operator-=](#operator_minus_equal_0)**`(const Matrix &arg)`                                                                                                     |
-| `Matrix&`                             | **[operator-=](#operator_minus_equal_1)**`(const T &arg)`                                                                                                          |
-| `virtual Matrix`                      | **[operator!](#operator_not)**`()const`                                                                                                                            |
-| `virtual Matrix`                      | **[operator^](#operator_power)**`(const long long int &arg) const`                                                                                                 |
-| `virtual Matrix&`                     | **[operator^=](#operator_power_equal)**`(const long long int &arg)`                                                                                                |
-| `virtual bool`                        | **[operator==](#operator_equality)**`(const Matrix &arg) const`                                                                                                    |
-| `virtual bool`                        | **[operator!=](#operator_difference)**`(const Matrix &arg) const`                                                                                                  |
-| `virtual std::ostream&`               | **[print](#print)**`(std::ostream &outstream = std::cout) const`                                                                                                   |
-| `virtual std::ostream&`               | **[print_size](#print_size)**`(std::ostream &outstream = std::cout) const`                                                                                         |
-| `Matrix&`                             | **[push_back](#push_back)**`(const std::vector<T> &data , const Orientation &orientation)`                                                                         |
-| `Matrix&`                             | **[push_back_column](#push_back_column)**`(const std::vector<T> &data)`                                                                                            |
-| `Matrix&`                             | **[push_back_line](#push_back_line)**`(const std::vector<T> &data)`                                                                                                |
-| `Matrix&`                             | **[push_back_row](#push_back_row)**`(const std::vector<T> &data)`                                                                                                  |
-| `Matrix&`                             | **[remove](#remove)**`(const size_t &element_index , const Orientation &orientation)`                                                                              |
-| `Matrix&`                             | **[remove_column](#remove_column)**`(const size_t &index)`                                                                                                         |
-| `Matrix&`                             | **[remove_line](#remove_line)**`(const size_t &index)`                                                                                                             |
-| `Matrix&`                             | **[remove_row](#remove_row)**`(const size_t &index)`                                                                                                               |
-| `Matrix&`                             | **[replace](#replace_0)**`(const size_t &row , const unsigned &column , const T &value)`                                                                           |
-| `Matrix&`                             | **[replace](#replace_1)**`(const size_t &index, const T &value)`                                                                                                   |
-| `Matrix&`                             | **[replace](#replace_2)**`(const size_t &value_index ,const Orientation &orientation , const std::vector<T> &value)`                                               |
-| `Matrix&`                             | **[replace](#replace_3)**`(const size_t &row_begin, const size_t &row_end ,const size_t &column_begin, const size_t &column_end,const T &value)`                 |
-| `Matrix&`                             | **[replace_column](#replace_column)**`(const size_t &value_index , const std::vector<T> &value)`                                                                   |
-| `Matrix&`                             | **[replace_line](#replace_line)**`(const size_t &value_index , const std::vector<T> &value)`                                                                       |
-| `Matrix&`                             | **[replace_row](#replace_row)**`(const size_t &value_index , const std::vector<T> &value)`                                                                         |
-| `Matrix&`                             | **[reshape](#reshape)**`(const size_t &rows , const size_t &columns)`                                                                                              |
-| `std::vector<T>`                      | **[rowAt](#rowAt)**`(const size_t &index) const`                                                                                                                   |
-| `const size_t&`                       | **[rows](#rows)**`() const`                                                                                                                                        |
-| `Matrix&`                             | **[self_transpose](#self_transpose)**`()`                                                                                                                          |
-| `Matrix&`                             | **[setDevice](#setDevice)**`(const EXE &device)`                                                                                                                   |
-| `const std::vector<size_t>`           | **[size](#size)**`() const`                                                                                                                                        |
-| `virtual T`                           | **[sum](#sum)**`() const`                                                                                                                                          |
-| `Matrix&`                             | **[swap](#swap)**`(const size_t &element_1 , const size_t &element_2 ,const Orientation &orientation)`                                                             |
-| `Matrix&`                             | **[swap_columns](#swap_columns)**`(const size_t &element_1 , const size_t &element_2)`                                                                             |
-| `Matrix&`                             | **[swap_lines](#swap_lines)**`(const size_t &element_1 , const size_t &element_2)`                                                                                 |
-| `Matrix&`                             | **[swap_rows](#swap_rows)**`(const size_t &element_1 , const size_t &element_2)`                                                                                   |
-|`const std::vector<T>&`                | **[toVector1D](#toVector1D_0)**`() const`                                                                                                                          |
-|`std::vector<T>&`                      | **[toVector1D](#toVector1D_1)**`()`                                                                                                                                |
-| `virtual std::vector<std::vector<T>>` | **[toVector2D](#toVector2D)**`() const`                                                                                                                            |
-| `T`                                   | **[trace](#trace)**`() const`                                                                                                                                      |
-| `Matrix&`                             | `template<class Function>`**[transform](#transform)**`(Function function)`                                                                                         |
-| `Matrix`                              | **[transpose](#transpose)**`() const`                                                                                                                              |
-| `Matrix&`                             | **[transpose_in_place](#transpose_in_place)**`()`                                                                                                                  |
+|                                          |                                                                                                                                                                    |
+|------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|                                          | **[Matrix](#matrix_constructor_0)**`(const  size_t  &rows  ,  const  size_t& columns  ,  const  T  &value  =  T(0)  ,  const  EXE  &device  =  EXE::CPU)`          |
+|                                          | **[Matrix](#matrix_constructor_1)**`(const  size_t  &size  =  0  ,  const  T  &value  =  T(0)  ,  const  EXE  &device  =  EXE::CPU)`                               |
+|                                          | **[Matrix](#matrix_constructor_2)**`(const std::vector<T> &data , const size_t &rows , const size_t&columns , const EXE &device = EXE::CPU)`                       |
+|                                          | **[Matrix](#matrix_constructor_3)**`(const std::vector<std::vector<T>> &data , const EXE &device = EXE::CPU)`                                                      |
+| `Matrix&`                                | **[add](#add)**`(const std::vector<T> &data , const Orientation &orientation)`                                                                                     |
+| `Matrix&`                                | **[add_row](#add_row)**`(const std::vector<T> &data)`                                                                                                              |
+| `Matrix&`                                | **[add_line](#add_line)**`(const std::vector<T> &data)`                                                                                                            |
+| `Matrix&`                                | **[add_column](#add_column)**`(const std::vector<T> &data)`                                                                                                        |
+| `T`                                      | **[average](#average)**`() const`                                                                                                                                  |
+| `T&`                                     | **[at](#at_0)**`(const size_t &row , const size_t &column)`                                                                                                        |
+| `T&`                                     | **[at](#at_1)**`(const size_t &linear_index)`                                                                                                                      |
+| `const T&`                               | **[at](#at_2)**`(const size_t &row , const size_t &column) const`                                                                                                  |
+| `const T&`                               | **[at](#at_3)**`(const size_t &linear_index) const`                                                                                                                |
+| `auto`                                   | **[begin](#begin_0)**`() const`                                                                                                                                    |
+| `auto`                                   | **[begin](#begin_1)**`()`                                                                                                                                          |
+| `virtual size_t`                         | **[begin_row](#begin_row)**`() const`                                                                                                                              |
+| `size_t`                                 | **[begin_line](#begin_line)**`() const`                                                                                                                            |
+| `virtual size_t`                         | **[begin_column](#begin_column)**`() const`                                                                                                                        |
+| `Matrix&`                                | **[clear](#clear)**`()`                                                                                                                                            |
+| `T`                                      | **[cofactor](#cofactor_0)**`(const size_t &row , const size_t &column) const`                                                                                      |
+| `T`                                      | **[cofactor](#cofactor_1)**`(const size_t &index) const`                                                                                                           |
+| `Matrix`                                 | **[cofactormatrix](#cofactormatrix)**`() const `                                                                                                                   |
+| `Matrix`                                 | **[comatrix](#comatrix)**`() const`                                                                                                                                |
+| `std::vector<T>`                         | **[columnAt](#columnAt)**`(const size_t &index) const`                                                                                                             |
+| `const size_t&`                          | **[columns](#columns)**`() const`                                                                                                                                  |
+| `Matrix&`                                | **[cut](#cut_0)**`(std::vector<size_t> indexes , const Orientation &orientation)`                                                                                  |
+| `Matrix&`                                | **[cut](#cut_1)**`(const size_t &begin , const size_t &end , const Orientation &orientation)`                                                                      |
+| `Matrix&`                                | **[cut_columns](#cut_columns_0)**`(const std::vector<size_t> &indexes)`                                                                                            |
+| `Matrix&`                                | **[cut_columns](#cut_columns_1)**`(const size_t &begin , const size_t &end)`                                                                                       |
+| `Matrix&`                                | **[cut_lines](#cut_lines_0)**`(const std::vector<size_t> &indexes)`                                                                                                |
+| `Matrix&`                                | **[cut_lines](#cut_lines_1)**`(const size_t &begin , const size_t &end)`                                                                                           |
+| `Matrix&`                                | **[cut_rows](#cut_rows_0)**`(const std::vector<size_t> &indexes)`                                                                                                  |
+| `Matrix&`                                | **[cut_rows](#cut_rows_1)**`(const size_t &begin , const size_t &end)`                                                                                             |
+| `Matrix&`                                | **[deleteAll](#deleteAll)**`()`                                                                                                                                    |
+| `virtual T`                              | **[det](#det)**`() const`                                                                                                                                          |
+| `const EXE&`                             | **[device](#device_0)**`() const`                                                                                                                                  |
+| `EXE&`                                   | **[device](#device_1)**`()`                                                                                                                                        |
+| `size_t`                                 | **[elements](#elements)**`() const`                                                                                                                                |
+| `Matrix`                                 | **[element_wise](#element_wise)**`(const Matrix &arg) const`                                                                                                       |
+| `bool`                                   | **[empty](#empty)**`() const`                                                                                                                                      |
+| `auto`                                   | **[end](#end_0)**`()`                                                                                                                                              |
+| `auto`                                   | **[end](#end_1)**`() const`                                                                                                                                        |
+| `virtual size_t`                         | **[end_column](#end_column)**`() const`                                                                                                                            |
+| `size_t`                                 | **[end_line](#end_line)**`() const`                                                                                                                                |
+| `virtual size_t`                         | **[end_row](#end_row)**`() const`                                                                                                                                  |
+| `Matrix&`                                | **[fill](#fill_0)**`(const size_t &size , const T &value)`                                                                                                         |
+| `Matrix&`                                | **[fill](#fill_1)**`(const size_t &rows , const size_t &columns , const T &value)`                                                                                 |
+| `template<class Function> Matrix&`       | **[for_each](#for_each_0)**`(Function function)`                                                                                                                   |
+| `template<class Function> const Matrix&` | **[for_each](#for_each_1)**`(Function function) const`                                                                                                             |
+| `Matrix`                                 | **[hadamard](#hadamard)**`(const Matrix &arg) const`                                                                                                               |
+| `Matrix&`                                | **[insert](#insert)**`(const size_t &element_index , const Orientation &orientation , const std::vector<T> &data)`                                                 |
+| `Matrix&`                                | **[insert_column](#insert_column)**`(const size_t &index , const std::vector<T> &data)`                                                                            |
+| `Matrix&`                                | **[insert_line](#insert_line)**`(const size_t &index , const std::vector<T> &data)`                                                                                |
+| `Matrix&`                                | **[insert_row](#insert_row)**`(const size_t &index , const std::vector<T> &data)`                                                                                  |
+| `Matrix`                                 | **[inv](#inv)**`() const`                                                                                                                                          |
+| `Matrix&`                                | **[invert](#invert)**`()`                                                                                                                                          |
+| `bool`                                   | **[isColumn](#isColumn)**`() const`                                                                                                                                |
+| `bool`                                   | **[isInvertible](#isInvertible)**`() const`                                                                                                                        |
+| `bool`                                   | **[isLine](#isLine)**`() const`                                                                                                                                    |
+| `bool`                                   | **[isRow](#isRow)**`() const`                                                                                                                                      |
+| `bool`                                   | **[isSquare](#isSquare)**`() const`                                                                                                                                |
+| `std::vector<T>`                         | **[lineAt](#lineAt)**`(const size_t &index) const`                                                                                                                 |
+| `const size_t&`                          | **[lines](#lines)**`() const`                                                                                                                                      |
+| `T`                                      | **[max](#max)**`(std::function<T (const std::vector<T>&)> criterium = [](const std::vector<T> &data){return *std::max_element(data.begin() , data.end());}) const` |
+| `virtual T`                              | **[mean](#mean)**`() const`                                                                                                                                        |
+| `T`                                      | **[min](#min)**`(std::function<T (const std::vector<T>&)> criterium = [](const std::vector<T> &data){return *std::min_element(data.begin() , data.end());}) const` |
+| `Matrix&`                                | **[operator=](#operator_equal_0)**`(const Matrix &arg)`                                                                                                            |
+| `Matrix&`                                | **[operator=](#operator_equal_1)**`(const std::vector<std::vector<T>> &arg)`                                                                                       |
+| `Matrix&`                                | **[operator=](#operator_equal_2)**`(const std::vector<T> &arg)`                                                                                                    |
+| `virtual Matrix`                         | **[operator\*](#operator_mult_0)**`(const Matrix &arg) const`                                                                                                      |
+| `Matrix`                                 | **[operator\*](#operator_mult_1)**` (const T &arg) const`                                                                                                          |
+| `virtual Matrix&`                        | **[operator\*=](#operator_mult_equal_0)**`(const Matrix &arg)`                                                                                                     |
+| `Matrix&`                                | **[operator\*=](#operator_mult_equal_1)**`(const T &arg)`                                                                                                          |
+| `Matrix`                                 | **[operator+](#operator_plus_0)**`(const Matrix &arg) const`                                                                                                       |
+| `Matrix`                                 | **[operator+](#operator_plus_1)**`(const T &arg) const`                                                                                                            |
+| `Matrix&`                                | **[operator+=](#operator_plus_equal_0)**`(const Matrix &arg)`                                                                                                      |
+| `Matrix&`                                | **[operator+=](#operator_plus_equal_1)**`(const T &arg)`                                                                                                           |
+| `Matrix`                                 | **[operator-](#operator_minus_0)**`(const Matrix &arg) const`                                                                                                      |
+| `Matrix`                                 | **[operator-](#operator_minus_1)**`(const T &arg) const`                                                                                                           |
+| `Matrix`                                 | **[operator-](#operator_minus_2)**`() const`                                                                                                                       |
+| `Matrix&`                                | **[operator-=](#operator_minus_equal_0)**`(const Matrix &arg)`                                                                                                     |
+| `Matrix&`                                | **[operator-=](#operator_minus_equal_1)**`(const T &arg)`                                                                                                          |
+| `virtual Matrix`                         | **[operator!](#operator_not)**`()const`                                                                                                                            |
+| `virtual Matrix`                         | **[operator^](#operator_power)**`(const long long int &arg) const`                                                                                                 |
+| `virtual Matrix&`                        | **[operator^=](#operator_power_equal)**`(const long long int &arg)`                                                                                                |
+| `virtual bool`                           | **[operator==](#operator_equality)**`(const Matrix &arg) const`                                                                                                    |
+| `virtual bool`                           | **[operator!=](#operator_difference)**`(const Matrix &arg) const`                                                                                                  |
+| `virtual std::ostream&`                  | **[print](#print)**`(std::ostream &outstream = std::cout) const`                                                                                                   |
+| `virtual std::ostream&`                  | **[print_size](#print_size)**`(std::ostream &outstream = std::cout) const`                                                                                         |
+| `Matrix&`                                | **[push_back](#push_back)**`(const std::vector<T> &data , const Orientation &orientation)`                                                                         |
+| `Matrix&`                                | **[push_back_column](#push_back_column)**`(const std::vector<T> &data)`                                                                                            |
+| `Matrix&`                                | **[push_back_line](#push_back_line)**`(const std::vector<T> &data)`                                                                                                |
+| `Matrix&`                                | **[push_back_row](#push_back_row)**`(const std::vector<T> &data)`                                                                                                  |
+| `Matrix&`                                | **[remove](#remove)**`(const size_t &element_index , const Orientation &orientation)`                                                                              |
+| `Matrix&`                                | **[remove_column](#remove_column)**`(const size_t &index)`                                                                                                         |
+| `Matrix&`                                | **[remove_line](#remove_line)**`(const size_t &index)`                                                                                                             |
+| `Matrix&`                                | **[remove_row](#remove_row)**`(const size_t &index)`                                                                                                               |
+| `Matrix&`                                | **[replace](#replace_0)**`(const size_t &row , const unsigned &column , const T &value)`                                                                           |
+| `Matrix&`                                | **[replace](#replace_1)**`(const size_t &index, const T &value)`                                                                                                   |
+| `Matrix&`                                | **[replace](#replace_2)**`(const size_t &value_index ,const Orientation &orientation , const std::vector<T> &value)`                                               |
+| `Matrix&`                                | **[replace](#replace_3)**`(const size_t &row_begin, const size_t &row_end ,const size_t &column_begin, const size_t &column_end,const T &value)`                   |
+| `Matrix&`                                | **[replace_column](#replace_column)**`(const size_t &value_index , const std::vector<T> &value)`                                                                   |
+| `Matrix&`                                | **[replace_line](#replace_line)**`(const size_t &value_index , const std::vector<T> &value)`                                                                       |
+| `Matrix&`                                | **[replace_row](#replace_row)**`(const size_t &value_index , const std::vector<T> &value)`                                                                         |
+| `Matrix&`                                | **[reshape](#reshape)**`(const size_t &rows , const size_t &columns)`                                                                                              |
+| `std::vector<T>`                         | **[rowAt](#rowAt)**`(const size_t &index) const`                                                                                                                   |
+| `const size_t&`                          | **[rows](#rows)**`() const`                                                                                                                                        |
+| `Matrix&`                                | **[self_transpose](#self_transpose)**`()`                                                                                                                          |
+| `Matrix&`                                | **[setDevice](#setDevice)**`(const EXE &device)`                                                                                                                   |
+| `const std::vector<size_t>`              | **[size](#size)**`() const`                                                                                                                                        |
+| `virtual T`                              | **[sum](#sum)**`() const`                                                                                                                                          |
+| `Matrix&`                                | **[swap](#swap)**`(const size_t &element_1 , const size_t &element_2 ,const Orientation &orientation)`                                                             |
+| `Matrix&`                                | **[swap_columns](#swap_columns)**`(const size_t &element_1 , const size_t &element_2)`                                                                             |
+| `Matrix&`                                | **[swap_lines](#swap_lines)**`(const size_t &element_1 , const size_t &element_2)`                                                                                 |
+| `Matrix&`                                | **[swap_rows](#swap_rows)**`(const size_t &element_1 , const size_t &element_2)`                                                                                   |
+|`const std::vector<T>&`                   | **[toVector1D](#toVector1D_0)**`() const`                                                                                                                          |
+|`std::vector<T>&`                         | **[toVector1D](#toVector1D_1)**`()`                                                                                                                                |
+| `virtual std::vector<std::vector<T>>`    | **[toVector2D](#toVector2D)**`() const`                                                                                                                            |
+| `T`                                      | **[trace](#trace)**`() const`                                                                                                                                      |
+| `template<class Function> Matrix&`       | **[transform](#transform)**`(Function function)`                                                                                                                   |
+| `Matrix`                                 | **[transpose](#transpose)**`() const`                                                                                                                              |
+| `Matrix&`                                | **[transpose_in_place](#transpose_in_place)**`()`                                                                                                                  |
 
 
 ## Static public members
@@ -174,20 +174,20 @@ _HTML export by [StackEdit](https://stackedit.io/)._
 
 ## Non-member functions
 
-|                       |                                                                                                                   |
-|-----------------------|-------------------------------------------------------------------------------------------------------------------|
-| `Matrix`              | `template<class T>`**[element_wise](#element_wise_nm)**`(const Matrix<T> &arg1 , const Matrix<T> &arg2)`          |
-| `Matrix&`             | `template<class T , class Function>`**[for_each](#for_each_nm_0)**`(Matrix<T> &matrix , Function function)`       |
-| `const Matrix&`       | `template<class T , class Function>`**[for_each](#for_each_nm_1)**`(const Matrix<T> &matrix , Function function)` |
-| `Matrix`              | `template<class T>`**[hadamard](#hadamard_nm)**`(const Matrix<T> &arg1 , const Matrix<T> &arg2)`                  |
-| `Matrix&`             | `template<class T>`**[invert](#invert_nm)**`(Matrix<T> &arg)`                                                     |
-| `std::ostream&`       | `template<class T>`**[operator\<\<](#operator_print_mat_nm)**`(std::ostream &outstream , const Matrix<T> &arg)`   |
-| `std::ostream&`       | **[operator\<\<](#operator_print_EXE_nm)**`(std::ostream &outstream , const EXE &a)`                              |
-| `EXE`                 | **[operator\|](#operator_binary_or_EXE_nm)**`(const EXE &a , const EXE &b)`                                       |
-| `bool`                | **[operator\|\|](#operator_logical_or_EXE_nm)**`(const EXE &a , const EXE &b)`                                    |
-| `EXE`                 | **[operator&](#operator_binary_and_EXE_nm)**`(const EXE &a , const EXE &b)`                                       |
-| `bool`                | **[operator&&](#operator_logical_and_EXE_nm)**`(const EXE &a , const EXE &b)`                                     |
-| `Matrix&`             | `template<class T , class Function>`**[transform](#transform_nm)**`(Matrix<T> &matrix , Function function)`       |
+|                       |                                                                                                                    |
+|-----------------------|--------------------------------------------------------------------------------------------------------------------|
+| `Matrix`              | `template<class T>` **[element_wise](#element_wise_nm)**`(const Matrix<T> &arg1 , const Matrix<T> &arg2)`          |
+| `Matrix&`             | `template<class T , class Function>` **[for_each](#for_each_nm_0)**`(Matrix<T> &matrix , Function function)`       |
+| `const Matrix&`       | `template<class T , class Function>` **[for_each](#for_each_nm_1)**`(const Matrix<T> &matrix , Function function)` |
+| `Matrix`              | `template<class T>` **[hadamard](#hadamard_nm)**`(const Matrix<T> &arg1 , const Matrix<T> &arg2)`                  |
+| `Matrix&`             | `template<class T>` **[invert](#invert_nm)**`(Matrix<T> &arg)`                                                     |
+| `std::ostream&`       | `template<class T>` **[operator\<\<](#operator_print_mat_nm)**`(std::ostream &outstream , const Matrix<T> &arg)`   |
+| `std::ostream&`       | `inline` **[operator\<\<](#operator_print_EXE_nm)**`(std::ostream &outstream , const EXE &a)`                      |
+| `EXE`                 | `inline` **[operator\|](#operator_binary_or_EXE_nm)**`(const EXE &a , const EXE &b)`                               |
+| `bool`                | `inline` **[operator\|\|](#operator_logical_or_EXE_nm)**`(const EXE &a , const EXE &b)`                            |
+| `EXE`                 | `inline` **[operator&](#operator_binary_and_EXE_nm)**`(const EXE &a , const EXE &b)`                               |
+| `bool`                | `inline` **[operator&&](#operator_logical_and_EXE_nm)**`(const EXE &a , const EXE &b)`                             |
+| `Matrix&`             | `template<class T , class Function>` **[transform](#transform_nm)**`(Matrix<T> &matrix , Function function)`       |
 
 ## Non-member types
 
@@ -1445,7 +1445,7 @@ Resizes the matrix to `(rows ; columns)` and fills it with `value`.
 
 <div id = "for_each_0"></div>
 
-### `Matrix&` `template<class Function>`**for_each**`(Function function)`
+### `template<class Function> Matrix&` **for_each**`(Function function)`
 
 Applies `function` according to `std::for_each` to all the elements of the matrix.
 
@@ -1454,7 +1454,7 @@ Applies `function` according to `std::for_each` to all the elements of the matri
 
 <div id = "for_each_1"></div>
 
-### `Matrix&` `template<class Function>`**for_each**`(Function function) const`
+### `template<class Function> Matrix&` **for_each**`(Function function) const`
 
 Applies `function` according to `std::for_each` to all the elements of the matrix.
  
@@ -2127,7 +2127,7 @@ Computes the trace of the matrix.
 <br>
 <div id = "transform"></div>
 
-### `Matrix&` `template<class Function>` **transform**`(Function function)`
+### `template<class Function> Matrix&` **transform**`(Function function)`
 
 Applies `function` according to `std::transform` to all the elements of the matrix.
 
@@ -2284,7 +2284,7 @@ Returns a matrix of dimensions `(rows ; columns)` filled with `T(0)`.
 <br>
 <div id = "element_wise_nm"></div>
 
-### `Matrix` `template<class T>` **element_wise**`(const Matrix<T> &arg1 , const Matrix<T> &arg2)`
+### `template<class T> Matrix` **element_wise**`(const Matrix<T> &arg1 , const Matrix<T> &arg2)`
 
 Alias for **[hadamard](#hadamard_nm)**.
 
@@ -2294,7 +2294,7 @@ Computes the Hadamard product (element-wise product) of the two matrices.
 <br>
 <div id = "for_each_nm_0"></div>
 
-### `Matrix&` `template<class T , class Function>` **for_each**`(Matrix<T> &matrix , Function function)`
+### `template<class T , class Function> Matrix&` **for_each**`(Matrix<T> &matrix , Function function)`
 
 Applies `function` according to `std::for_each` to all the elements of the matrix in argument.
 
@@ -2302,7 +2302,7 @@ Applies `function` according to `std::for_each` to all the elements of the matri
 <br>
 <div id = "for_each_nm_1"></div>
 
-### `const Matrix&` `template<class T , class Function>` **for_each**`(const Matrix<T> &matrix , Function function)`
+### `template<class T , class Function> const Matrix&` **for_each**`(const Matrix<T> &matrix , Function function)`
 
 `const` equivalent of **[for_each](#for_each_nm_0)**.
 
@@ -2311,7 +2311,7 @@ Applies `function` according to `std::for_each` to all the elements of the matri
 <br>
 <div id = "hadamard_nm"></div>
 
-### `Matrix` `template<class T>` **hadamard**`(const Matrix<T> &arg1 , const Matrix<T> &arg2)`
+### `template<class T> Matrix` **hadamard**`(const Matrix<T> &arg1 , const Matrix<T> &arg2)`
 
 Computes the Hadamard product (element-wise product) of the two matrices.
 
@@ -2320,7 +2320,7 @@ Computes the Hadamard product (element-wise product) of the two matrices.
 <br>
 <div id = "invert_nm"></div>
 
-### `Matrix&` `template<class T>` **invert**`(Matrix<T> &matrix)`
+### `template<class T> Matrix&` **invert**`(Matrix<T> &matrix)`
 
 Inverts the matrix in argument and returns a reference to it.
 
@@ -2329,7 +2329,7 @@ Inverts the matrix in argument and returns a reference to it.
 <br>
 <div id = "operator_print_mat_nm"></div>
 
-### `std::ostream&` `template<class T>` **operator\<\<**`(std::ostream &outstream , const Matrix<T> &arg)`
+### `template<class T> std::ostream&` **operator\<\<**`(std::ostream &outstream , const Matrix<T> &arg)`
 
 Prints a matrix to a `std::ostream`, and returns a reference to the stream.
 
@@ -2338,7 +2338,7 @@ Prints a matrix to a `std::ostream`, and returns a reference to the stream.
 <br>
 <div id = "operator_print_EXE_nm"></div>
 
-### `std::ostream&` **operator\<\<**`(std::ostream &outstream , const EXE &a)`
+### `inline std::ostream&` **operator\<\<**`(std::ostream &outstream , const EXE &a)`
 
 Prints a `ste::EXE` to a `std::ostream`, and returns a reference to the stream.
 
@@ -2347,7 +2347,7 @@ Prints a `ste::EXE` to a `std::ostream`, and returns a reference to the stream.
 <br>
 <div id = "operator_binary_or_EXE_nm"></div>
 
-### `EXE` **operator\|**`(const EXE &a , const EXE &b)`
+### `inline EXE` **operator\|**`(const EXE &a , const EXE &b)`
 
 Binary OR for `ste::EXE`.
  
@@ -2357,7 +2357,7 @@ Returns `EXE::GPU` if `a == EXE::GPU` or `b == EXE::GPU`, or `EXE::CPU` otherwis
 <br>
 <div id = "operator_logical_or_EXE_nm"></div>
 
-### `bool` **operator\|\|**`(const EXE &a , const EXE &b)`
+### `inline bool` **operator\|\|**`(const EXE &a , const EXE &b)`
 
 Logical OR for `ste::EXE`.
 
@@ -2366,7 +2366,7 @@ Returns `true` if `a == EXE::GPU` or `b == EXE::GPU`.
 <br>
 <div id = "operator_binary_and_EXE_nm"></div>
 
-### `bool` **operator&**`(const EXE &a , const EXE &b)`
+### `inline bool` **operator&**`(const EXE &a , const EXE &b)`
 
 Binary AND for `ste::EXE`.
  
@@ -2376,7 +2376,7 @@ Returns `EXE::GPU` if `a == EXE::GPU` and `b == EXE::GPU`, or `EXE::CPU` otherwi
 <br>
 <div id = "operator_logical_and_EXE_nm"></div>
 
-### `EXE` **operator&&**`(const EXE &a , const EXE &b)`
+### `inline EXE` **operator&&**`(const EXE &a , const EXE &b)`
 
 Logical AND for `ste::EXE`.
  
@@ -2385,7 +2385,7 @@ Returns `true` if `a == EXE::GPU` and `b == EXE::GPU`, or `false` otherwise.
 <br>
 <div id = "transform_nm"></div>
 
-### `Matrix&` `template<class T , class Function>` **transform**`(Matrix<T> &matrix , Function function)`
+### `template<class T , class Function> Matrix&` **transform**`(Matrix<T> &matrix , Function function)`
 
 Applies `function` to all the elements of `matrix`, according to `std::transform`.
 

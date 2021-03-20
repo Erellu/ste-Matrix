@@ -167,3 +167,8 @@ Ver 2.0.0
 
 
 ___________________________________________________________________________________
+
+Ver 2.0.1
+
+• Changed header guard to STE_MATRIX_HPP.
+• Added `inline` qualifier to ste::EXE related functions.

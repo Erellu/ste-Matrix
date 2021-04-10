@@ -1,28 +1,66 @@
-CONFIG -= qt
 
-TEMPLATE = lib
-DEFINES += MATRIX_LIBRARY
-
-CONFIG += c++17
-
-# You can make your code fail to compile if it uses deprecated APIs.
-# In order to do so, uncomment the following line.
-#DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
+#######################################################################################################################
+# This qmake file is adapted from this StackOverflow answer by Yellow (https://stackoverflow.com/users/1511627/yellow)#
+# https://stackoverflow.com/questions/12266264/compiling-cuda-code-in-qt-creator-on-windows                           #
+#######################################################################################################################
 
 
-HEADERS += \
-    Matrix_global.h \
-    Matrix.hpp \
-    CUDA_src/CUDA_global.h \
-    CUDA_src/CUDA_setup.h \
-    CUDA_src/CUDA_matrix_operators.h
+# Qt config
+TEMPLATE = app
+CONFIG += console c++17
+CONFIG -= app_bundle
+CONFIG += qt
 
-# CUDA settings
-CUDA_SOURCES += CUDA_src/CUDA_global.cu\
-                CUDA_src/CUDA_setup.cu \
-                CUDA_src/CUDA_matrix_operators.cu \
+QT += core
+QT -= gui
 
-CUDA_DIR = "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v11.1"
+#######################################################
+
+# Enables CUDA functions in ste::Matrix
+DEFINES += STE_MATRIX_ALLOW_GPU
+
+
+#######################################################
+
+# Avoid conflicts between CUDA and MSVC
+QMAKE_LFLAGS_RELEASE = /NODEFAULTLIB:msvcrt.lib
+QMAKE_LFLAGS_DEBUG   = /NODEFAULTLIB:msvcrtd.lib
+QMAKE_LFLAGS_DEBUG   = /NODEFAULTLIB:libcmt.lib
+
+
+
+## Avoid conflicts between CUDA and MSVC
+QMAKE_CFLAGS_DEBUG      += /MTd
+QMAKE_CFLAGS_RELEASE    += /MT
+QMAKE_CXXFLAGS_DEBUG    += /MTd
+QMAKE_CXXFLAGS_RELEASE  += /MT
+
+#######################################################
+#                       C++ 
+
+# SOURCES += #Add your source files here
+
+HEADERS += ../ste-Matrix/include/Matrix.hpp \ #Path to the ste::Matrix header file
+           #Add your headers here
+
+
+#######################################################
+#                       CUDA
+
+
+#CUDA headers
+HEADERS += ../ste-Matrix/include/CUDA_src/CUDA_global.h \           #Path to the ste::Matrix CUDA header files
+           ../ste-Matrix/include/CUDA_src/CUDA_matrix_operators.h \
+
+# CUDA source files
+CUDA_SOURCES +=  ../ste-Matrix/include/CUDA_src/CUDA_global.cu \            #Path to the ste::Matrix CUDA source files
+                 ../ste-Matrix/include/CUDA_src/CUDA_matrix_operators.cu \
+
+OTHER_FILES += CUDA_SOURCES
+
+
+
+CUDA_DIR = "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v11.1" #Path to your CUDA installation. Do not forget to check the version.
 SYSTEM_NAME = x64              #NB: SYSTEM DEPENDENT
 SYSTEM_TYPE = 64               #SAME HERE
 CUDA_ARCH = sm_61              #Compute capability of the GPU (here GTX Geforce 1050 - Compute capability 6.1 so sm_61)
@@ -33,8 +71,9 @@ INCLUDEPATH += $$CUDA_DIR/include
 
 #CUDA librairies headers
 QMAKE_LIBDIR += $$CUDA_DIR/lib/$$SYSTEM_NAME
-#Required libraires added here
-LIBS += -lcuda -lcudart
+
+#Required libraires added here. ste::Matrix requires these 3 CUDA ones.
+LIBS += -lcuda -lcudart -lcublas
 
 # The following makes sure all path names (which often include spaces) are put between quotation marks
 CUDA_INC = $$join(INCLUDEPATH,'" -I"','-I"','"')
@@ -57,9 +96,3 @@ else {
        QMAKE_EXTRA_COMPILERS += cuda
 }
 
-
-# Default rules for deployment.
-unix {
-    target.path = /usr/lib
-}
-!isEmpty(target.path): INSTALLS += target

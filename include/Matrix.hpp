@@ -1,27 +1,36 @@
 #ifndef STE_MATRIX_HPP
 #define STE_MATRIX_HPP
 
-///TODO / Upcoming :
-
-///     * CUDA_det                      -- Determines the determinant using the GPU
-///     * CUDA_cofactormatrix           -- Determines the cofactor matrix using the GPU
-///     * CUDA_transpose                -- Determines the transpose matrix using the GPU
-///     * CUDA_invert // CUDA_inverse   -- Determines the inverse using the GPU
 
 
 /**
 
-                     Matrix class
+                     ste::Matrix class
 
-    DUHAMEL Erwan (erwanduhamel@outlook.com)            -- Developper / Tester
-    SOUDIER Jean  (jean.soudier@insa-strasbourg.fr)     -- Tester
+    @brief Provides a template class for matrix-based computing.
+
+    @copyright     Copyright (C) <2020-2021>  <name of author>
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
-    Provides a template class for matrix-based computing.
+    @authors DUHAMEL Erwan (erwanduhamel@outlook.com)            -- Developper / Tester
+             SOUDIER Jean  (jean.soudier@insa-strasbourg.fr)     -- Tester
 
 
     -----------------------------------------------------------------
-
+    @details
     Features :
 
     • Can hold any class.
@@ -75,24 +84,23 @@
     • rows               | Returns the number of rows of the matrix.
     • lines              | Alias for 'rows'.
     • device             | Returns the device on which the operations involving the matrix will be made.
-    • setDevice          | Changes the default device for computation involving this matrix.
 
     • elements           | Returns the total number of elements in the matrix.
 
     • clear              | Clears all the element in the matrix, and sets its size to (0 ; 0). WARNING : MEMORY IS NOT FREED.
-    • deleteAll          | Calls 'delete' on every element, and sets the matrix size to (0 ; 0). Undefined behavior if T is not a pointer.
+    • delete_all         | Calls 'delete' on every element, and sets the matrix size to (0 ; 0). Undefined behavior if T is not a pointer.
 
-    • isRow              | Returns true if the matrix is row, false otherwise.
-    • isLine             | Alias for 'isRow'.
-    • isColumn           | Returns true if the matrix is a column, false otherwise.
-    • isSquare           | Returns true if the matrix is square, false otherwise.
-    • isInvertible       | Returns true if the matrix is invertible, false otherwise.
+    • is_row              | Returns true if the matrix is row, false otherwise.
+    • is_line             | Alias for 'isRow'.
+    • is_column           | Returns true if the matrix is a column, false otherwise.
+    • is_square           | Returns true if the matrix is square, false otherwise.
+    • is_invertible       | Returns true if the matrix is invertible, false otherwise.
     • empty              | Returns true if the matrix is empty, false otherwise.
 
     • at                 | Returns the element at the index specified in argument. It is passed by reference when the matrix is non-const. Linear indexes can be used.
-    • rowAt              | Returns the 'row' at the specified index. It is passed by reference when the matrix is non-const.
-    • lineAt             | Alias for 'rowAt'.
-    • columnAt           | Returns the column at the specified index. It is always passed by value.
+    • row_at              | Returns the 'row' at the specified index. It is passed by reference when the matrix is non-const.
+    • line_at             | Alias for 'row_at'.
+    • column_at           | Returns the column at the specified index. It is always passed by value.
 
     • reshape            | Changes the matrix size to the one specified in argument. Throws an exception if the total number of elements in the new size does not match the current one.
 
@@ -124,7 +132,7 @@
     • insert             | Inserts either a row or a column at the position specified.
     • insert_row         | Convenience function to insert a row at a specified position.
     • insert_line        | Alias for 'insert_row'.
-    • insert column      | Convenience function to insert a column at a specified position.
+    • insert_column      | Convenience function to insert a column at a specified position.
 
     • swap               | Swaps two rows or two columns at the positions specified.
     • swap_row           | Convenience function to swap two rows at a specified positions.
@@ -133,8 +141,8 @@
 
     • fill               | Resizes the matrix as specified in argument and fills it with the value chosen.
 
-[v] • toVector2D         | Converts the matrix to 'std::vector<std::vector<T>>'.
-[v] • toVector1D         | Converts the matrix to 'std::vector<T>&' or const 'std::vector<T>&' if the matrix is 'const' itself.
+[v] • to_vector_2D         | Converts the matrix to 'std::vector<std::vector<T>>'.
+[v] • to_vector_1D         | Converts the matrix to 'std::vector<T>&' or const 'std::vector<T>&' if the matrix is 'const' itself.
 
 [v] • print              | Prints the contents of the matrix in the specified std::ostream and returns a reference to it. If not specified, it prints it in std::cout.
 [v] • print_size         | Prints the size of the matrix in the specified std::ostream and returns a reference to it. If not specified, it prints it in std::cout.
@@ -214,6 +222,14 @@ Other non-member function:
 
 
 */
+
+
+///TODO / Upcoming :
+
+///     * CUDA_det                      -- Determines the determinant using the GPU
+///     * CUDA_cofactormatrix           -- Determines the cofactor matrix using the GPU
+///     * CUDA_invert // CUDA_inverse   -- Determines the inverse using the GPU
+
 
 
 #ifdef STE_MATRIX_ALLOW_GPU
@@ -354,8 +370,6 @@ class Matrix{
         ///device | Returns the device on which the operations involving the matrix will be made.
         EXE &device() {return _device;}
 
-        ///setDevice | Changes the default device for computation involving this matrix.
-        Matrix& setDevice(const EXE &device){_device = device;}
 
         ///clear | Clears all the element in the matrix, and sets its size to (0 ; 0). WARNING : MEMORY IS NOT FREED.
         Matrix& clear(){
@@ -368,8 +382,8 @@ class Matrix{
 
         }
 
-        ///deleteAll | Calls 'delete' on every element, and sets the matrix size to (0 ; 0). Undefined behavior if T is not a pointer.
-        Matrix& deleteAll(){
+        ///delete_all | Calls 'delete' on every element, and sets the matrix size to (0 ; 0). Undefined behavior if T is not a pointer.
+        Matrix& delete_all(){
 
             static_assert (std::is_pointer<T>::value , "ste::Matrix::deleteAll is only available when T is dynamically allocated." );
 
@@ -390,20 +404,20 @@ class Matrix{
 
         /***************************************************/
 
-        /// isRow | Returns true if the matrix is a row, false otherwise.
-        bool isRow() const {return (_rows == 1);}
+        /// is_row | Returns true if the matrix is a row, false otherwise.
+        bool is_row() const {return (_rows == 1);}
 
-        /// isLine | Returns true if the matrix is a row, false otherwise.
-        bool isLine() const{return isRow();}
+        /// is_line | Returns true if the matrix is a row, false otherwise.
+        bool is_line() const{return is_row();}
 
-        ///isColumn | Returns true if the matrix is a column, false otherwise.
-        bool isColumn() const{return (_columns == 1);}
+        ///is_column | Returns true if the matrix is a column, false otherwise.
+        bool is_column() const{return (_columns == 1);}
 
-        ///isSquare | Returns true if the matrix is square, false otherwise.
-        bool isSquare() const{return (_rows == _columns);}
+        ///is_square | Returns true if the matrix is square, false otherwise.
+        bool is_square() const{return (_rows == _columns);}
 
-        ///isInvertible | Returns true if the matrix is invertible, false otherwise.
-        bool isInvertible() const{return (det() != 0);}
+        ///is_invertible | Returns true if the matrix is invertible, false otherwise.
+        bool is_invertible() const{return (det() != 0);}
 
         ///empty | Returns true if the matrix is empty, false otherwise.
         bool empty() const{return _data.empty();}
@@ -451,23 +465,23 @@ class Matrix{
 
         }
 
-        ///rowAt | Returns the value of the row at the specified index.
-        std::vector<T> rowAt(const size_t &index) const{
+        ///row_at | Returns the value of the row at the specified index.
+        std::vector<T> row_at(const size_t &index) const{
 
-            if(empty()){throw std::out_of_range("ste::Matrix::rowAt\nIndex out of range.");}
-            if(index >= _rows){throw std::out_of_range("ste::Matrix::rowAt\nIndex out of range.");}
+            if(empty()){throw std::out_of_range("ste::Matrix::row_at\nIndex out of range.");}
+            if(index >= _rows){throw std::out_of_range("ste::Matrix::row_at\nIndex out of range.");}
 
             return std::vector(_data.begin() + (index*_columns) , _data.begin() + _columns + (index*_columns));
 
         }
 
-        ///lineAt | Returns the value of the row at the specified index.
-        std::vector<T> lineAt(const size_t &index) const{return rowAt(index);}
+        ///line_at | Returns the value of the row at the specified index.
+        std::vector<T> line_at(const size_t &index) const{return row_at(index);}
 
-        ///columnAt | Returns the value of the column at the specified index.
-        std::vector<T> columnAt(const size_t &index) const{
+        ///column_at | Returns the value of the column at the specified index.
+        std::vector<T> column_at(const size_t &index) const{
 
-            if(index >= _columns){throw std::out_of_range("ste::Matrix::columnAt\nIndex out of range.");}
+            if(index >= _columns){throw std::out_of_range("ste::Matrix::column_at\nIndex out of range.");}
 
             std::vector<T> result;
             result.reserve(_rows);
@@ -498,7 +512,7 @@ class Matrix{
 
 
         ///replace | Replaces the element at (row , column) by value.
-        Matrix& replace(const size_t &row , const unsigned &column , const T &value){
+        Matrix& replace(const size_t &row , const size_t &column , const T &value){
             _data.at(row *_columns + column) = value;
             return (*this);
         }
@@ -826,9 +840,9 @@ class Matrix{
 
                     if(element_1 >= _rows || element_2 >= _rows){throw std::invalid_argument("ste::Matrix::swap\nCannot swap lines outside the matrix.");}
 
-                    const std::vector<T> temp = rowAt(element_1);
+                    const std::vector<T> temp = row_at(element_1);
 
-                    replace_line(element_1 , rowAt(element_2));
+                    replace_line(element_1 , row_at(element_2));
                     replace_line(element_2 , temp);
 
                 break;
@@ -837,9 +851,9 @@ class Matrix{
 
                     if(element_1 >= _columns || element_2 >= _columns){throw std::invalid_argument("ste::Matrix::swap\nCannot swap columns outside the matrix.");}
 
-                    const std::vector<T> temp = columnAt(element_1);
+                    const std::vector<T> temp = column_at(element_1);
 
-                    replace_column(element_1 , columnAt(element_2));
+                    replace_column(element_1 , column_at(element_2));
                     replace_column(element_2 , temp);
 
 
@@ -883,8 +897,8 @@ class Matrix{
 
         /***************************************************/
 
-        ///toVector2D  | Converts the matrix to std::vector<std::vector<T>>.
-        virtual std::vector<std::vector<T>> toVector2D() const{
+        ///to_vector_2D  | Converts the matrix to std::vector<std::vector<T>>.
+        virtual std::vector<std::vector<T>> to_vector_2D() const{
 
             std::vector<std::vector<T>> result;
             result.reserve(_rows);
@@ -904,11 +918,11 @@ class Matrix{
 
         }
 
-        ///toVector1D | Converts the matrix to const std::vector<T>&.
-        const std::vector<T>& toVector1D() const{return _data;}
+        ///to_vector_1D | Converts the matrix to const std::vector<T>&.
+        const std::vector<T>& to_vector_1D() const{return _data;}
 
-        ///toVector1D | Converts the matrix to std::vector<T>&.
-        std::vector<T>& toVector1D(){return _data;}
+        ///to_vector_1D | Converts the matrix to std::vector<T>&.
+        std::vector<T>& to_vector_1D(){return _data;}
 
 
         /***************************************************/
@@ -1044,7 +1058,7 @@ class Matrix{
         virtual T det() const{
 
 
-            if(!isSquare()){throw std::invalid_argument("ste::Matrix::det\nMatrix is not square.");}
+            if(!is_square()){throw std::invalid_argument("ste::Matrix::det\nMatrix is not square.");}
 
             switch(_rows){
 
@@ -1149,7 +1163,7 @@ class Matrix{
                 }
                 #ifdef STE_MATRIX_ALLOW_GPU
                 case(EXE::GPU):{
-                  return Matrix(CUDA_transpose(toVector1D() , _columns , _rows) , _columns , _rows , _device);
+                  return Matrix(CUDA_transpose(to_vector_1D() , _columns , _rows) , _columns , _rows , _device);
                 }
                 #endif
 
@@ -1311,7 +1325,7 @@ class Matrix{
             if(_device || arg._device){
 
               return Matrix(
-                             CUDA_mult_MAT(toVector1D() , _rows , _columns , arg.toVector1D() , arg._rows , arg._columns) ,
+                             CUDA_mult_MAT(to_vector_1D() , _rows , _columns , arg.to_vector_1D() , arg._rows , arg._columns) ,
                              _rows ,
                              arg._columns ,
                              EXE::GPU
@@ -1366,7 +1380,7 @@ class Matrix{
 #ifdef STE_MATRIX_ALLOW_GPU
             if(_device || arg._device){
 
-              _data = CUDA_mult_MAT(toVector1D() , _rows , _columns, arg.toVector1D() , arg._rows , arg._columns);
+              _data = CUDA_mult_MAT(to_vector_1D() , _rows , _columns, arg.to_vector_1D() , arg._rows , arg._columns);
               _columns = arg._columns;
               return (*this);
 
@@ -1550,7 +1564,7 @@ class Matrix{
         ///operator^ | Returns the matrix to the specified power (usual matrix product is used).
         virtual Matrix operator^(const long long int &arg) const{ //Power operator
 
-            if(!isSquare()){throw std::invalid_argument("ste::Matrix::operator^\n Cannot use power operator for non-square matrices.");}
+            if(!is_square()){throw std::invalid_argument("ste::Matrix::operator^\n Cannot use power operator for non-square matrices.");}
 
             if(arg == 0){return eye(_rows);}
 
@@ -1567,7 +1581,7 @@ class Matrix{
         ///operator^= | Raises the matrix to the specified power (usual matrix product is used), and returns a reference to it.
         virtual Matrix& operator^=(const long long int &arg){
 
-            if(!isSquare()){throw std::invalid_argument("ste::Matrix::operator^=\n Cannot use power operator for non-square matrices.");}
+            if(!is_square()){throw std::invalid_argument("ste::Matrix::operator^=\n Cannot use power operator for non-square matrices.");}
 
             if(arg == 0){
                 return ((*this) = eye(_rows));
@@ -1841,7 +1855,7 @@ Matrix<T>& for_each(Matrix<T> &matrix , Function function){
 
 ///for_each | Analog to std::for_each. Applies the function in argument to every element in the matrix.
 template<class T , class Function>
-const Matrix<T>& for_each(const Matrix<T> &matrix , Function function){
+inline const Matrix<T>& for_each(const Matrix<T> &matrix , Function function){
     return matrix.for_each(function);
 }
 
@@ -1849,7 +1863,7 @@ const Matrix<T>& for_each(const Matrix<T> &matrix , Function function){
 
 
 template<class T , class Function>
-Matrix<T>& transform(Matrix<T> &matrix , Function function){
+inline Matrix<T>& transform(Matrix<T> &matrix , Function function){
     return matrix.transform(function);
 }
 

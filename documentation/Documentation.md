@@ -53,7 +53,7 @@ _HTML export by [StackEdit](https://stackedit.io/)._
 | `T`                                      | **[cofactor](#cofactor_1)**`(const size_t &index) const`                                                                                                           |
 | `Matrix`                                 | **[cofactormatrix](#cofactormatrix)**`() const `                                                                                                                   |
 | `Matrix`                                 | **[comatrix](#comatrix)**`() const`                                                                                                                                |
-| `std::vector<T>`                         | **[columnAt](#columnAt)**`(const size_t &index) const`                                                                                                             |
+| `std::vector<T>`                         | **[column_at](#column_at)**`(const size_t &index) const`                                                                                                           |
 | `const size_t&`                          | **[columns](#columns)**`() const`                                                                                                                                  |
 | `Matrix&`                                | **[cut](#cut_0)**`(std::vector<size_t> indexes , const Orientation &orientation)`                                                                                  |
 | `Matrix&`                                | **[cut](#cut_1)**`(const size_t &begin , const size_t &end , const Orientation &orientation)`                                                                      |
@@ -63,7 +63,7 @@ _HTML export by [StackEdit](https://stackedit.io/)._
 | `Matrix&`                                | **[cut_lines](#cut_lines_1)**`(const size_t &begin , const size_t &end)`                                                                                           |
 | `Matrix&`                                | **[cut_rows](#cut_rows_0)**`(const std::vector<size_t> &indexes)`                                                                                                  |
 | `Matrix&`                                | **[cut_rows](#cut_rows_1)**`(const size_t &begin , const size_t &end)`                                                                                             |
-| `Matrix&`                                | **[deleteAll](#deleteAll)**`()`                                                                                                                                    |
+| `Matrix&`                                | **[delete_all](#delete_all)**`()`                                                                                                                                  |
 | `virtual T`                              | **[det](#det)**`() const`                                                                                                                                          |
 | `const EXE&`                             | **[device](#device_0)**`() const`                                                                                                                                  |
 | `EXE&`                                   | **[device](#device_1)**`()`                                                                                                                                        |
@@ -86,12 +86,12 @@ _HTML export by [StackEdit](https://stackedit.io/)._
 | `Matrix&`                                | **[insert_row](#insert_row)**`(const size_t &index , const std::vector<T> &data)`                                                                                  |
 | `Matrix`                                 | **[inv](#inv)**`() const`                                                                                                                                          |
 | `Matrix&`                                | **[invert](#invert)**`()`                                                                                                                                          |
-| `bool`                                   | **[isColumn](#isColumn)**`() const`                                                                                                                                |
-| `bool`                                   | **[isInvertible](#isInvertible)**`() const`                                                                                                                        |
-| `bool`                                   | **[isLine](#isLine)**`() const`                                                                                                                                    |
-| `bool`                                   | **[isRow](#isRow)**`() const`                                                                                                                                      |
-| `bool`                                   | **[isSquare](#isSquare)**`() const`                                                                                                                                |
-| `std::vector<T>`                         | **[lineAt](#lineAt)**`(const size_t &index) const`                                                                                                                 |
+| `bool`                                   | **[is_column](#is_column)**`() const`                                                                                                                              |
+| `bool`                                   | **[is_invertible](#is_invertible)**`() const`                                                                                                                      |
+| `bool`                                   | **[is_line](#is_line)**`() const`                                                                                                                                  |
+| `bool`                                   | **[is_row](#is_row)**`() const`                                                                                                                                    |
+| `bool`                                   | **[is_square](#is_square)**`() const`                                                                                                                              |
+| `std::vector<T>`                         | **[line_at](#line_at)**`(const size_t &index) const`                                                                                                               |
 | `const size_t&`                          | **[lines](#lines)**`() const`                                                                                                                                      |
 | `T`                                      | **[max](#max)**`(std::function<T (const std::vector<T>&)> criterium = [](const std::vector<T> &data){return *std::max_element(data.begin() , data.end());}) const` |
 | `virtual T`                              | **[mean](#mean)**`() const`                                                                                                                                        |
@@ -127,7 +127,7 @@ _HTML export by [StackEdit](https://stackedit.io/)._
 | `Matrix&`                                | **[remove_column](#remove_column)**`(const size_t &index)`                                                                                                         |
 | `Matrix&`                                | **[remove_line](#remove_line)**`(const size_t &index)`                                                                                                             |
 | `Matrix&`                                | **[remove_row](#remove_row)**`(const size_t &index)`                                                                                                               |
-| `Matrix&`                                | **[replace](#replace_0)**`(const size_t &row , const unsigned &column , const T &value)`                                                                           |
+| `Matrix&`                                | **[replace](#replace_0)**`(const size_t &row , const size_t &column , const T &value)`                                                                             |
 | `Matrix&`                                | **[replace](#replace_1)**`(const size_t &index, const T &value)`                                                                                                   |
 | `Matrix&`                                | **[replace](#replace_2)**`(const size_t &value_index ,const Orientation &orientation , const std::vector<T> &value)`                                               |
 | `Matrix&`                                | **[replace](#replace_3)**`(const size_t &row_begin, const size_t &row_end ,const size_t &column_begin, const size_t &column_end,const T &value)`                   |
@@ -135,7 +135,7 @@ _HTML export by [StackEdit](https://stackedit.io/)._
 | `Matrix&`                                | **[replace_line](#replace_line)**`(const size_t &value_index , const std::vector<T> &value)`                                                                       |
 | `Matrix&`                                | **[replace_row](#replace_row)**`(const size_t &value_index , const std::vector<T> &value)`                                                                         |
 | `Matrix&`                                | **[reshape](#reshape)**`(const size_t &rows , const size_t &columns)`                                                                                              |
-| `std::vector<T>`                         | **[rowAt](#rowAt)**`(const size_t &index) const`                                                                                                                   |
+| `std::vector<T>`                         | **[row_at](#row_at)**`(const size_t &index) const`                                                                                                                 |
 | `const size_t&`                          | **[rows](#rows)**`() const`                                                                                                                                        |
 | `Matrix&`                                | **[self_transpose](#self_transpose)**`()`                                                                                                                          |
 | `Matrix&`                                | **[setDevice](#setDevice)**`(const EXE &device)`                                                                                                                   |
@@ -145,9 +145,9 @@ _HTML export by [StackEdit](https://stackedit.io/)._
 | `Matrix&`                                | **[swap_columns](#swap_columns)**`(const size_t &element_1 , const size_t &element_2)`                                                                             |
 | `Matrix&`                                | **[swap_lines](#swap_lines)**`(const size_t &element_1 , const size_t &element_2)`                                                                                 |
 | `Matrix&`                                | **[swap_rows](#swap_rows)**`(const size_t &element_1 , const size_t &element_2)`                                                                                   |
-|`const std::vector<T>&`                   | **[toVector1D](#toVector1D_0)**`() const`                                                                                                                          |
-|`std::vector<T>&`                         | **[toVector1D](#toVector1D_1)**`()`                                                                                                                                |
-| `virtual std::vector<std::vector<T>>`    | **[toVector2D](#toVector2D)**`() const`                                                                                                                            |
+|`const std::vector<T>&`                   | **[to_vector_1D](#to_vector_1D_0)**`() const`                                                                                                                      |
+|`std::vector<T>&`                         | **[to_vector_1D](#to_vector_1D_1)**`()`                                                                                                                            |
+| `virtual std::vector<std::vector<T>>`    | **[to_vector_2D](#to_vector_2D)**`() const`                                                                                                                        |
 | `T`                                      | **[trace](#trace)**`() const`                                                                                                                                      |
 | `template<class Function> Matrix&`       | **[transform](#transform)**`(Function function)`                                                                                                                   |
 | `Matrix`                                 | **[transpose](#transpose)**`() const`                                                                                                                              |
@@ -174,43 +174,63 @@ _HTML export by [StackEdit](https://stackedit.io/)._
 
 ## Non-member functions
 
-|                       |                                                                                                                    |
-|-----------------------|--------------------------------------------------------------------------------------------------------------------|
-| `Matrix`              | `template<class T>` **[element_wise](#element_wise_nm)**`(const Matrix<T> &arg1 , const Matrix<T> &arg2)`          |
-| `Matrix&`             | `template<class T , class Function>` **[for_each](#for_each_nm_0)**`(Matrix<T> &matrix , Function function)`       |
-| `const Matrix&`       | `template<class T , class Function>` **[for_each](#for_each_nm_1)**`(const Matrix<T> &matrix , Function function)` |
-| `Matrix`              | `template<class T>` **[hadamard](#hadamard_nm)**`(const Matrix<T> &arg1 , const Matrix<T> &arg2)`                  |
-| `Matrix&`             | `template<class T>` **[invert](#invert_nm)**`(Matrix<T> &arg)`                                                     |
-| `std::ostream&`       | `template<class T>` **[operator\<\<](#operator_print_mat_nm)**`(std::ostream &outstream , const Matrix<T> &arg)`   |
-| `std::ostream&`       | `inline` **[operator\<\<](#operator_print_EXE_nm)**`(std::ostream &outstream , const EXE &a)`                      |
-| `EXE`                 | `inline` **[operator\|](#operator_binary_or_EXE_nm)**`(const EXE &a , const EXE &b)`                               |
-| `bool`                | `inline` **[operator\|\|](#operator_logical_or_EXE_nm)**`(const EXE &a , const EXE &b)`                            |
-| `EXE`                 | `inline` **[operator&](#operator_binary_and_EXE_nm)**`(const EXE &a , const EXE &b)`                               |
-| `bool`                | `inline` **[operator&&](#operator_logical_and_EXE_nm)**`(const EXE &a , const EXE &b)`                             |
-| `Matrix&`             | `template<class T , class Function>` **[transform](#transform_nm)**`(Matrix<T> &matrix , Function function)`       |
+|                                                           |                                                                                                   |
+|-----------------------------------------------------------|---------------------------------------------------------------------------------------------------|
+| `inline template<class T> Matrix`                         | **[ste::element_wise](#element_wise_nm)**`(const Matrix<T> &arg1 , const Matrix<T> &arg2)`        |
+| `inline template<class T , class Function> Matrix&`       | **[ste::for_each](#for_each_nm_0)**`(Matrix<T> &matrix , Function function)`                      |
+| `inline template<class T , class Function> const Matrix&` | **[ste::for_each](#for_each_nm_1)**`(const Matrix<T> &matrix , Function function)`                |
+| `inline template<class T> Matrix`                         | **[ste::hadamard](#hadamard_nm)**`(const Matrix<T> &arg1 , const Matrix<T> &arg2)`                |
+| `inline template<class T> Matrix&`                        | **[ste::invert](#invert_nm)**`(Matrix<T> &arg)`                                                   |
+| `inline template<class T> std::ostream&`                  | **[ste::operator\<\<](#operator_print_mat_nm)**`(std::ostream &outstream , const Matrix<T> &arg)` |
+| `inline std::ostream&`                                    | **[ste::operator\<\<](#operator_print_EXE_nm)**`(std::ostream &outstream , const EXE &a)`         |
+| `inline EXE`                                              | **[ste::operator\|](#operator_binary_or_EXE_nm)**`(const EXE &a , const EXE &b)`                  |
+| `inline bool`                                             | **[ste::operator\|\|](#operator_logical_or_EXE_nm)**`(const EXE &a , const EXE &b)`               |
+| `inline EXE`                                              | **[ste::operator&](#operator_binary_and_EXE_nm)**`(const EXE &a , const EXE &b)`                  |
+| `inline bool`                                             | **[ste::operator&&](#operator_logical_and_EXE_nm)**`(const EXE &a , const EXE &b)`                |
+| `template<class T , class Function> inline Matrix&`       | **[ste::transform](#transform_nm)**`(Matrix<T> &matrix , Function function)`                      |
+
+## CUDA non-member functions
+
+|                       |                                                                                                                                                                                                                                             |
+|-----------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `void`                | **[ste::CUBLAs_assert](#cublas_assert)**`(const cublasStatus_t &code, const char *file, const size_t &line)`                                                                                                                                |
+| `std::vector<float>`  | **[ste::CUDA_mult_MAT](#cuda_mult_mat_float)**`(const std::vector<float> &data_1 , const size_t &data_1_rows, const size_t &data_1_columns, const std::vector<float> &data_2 , const size_t &data_2_rows, const size_t &data_2_columns)`    |
+| `std::vector<double>` | **[ste::CUDA_mult_MAT](#cuda_mult_mat_double)**`(const std::vector<double> &data_1 , const size_t &data_1_rows, const size_t &data_1_columns, const std::vector<double> &data_2 , const size_t &data_2_rows, const size_t &data_2_columns)` |
+| `std::vector<float>`  | **[ste::CUDA_transpose](#cuda_transpose_float)**`(const std::vector<float> &data , const size_t &rows , const size_t &columns)`                                                                                                             |
+| `std::vector<double>` | **[ste::CUDA_transpose](#cuda_transpose_double)**`(const std::vector<double> &data , const size_t &rows , const size_t &columns)`                                                                                                           |
+| `void`                | **[ste::gpu_assert](#gpu_assert)**`(const cudaError_t &code, const char *file,  const size_t &line)`                                                                                                                                        |
 
 ## Non-member types
 
-|                                      |                                                                                 |
-|--------------------------------------|---------------------------------------------------------------------------------|
-| `enum class`                         | **[EXE](#EXE)**`{CPU = 0, C = CPU, HOST = CPU, GPU = 1, G = GPU, DEVICE = GPU}` |
-| `typedef Matrix<float>`              | **[FMatrix](#FMatrix)**                                                         |
-| `typedef Matrix<double>`             | **[DMatrix](#DMatrix)**                                                         |
-| `typedef Matrix<long double>`        | **[LDMatrix](#LDMatrix)**                                                       |
-| `typedef Matrix<int>`                | **[IMatrix](#IMatrix)**                                                         |
-| `typedef Matrix<long int>`           | **[LIMatrix](#LIMatrix)**                                                       |
-| `typedef Matrix<long long int>`      | **[LLIMatrix](#LLIMatrix)**                                                     |
-| `typedef Matrix<unsigned int>`       | **[UIMatrix](#UIMatrix)**                                                       |
-| `typedef Matrix<unsigned long>`      | **[ULMatrix](#ULMatrix)**                                                       |
-| `typedef Matrix<unsigned long long>` | **[ULLMatrix](#ULLMatrix)**                                                     |
-| `typedef Matrix<char>`               | **[CMatrix](#CMatrix)**                                                         |
-| `typedef Matrix<unsigned char>`      | **[UCMatrix](#UCMatrix)**                                                       |
+|                                      |                                                                                      |
+|--------------------------------------|--------------------------------------------------------------------------------------|
+| `enum class`                         | **[ste::EXE](#EXE)**`{CPU = 0, C = CPU, HOST = CPU, GPU = 1, G = GPU, DEVICE = GPU}` |
+| `typedef Matrix<float>`              | **[ste::FMatrix](#FMatrix)**                                                         |
+| `typedef Matrix<double>`             | **[ste::DMatrix](#DMatrix)**                                                         |
+| `typedef Matrix<long double>`        | **[ste::LDMatrix](#LDMatrix)**                                                       |
+| `typedef Matrix<int>`                | **[ste::IMatrix](#IMatrix)**                                                         |
+| `typedef Matrix<long int>`           | **[ste::LIMatrix](#LIMatrix)**                                                       |
+| `typedef Matrix<long long int>`      | **[ste::LLIMatrix](#LLIMatrix)**                                                     |
+| `typedef Matrix<unsigned int>`       | **[ste::UIMatrix](#UIMatrix)**                                                       |
+| `typedef Matrix<unsigned long>`      | **[ste::ULMatrix](#ULMatrix)**                                                       |
+| `typedef Matrix<unsigned long long>` | **[ste::ULLMatrix](#ULLMatrix)**                                                     |
+| `typedef Matrix<char>`               | **[ste::CMatrix](#CMatrix)**                                                         |
+| `typedef Matrix<unsigned char>`      | **[ste::UCMatrix](#UCMatrix)**                                                       |
 
 ## Macros
 
-|          |                                                   |
+| Value    | Name                                              |
 |----------|---------------------------------------------------|
 | No value | **[STE_MATRIX_ALLOW_GPU](#ste_matrix_allow_gpu)** |
+
+## CUDA macros
+
+| Value                                                | Name                                                       |
+|------------------------------------------------------|------------------------------------------------------------|
+| `{ ste::CUBLAs_assert((ans), __FILE__, __LINE__); }` | **[ste_cublas_error_check(ans)](#ste_cublas_error_check)** |
+| `{ ste::gpu_assert((ans), __FILE__, __LINE__); }`    | **[ste_gpu_error_check(ans)](#ste_gpu_error_check)**       |
+
+
 
 
 ## Detailed Description
@@ -300,13 +320,13 @@ Both linear indexes and `(row, column)` coordinates are acceptable arguments.
 ```
 
 
-To access a row or a column, simply use `rowAt` , `lineAt` or `columnAt`.
+To access a row or a column, simply use `row_at` , `line_at` or `column_at`.
 
 ```c++
     ste::Matrix<unsigned> mat({1 , 2 , 3 ,4 ,5 , 6 , 7 , 8 , 9} , 3 , 3); 
 
-    mat.rowAt(2);    //Returns std::vector<unsigned>({6 , 7 , 8})
-    mat.columnAt(1): //Returns std::vector<unsigned>({2,5,8})
+    mat.row_at(2);    //Returns std::vector<unsigned>({6 , 7 , 8})
+    mat.column_at(1): //Returns std::vector<unsigned>({2,5,8})
 
 ```
 
@@ -675,12 +695,12 @@ Especially using CUDA, it is often necessary to be able to obtain a `std::vector
     const ste::FMatrix mat_1({1 , 2 , 3 ,4 ,5 , 6 , 7 , 8 , 9} , 3 , 3);   //3*3 float matrix
     ste::ULLMatrix mat_2({10 , 11 , 12 ,13 ,14 , 15 , 16 , 17 , 18} , 3 , 3); //3*3 uint64_t matrix
 
-    mat_1.toVector1D(); //Returns a const std::vector<float>& holding {1 , 2 , 3 ,4 ,5 , 6 , 7 , 8 , 9}
-    mat_2.toVector1D(); //Returns a std::vector<uint64_t>& holding {10 , 11 , 12 ,13 ,14 , 15 , 16 , 17 , 18} 
+    mat_1.to_vector_1D(); //Returns a const std::vector<float>& holding {1 , 2 , 3 ,4 ,5 , 6 , 7 , 8 , 9}
+    mat_2.to_vector_1D(); //Returns a std::vector<uint64_t>& holding {10 , 11 , 12 ,13 ,14 , 15 , 16 , 17 , 18} 
 
 ```
 
-**As the data is passed by reference, it is possible to modify it using `toVector1D()` when the matrix is not `const`.**
+**As the data is passed by reference, it is possible to modify it using `to_vector_1D()` when the matrix is not `const`.**
 
 
 ```c++
@@ -691,14 +711,14 @@ Especially using CUDA, it is often necessary to be able to obtain a `std::vector
                                   3 , 3); //3*3 float matrix
 
 
-    std::vector<float> &vect = a.toVector1D();
+    std::vector<float> &vect = a.to_vector_1D();
     vect.at(0) = 999;
 
     std::cout << a << std::endl; //Prints [ [ 999 2 3 ] [ 4 52 6 ] [ 7 141 9 ] ]
 
 ```
 
-Should you need a `std::vector<std::vector<T>>`, simply use `toVector2D` :
+Should you need a `std::vector<std::vector<T>>`, simply use `to_vector_2D` :
 
 ```c++
 
@@ -707,7 +727,7 @@ Should you need a `std::vector<std::vector<T>>`, simply use `toVector2D` :
                     7 , 141 , 9} ,
                                   3 , 3); //3*3 float matrix
 
-    std::vector<std::vector<float>> two_dimensional_vector = a.toVector2D();
+    std::vector<std::vector<float>> two_dimensional_vector = a.to_vector_2D();
 
     /*
         two_dimensional_vector is :
@@ -720,7 +740,7 @@ Should you need a `std::vector<std::vector<T>>`, simply use `toVector2D` :
 
 ```
 
-`toVector2D` orders the data **by row** . This method is `virtual`, allowing you to change the format should you need it.
+`to_vector_2D` orders the data **by row** . This method is `virtual`, allowing you to change the format should you need it.
 
 <br>
 
@@ -1185,9 +1205,9 @@ Alias for **[cofactormatrix](#cofactormatrix)**.
 
 
 <br>
-<div id = "columnAt"></div>
+<div id = "column_at"></div>
 
-### `std::vector<T>` **columnAt**`(const size_t &index) const`
+### `std::vector<T>` **column_at**`(const size_t &index) const`
 
 Extracts a column of the matrix and returns it as a `std::vector<T>`.
  
@@ -1308,9 +1328,9 @@ This is identical to calling:
 ```
 
 <br>
-<div id = "deleteAll"></div>
+<div id = "delete_all"></div>
 
-### `Matrix&` **deleteAll**`()`
+### `Matrix&` **delete_all**`()`
 
 Frees the memory of all elements contained by the matrix, which is resized to `(0 ; 0)`.
 
@@ -1533,46 +1553,46 @@ Returns the inverse of the matrix, as computed by **[operator!](#operator_not)**
 Inverts the matrix using **[operator!](#operator_not)**.
 
 <br>
-<div id = "isColumn"></div>
+<div id = "is_column"></div>
 
-### `bool` **isColumn**`() const`
+### `bool` **is_column**`() const`
 
 Returns `true` if the matrix is a column, `false` otherwise.
 
 <br>
-<div id = "isInvertible"></div>
+<div id = "is_invertible"></div>
 
-### `bool` **isInvertible**`() const`
+### `bool` **is_invertible**`() const`
 
 Returns `true` if the matrix is invertible, `false` otherwise.
 
 <br>
-<div id = "isLine"></div>
+<div id = "is_line"></div>
 
-### `bool` **isLine**`() const`
+### `bool` **is_line**`() const`
 
-Alias for **[isRow](#isRow)**
+Alias for **[is_row](#is_row)**
 
 <br>
-<div id = "isRow"></div>
+<div id = "is_row"></div>
 
-### `bool` **isRow**`() const`
+### `bool` **is_row**`() const`
 
 Returns `true` if the matrix is a row, `false` otherwise.
 
 <br>
-<div id = "isSquare"></div>
+<div id = "is_square"></div>
 
-### `bool` **isSquare**`() const`
+### `bool` **is_square**`() const`
 
 Returns `true` if the matrix is square, `false` otherwise.
 
 <br>
-<div id = "lineAt"></div>
+<div id = "line_at"></div>
 
-### `std::vector<T>` **lineAt**`(const size_t &index) const`
+### `std::vector<T>` **line_at**`(const size_t &index) const`
 
-Alias for **[rowAt](#rowAt)**.
+Alias for **[row_at](#row_at)**.
 
 <br>
 <div id = "lines"></div>
@@ -1641,6 +1661,8 @@ Computes the usual matrix product of the object and the argument.
 ***Throws an exception*** if the sizes do not match.
  
 A new object is created, meaning that a deep-copy occurs.
+ 
+When `_device` **of one of the matrices** is `ste::EXE::GPU`, the product is computed using CUDA through **[ste::CUDA_mult_MAT](#cuda_mult_mat_float)**. This requires the matrices to either hold `float` or `double` data.
 
 
 <br>
@@ -1658,6 +1680,10 @@ A new object is created, meaning that a deep-copy occurs.
 ### `Matrix&` **operator\*=**`(const Matrix &arg)`
 
 Computes the usual matrix product of the object and the argument, and returns a reference to it.
+ 
+When `_device` **of one of the matrices** is `ste::EXE::GPU`, the product is computed using CUDA through **[ste::CUDA_mult_MAT](#cuda_mult_mat_float)**. This requires the matrices to either hold `float` or `double` data.
+
+
 
 <br>
 <div id = "operator_mult_equal_1"></div>
@@ -1914,7 +1940,7 @@ Removes the row specified in argument, and returns a reference to the matrix.
 <br>
 <div id = "replace_0"></div>
 
-### `Matrix&` **replace**`(const size_t &row , const unsigned &column , const T &value)`
+### `Matrix&` **replace**`(const size_t &row , const size_t &column , const T &value)`
 
 Replaces the element at `(row ; column)` by `value` and returns a reference to the matrix.
 
@@ -1998,9 +2024,9 @@ Changes the shape of the matrix to `(rows ; columns)`.
 
 
 <br>
-<div id = "rowAt"></div>
+<div id = "row_at"></div>
 
-### `std::vector<T>` **rowAt**`(const size_t &index) const`
+### `std::vector<T>` **row_at**`(const size_t &index) const`
 
 
 Extracts a row of the matrix and returns it as a `std::vector<T>`.
@@ -2086,27 +2112,27 @@ Swaps the two rows at the positions in argument.
 ***Throws an exception*** if one of the positions is outside the matrix.
 
 <br>
-<div id = "toVector1D_0"></div>
+<div id = "to_vector_1D_0"></div>
 
-### `const std::vector<T>&` **toVector1D**`() const`
+### `const std::vector<T>&` **to_vector_1D**`() const`
 
 Returns a reference to the vector holding the data of the matrix.
 
 
 
 <br>
-<div id = "toVector1D_1"></div>
+<div id = "to_vector_1D_1"></div>
 
-### `std::vector<T>&` **toVector1D**`()`
+### `std::vector<T>&` **to_vector_1D**`()`
 
 Returns a reference to the vector holding the data of the matrix.
  
 ***It is possible to modify the matrix through this method.***
 
 <br>
-<div id = "toVector2D"></div>
+<div id = "to_vector_2D"></div>
 
-### `virtual std::vector<std::vector<T>>` **toVector2D**`() const`
+### `virtual std::vector<std::vector<T>>` **to_vector_2D**`() const`
 
 Constructs a `std::vector<std::vector<T>>` from the matrix data.
  
@@ -2138,6 +2164,7 @@ Applies `function` according to `std::transform` to all the elements of the matr
 ### `Matrix` **transpose**`() const`
 
 Returns the transpose of the matrix.
+When `_device` is `ste::EXE::GPU`, the tranpose is computed using CUDA through **[ste::CUDA_transpose](#cuda_transpose_float)**. This requires the matrix to either hold `float` or `double` data.
 
 
 <br>
@@ -2284,7 +2311,7 @@ Returns a matrix of dimensions `(rows ; columns)` filled with `T(0)`.
 <br>
 <div id = "element_wise_nm"></div>
 
-### `template<class T> Matrix` **element_wise**`(const Matrix<T> &arg1 , const Matrix<T> &arg2)`
+### `template<class T> inline Matrix` **element_wise**`(const Matrix<T> &arg1 , const Matrix<T> &arg2)`
 
 Alias for **[hadamard](#hadamard_nm)**.
 
@@ -2294,7 +2321,7 @@ Computes the Hadamard product (element-wise product) of the two matrices.
 <br>
 <div id = "for_each_nm_0"></div>
 
-### `template<class T , class Function> Matrix&` **for_each**`(Matrix<T> &matrix , Function function)`
+### `template<class T , class Function> inline Matrix&` **for_each**`(Matrix<T> &matrix , Function function)`
 
 Applies `function` according to `std::for_each` to all the elements of the matrix in argument.
 
@@ -2302,7 +2329,7 @@ Applies `function` according to `std::for_each` to all the elements of the matri
 <br>
 <div id = "for_each_nm_1"></div>
 
-### `template<class T , class Function> const Matrix&` **for_each**`(const Matrix<T> &matrix , Function function)`
+### `template<class T , class Function> inline const Matrix&` **for_each**`(const Matrix<T> &matrix , Function function)`
 
 `const` equivalent of **[for_each](#for_each_nm_0)**.
 
@@ -2311,7 +2338,7 @@ Applies `function` according to `std::for_each` to all the elements of the matri
 <br>
 <div id = "hadamard_nm"></div>
 
-### `template<class T> Matrix` **hadamard**`(const Matrix<T> &arg1 , const Matrix<T> &arg2)`
+### `template<class T> inline Matrix` **hadamard**`(const Matrix<T> &arg1 , const Matrix<T> &arg2)`
 
 Computes the Hadamard product (element-wise product) of the two matrices.
 
@@ -2320,7 +2347,7 @@ Computes the Hadamard product (element-wise product) of the two matrices.
 <br>
 <div id = "invert_nm"></div>
 
-### `template<class T> Matrix&` **invert**`(Matrix<T> &matrix)`
+### `template<class T> inline Matrix&` **invert**`(Matrix<T> &matrix)`
 
 Inverts the matrix in argument and returns a reference to it.
 
@@ -2329,7 +2356,7 @@ Inverts the matrix in argument and returns a reference to it.
 <br>
 <div id = "operator_print_mat_nm"></div>
 
-### `template<class T> std::ostream&` **operator\<\<**`(std::ostream &outstream , const Matrix<T> &arg)`
+### `template<class T> inline std::ostream&` **operator\<\<**`(std::ostream &outstream , const Matrix<T> &arg)`
 
 Prints a matrix to a `std::ostream`, and returns a reference to the stream.
 
@@ -2385,14 +2412,91 @@ Returns `true` if `a == EXE::GPU` and `b == EXE::GPU`, or `false` otherwise.
 <br>
 <div id = "transform_nm"></div>
 
-### `template<class T , class Function> Matrix&` **transform**`(Matrix<T> &matrix , Function function)`
+### `template<class T , class Function> inline Matrix&` **transform**`(Matrix<T> &matrix , Function function)`
 
 Applies `function` to all the elements of `matrix`, according to `std::transform`.
 
 
 
+<br>
+<br>
 
 
+## CUDA non-member functions documentation
+
+<br>
+<div id = "cublas_assert"></div>
+
+### `void` **ste::CUBLAs_assert**`(const cublasStatus_t &code, const char *file, const size_t &line)`
+
+Convenience function to display a `cublasStatus_t` error code in case of failure. Should be called through the macro **[ste_cublas_error_check](#ste_cublas_error_check)**.
+
+
+
+<br>
+<div id = "cuda_mult_mat_float"></div>
+
+### `std::vector<float>` **ste::CUDA_mult_MAT**`(const std::vector<float> &data_1 , const size_t &data_1_rows, const size_t &data_1_columns, const std::vector<float> &data_2 , const size_t &data_2_rows, const size_t &data_2_columns)`
+
+
+Determines the product of two `float` matrices `A*B` using the usual matrix product definition.
+The computations are made through CUBLAs gemm algorithm one the GPU.
+
+***It is strongly unadvised to use CUDA methods for small matrices.***
+
+
+
+
+<br>
+<div id = "cuda_mult_mat_double"></div>
+
+### `std::vector<double>` **ste::CUDA_mult_MAT**`(const std::vector<double> &data_1 , const size_t &data_1_rows, const size_t &data_1_columns, const std::vector<double> &data_2 , const size_t &data_2_rows, const size_t &data_2_columns)`
+
+
+Determines the product of two `double` matrices `A*B` using the usual matrix product definition.
+The computations are made through CUBLAs gemm algorithm on the GPU.
+
+***It is strongly unadvised to use CUDA methods for small matrices.***
+
+
+
+<br>
+<div id = "cuda_transpose_float"></div>
+
+### `std::vector<float>` **ste::CUDA_transpose**`(const std::vector<float> &data , const size_t &rows, const size_t &columns)`
+
+
+Determines the transpose of a `float` matrix.
+The computations are made through CUBLAs geam algorithm on the GPU.
+
+***It is strongly unadvised to use CUDA methods for small matrices.***
+
+
+<br>
+<div id = "cuda_transpose_double"></div>
+
+### `std::vector<double>` **ste::CUDA_transpose**`(const std::vector<double> &data , const size_t &rows, const size_t &columns)`
+
+
+Determines the transpose of a `double` matrix.
+The computations are made through CUBLAs geam algorithm on the GPU.
+
+***It is strongly unadvised to use CUDA methods for small matrices.***
+
+
+
+<br>
+<div id = "gpu_assert"></div>
+
+### `void` **ste::gpu_assert**`(const cudaError_t &code, const char *file,  const size_t &line)`
+
+ Convenience function to display a `cudaError_t` error code in case of failure. Should be called through the macro **[ste_gpu_error_check](#ste_gpu_error_check)**.
+
+
+
+
+<br>
+<br>
 
 
 ## Non-member Types Documentation
@@ -2509,9 +2613,13 @@ Shortcut for `ste::Matrix<unsigned char>`.
 
 
 
+
 ## Macro Documentation
 
-### STE_MATRIX_ALLOW_GPU
+<br>
+<div id = "ste_matrix_allow_gpu"></div>
+
+### `#define STE_MATRIX_ALLOW_GPU`
 
 Enables the possibility to use the GPU for calculations.
 
@@ -2522,7 +2630,31 @@ See paragraph **[Using a GPU](#using-a-gpu)** for more information.
 
 <br>
 <br>
+
+
+
+## CUDA macros documentation
+
 <br>
+<div id = "ste_cublas_error_check"></div>
+
+### `#define ste_cublas_error_check(ans) { ste::CUBLAs_assert((ans), __FILE__, __LINE__); }`
+
+Convenience macro for calling **[ste::CUBLAs_assert](#cublas_assert)** without having to specify the current file and the current line.
+
+
+<br>
+<div id = "ste_gpu_error_check"></div>
+
+### `#define ste_gpu_error_check(ans){ ste::gpu_assert((ans), __FILE__, __LINE__); }`
+
+Convenience macro for calling **[ste::gpu_assert](#gpu_assert)** without having to specify the current file and the current line.
+
+
+<br>
+<br>
+<br>
+
 
 # License
 

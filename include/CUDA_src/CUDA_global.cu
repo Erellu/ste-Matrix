@@ -1,11 +1,8 @@
 #include "CUDA_global.h"
 
+namespace ste {
 
-//void cublasErrchk(cublasStatus_t code){
-//    cublasAssert(code , __FILE__ , __LINE__);
-//}
-
-void cublasAssert(cublasStatus_t code, const char *file, int line){
+void CUBLAs_assert(const cublasStatus_t &code, const char *file, const size_t &line){
 
     if(code != CUBLAS_STATUS_SUCCESS){
         std::cerr <<  "CUBLAS error.\nError code: ";
@@ -35,8 +32,7 @@ void cublasAssert(cublasStatus_t code, const char *file, int line){
 
         }
 
-        std::cerr << "\nFile: "<< file << "\n";
-        std::cerr << "Line: "<< line <<std::endl;
+        std::cerr << "\n  File: "<< file << "\n  Line: "<< line <<std::endl;
 
         exit(EXIT_FAILURE);
 
@@ -48,14 +44,17 @@ void cublasAssert(cublasStatus_t code, const char *file, int line){
 
 
 
-void gpuAssert(cudaError_t code, const char *file, int line){
+void gpu_assert(const cudaError_t &code, const char *file, const size_t &line){
 
    if (code != cudaSuccess){
-      fprintf(stderr,"GPUassert: %s %s %d\n", cudaGetErrorString(code), file, line);
-      //if (abort) exit(code);
+       std::cerr << "ste::gpu_assert failed.\n  Error: " << cudaGetErrorString(code) << "\n  File: " << file << "\n  Line: " << line << std::endl;
    }
-   
+
 }
+
+} //namespace ste
+
+
 
 //void gpuErrchk(cudaError_t code){gpuAssert(code , __FILE__ , __LINE__);}
 

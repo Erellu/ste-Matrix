@@ -4,24 +4,31 @@
 
 #include <stdio.h>
 
-
-
 #include <iostream>
 
-extern void gpuAssert(cudaError_t code, const char *file, int line);
-
-//extern void cublasErrchk(cublasStatus_t code);
-extern void cublasAssert(cublasStatus_t code, const char *file, int line);
-
-#define gpuErrchk(ans) { gpuAssert((ans), __FILE__, __LINE__); }
-#define cublasErrchk(ans) { cublasAssert((ans), __FILE__, __LINE__); }
-
-#define ThreadsPerBlock_DIFFERENCE 256
-#define ThreadsPerBlock_DOT 512
+namespace ste {
 
 
-//extern void gpuErrchk(cudaError_t code);
+    /**
+        @brief Convenience function to display a 'cublasStatus_t' error code in case of failure. Should be called through the macro ste_cublas_error_check.
 
-//extern constexpr int threadsPerBlock = 256;
+        @arg code: cublasStatus_t error code
+        @arg file: file in which the function is called. Automatically determined by the macro ste_cublas_error_check.
+        @arg line: line at which the function is called. Automatically determined by the macro ste_cublas_error_check.
+    */
+    extern void CUBLAs_assert(const cublasStatus_t &code, const char *file, const size_t &line);
 
+    /**
+        @brief Convenience function to display a 'cudaError_t' error code in case of failure. Should be called through the macro ste_gpu_error_check.
+
+        @arg code: cublasStatus_t error code
+        @arg file: file in which the function is called. Automatically determined by the macro ste_gpu_error_check.
+        @arg line: line at which the function is called. Automatically determined by the macro ste_gpu_error_check.
+    */
+    extern void gpu_assert(const cudaError_t &code, const char *file,  const size_t &line);
+
+} //namespace ste
+
+#define ste_cublas_error_check(ans) { ste::CUBLAs_assert((ans), __FILE__, __LINE__); }
+#define ste_gpu_error_check(ans) { ste::gpu_assert((ans), __FILE__, __LINE__); }
 

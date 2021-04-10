@@ -10,7 +10,7 @@ C++ class that provides an interface for matrix-based computing.
 
  • Can hold any class.
  
- • **\[WIP\]**  Possibility to use GPU for calculations.
+ • Possibility to use GPU for calculations. **\[WIP\]** : currently, only multiplications and transpose are available.
  
  • Fast conversion to `std::vector<T>` to facilitate GPU-acceleration-based algorithms. 
 
@@ -80,39 +80,39 @@ C++ class that provides an interface for matrix-based computing.
  
 ### Accessors:
 
-|      |Function    |Description                                                                    |Notes                                                |
-|------|------------|-------------------------------------------------------------------------------|-----------------------------------------------------|
-|      |`size`      | Returns the size of the matrix, as `const std::vector<uint64_t>`.             |                                                     |
-|      |`columns`   | Returns the number of columns of the matrix.                                  |                                                     |
-|      |`rows`      | Returns the number of rows of the matrix.                                     |                                                     |
-|      |`lines`     | Alias for `'rows'`.                                                           |                                                     |
-|      |`device`    | Returns the device on which the operations involving the matrix will be made. |                                                     |
-|      |`elements`  | Returns the total number of elements in the matrix.                           |                                                     |
-|      |`clear`     | Clears all the element in the matrix, and sets its size to (0 ; 0).           | **WARNING : MEMORY IS NOT FREED.**                  |
-|      |`deleteAll` | Calls `'delete'` on every element, and sets the matrix size to (0 ; 0).       | **Only available when T is dynamically allocated.** |
+|      |Function     |Description                                                                    |Notes                                                |
+|------|-------------|-------------------------------------------------------------------------------|-----------------------------------------------------|
+|      |`size`       | Returns the size of the matrix, as `const std::vector<uint64_t>`.             |                                                     |
+|      |`columns`    | Returns the number of columns of the matrix.                                  |                                                     |
+|      |`rows`       | Returns the number of rows of the matrix.                                     |                                                     |
+|      |`lines`      | Alias for `'rows'`.                                                           |                                                     |
+|      |`device`     | Returns the device on which the operations involving the matrix will be made. |                                                     |
+|      |`elements`   | Returns the total number of elements in the matrix.                           |                                                     |
+|      |`clear`      | Clears all the element in the matrix, and sets its size to (0 ; 0).           | **WARNING : MEMORY IS NOT FREED.**                  |
+|      |`delete_all` | Calls `'delete'` on every element, and sets the matrix size to (0 ; 0).       | **Only available when T is dynamically allocated.** |
 
 
  
 ### Information about the matrix shape:
 
-|      |Function       |Description                                                 |
-|------|---------------|------------------------------------------------------------|
-|      |`isRow`        | Returns true if the matrix is row, false otherwise.        |
-|      |`isLine`       | Alias for `'isRow'`.                                       |
-|      |`isColumn`     | Returns true if the matrix is a column, false otherwise.   |
-|      |`isSquare`     | Returns true if the matrix is square, false otherwise.     |
-|      |`isInvertible` | Returns true if the matrix is invertible, false otherwise. |
-|      |`empty`        | Returns true if the matrix is empty, false otherwise.      |
+|      |Function        |Description                                                 |
+|------|----------------|------------------------------------------------------------|
+|      |`is_row`        | Returns true if the matrix is row, false otherwise.        |
+|      |`is_line`       | Alias for `'is_row'`.                                       |
+|      |`is_column`     | Returns true if the matrix is a column, false otherwise.   |
+|      |`is_square`     | Returns true if the matrix is square, false otherwise.     |
+|      |`is_invertible` | Returns true if the matrix is invertible, false otherwise. |
+|      |`empty`          | Returns true if the matrix is empty, false otherwise.      |
 
  
 ### Access to the matrix' contents:
 
-|      |Function   |Description                                                                                                                                  |
-|------|-----------|---------------------------------------------------------------------------------------------------------------------------------------------|
-|      |`at`       | Returns the element at the index specified in argument. It is passed by reference when the matrix is non-const. Linear indexes can be used. |
-|      |`rowAt`    | Returns the row at the specified index. It is passed by reference when the matrix is non-const.                                             |
-|      |`lineAt`   | Alias for `'rowAt'`.                                                                                                                        |
-|      |`columnAt` | Returns the column at the specified index. It is always passed by value.                                                                    |
+|      |Function    |Description                                                                                                                                  |
+|------|------------|---------------------------------------------------------------------------------------------------------------------------------------------|
+|      |`at`        | Returns the element at the index specified in argument. It is passed by reference when the matrix is non-const. Linear indexes can be used. |
+|      |`row_at`    | Returns the row at the specified index. It is passed by reference when the matrix is non-const.                                             |
+|      |`line_at`   | Alias for `'row_at'`.                                                                                                                        |
+|      |`column_at` | Returns the column at the specified index. It is always passed by value.                                                                    |
 
  
 ### Replacement:
@@ -176,10 +176,10 @@ C++ class that provides an interface for matrix-based computing.
 
  
 ### Converting the matrix to STL vectors:
-|          |Function      |Description                                                                                    |
-|----------|--------------|-----------------------------------------------------------------------------------------------|
-|***[v]*** | `toVector2D` | Converts the matrix to `std::vector<std::vector<T>>`.                                         |
-|          | `toVector1D` | Converts the matrix to `std::vector<T>&` or `const std::vector<T>&` depending on the context. |
+|          |Function        |Description                                                                                    |
+|----------|----------------|-----------------------------------------------------------------------------------------------|
+|***[v]*** | `to_vector_2D` | Converts the matrix to `std::vector<std::vector<T>>`.                                         |
+|          | `to_vector_1D` | Converts the matrix to `std::vector<T>&` or `const std::vector<T>&` depending on the context. |
 
  
 ### Printing the matrix:
@@ -307,7 +307,7 @@ mat2.device() = ste::EXE::CPU; //Now computations involving this matrix will be 
 
 //Do stuff here
 
-mat2.setDevice(ste::EXE::GPU); //Analog to above, but using Matrix::setDevice
+mat2.device() = ste::EXE::GPU; //Analog to above, but the other way.
 
 //...
 

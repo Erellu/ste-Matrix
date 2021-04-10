@@ -172,3 +172,15 @@ Ver 2.0.1
 
 • Changed header guard to STE_MATRIX_HPP.
 • Added `inline` qualifier to ste::EXE related functions.
+
+___________________________________________________________________________________
+
+Ver 2.1.0
+
+• Added CUDA_transpose, function allowing to transpose your matrix through your GPU.
+• Corrected `replace` argument type.
+• Corrected inconsistent naming conventions. All functions now use snake_case.
+• Added CUDA functions to namespace ste.
+• Added documentation for GPU functions.
+• Update sample qmake file.
+• Other minor changes in GPU functions.

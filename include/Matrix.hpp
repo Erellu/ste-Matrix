@@ -1041,7 +1041,7 @@ class Matrix{
         ///trace | Returns the trace of the matrix, computed as T (meaning that rounding error and overflow may occur). Throws an exception (std::invalid_argument) if the matrix is not square.
         T trace() const{
 
-            if(!isSquare()){throw std::invalid_argument("ste::Matrix::trace\nMatrix is not square.");}
+            if(!is_square()){throw std::invalid_argument("ste::Matrix::trace\nMatrix is not square.");}
 
             T accumulator = at(0);
 
@@ -1885,9 +1885,6 @@ typedef Matrix<unsigned long long> ULLMatrix;
 
 typedef Matrix<char> CMatrix;
 typedef Matrix<unsigned char> UCMatrix;
-
-
-
 
 } //namespace ste
 #endif // STE_MATRIX_HPP
